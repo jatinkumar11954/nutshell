@@ -1,0 +1,35 @@
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:23
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:28
+-keep class com.example.nutshell.MainActivity { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:164
+-keep class com.google.android.gms.auth.api.signin.RevocationBoundService { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:155
+-keep class com.google.android.gms.auth.api.signin.internal.SignInHubActivity { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:178
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:135
+-keep class com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:149
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:130
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:145
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:109
+-keep class com.google.firebase.auth.internal.FederatedSignInActivity { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:70
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:169
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:183
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:116
+-keep class com.razorpay.CheckoutActivity { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:193
+-keep class com.razorpay.RzpTokenReceiver { <init>(); }
+# Referenced at D:\techtutes\nutshell\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:23
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+# Referenced at C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\res\layout\rzp_loader.xml:20
+-keep class com.razorpay.CircularProgressView { <init>(...); }
+
