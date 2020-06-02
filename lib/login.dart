@@ -68,6 +68,9 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void onDonePress() {
+    
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => Subscription()));
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
@@ -222,9 +225,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: MediaQuery.of(context).size.width - 100,
                         )),
                     SizedBox(height: 60.0),
-                    _buildPhone(() => Navigator.of(context).push(
+                    _buildPhone(() => 
+                    Navigator.of(context).push(
                         new MaterialPageRoute(
-                            builder: (BuildContext context) => new Phone()))),
+                            builder: (BuildContext context) => new Phone()
+                            )
+                            )
+                            ),
                     SizedBox(
                       height: 20,
                     ),

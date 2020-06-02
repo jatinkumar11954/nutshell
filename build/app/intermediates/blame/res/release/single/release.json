@@ -348,6 +348,10 @@
         "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\4c04b686811fd5e8f48010af8248d594\\jetified-play-services-auth-16.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
     },
     {
+        "merged": "D:\\techtutes\\nutshell\\build\\app\\intermediates\\res\\merged\\release\\layout_activity_razorpay.xml.flat",
+        "source": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\packaged_res\\release\\layout\\activity_razorpay.xml"
+    },
+    {
         "merged": "D:\\techtutes\\nutshell\\build\\app\\intermediates\\res\\merged\\release\\drawable_rzp_secured_by_bg.xml.flat",
         "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\55f7950a441b1b95db8e1d0ee542a326\\checkout-1.5.16\\res\\drawable\\rzp_secured_by_bg.xml"
     },

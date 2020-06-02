@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutshell/database.dart';
@@ -11,6 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'currentUser.dart';
 import 'details.dart';
 import 'home.dart';
+import 'account.dart';
 
 bool selection1 = false;
 
@@ -64,7 +66,7 @@ class _SubscriptionState extends State<Subscription> {
             children: [
               Text("₹0/-",
                   style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("two issues",
+              Text("Two issues",
                   style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
             ],
           ),
@@ -97,7 +99,7 @@ class _SubscriptionState extends State<Subscription> {
             children: [
               Text("₹69/-",
                   style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("one issue",
+              Text("One issue",
                   style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
             ],
           ),
@@ -217,6 +219,10 @@ class _SubscriptionState extends State<Subscription> {
 }
 
 void openCheckout() async {
+  
+  print("Just came to opencheckout function");
+    print(_currentUser.uid);
+
   var onemonth = {
     'key': 'rzp_test_b3k6BBYp7rce8M',
     'currency': "INR",
@@ -228,13 +234,18 @@ void openCheckout() async {
   };
 
   try {
+    
+    print("Trying to go to razorpay");
     razorpay.open(onemonth);
   } catch (e) {
+    print("catch block jp");
     debugPrint(e);
   }
 }
 
 void openCheckoutthree() async {
+  
+  print("Just came to checkout3 function");
   var threemonths = {
     'key': 'rzp_test_b3k6BBYp7rce8M',
     'currency': "INR",
@@ -245,13 +256,19 @@ void openCheckoutthree() async {
     'prefill': {'contact': '+91'+phone, 'email': email}
   };
   try {
+    
+    print("Trying to go to razorpay");
     razorpay.open(threemonths);
   } catch (e) {
+    
+    print("catch block jp");
     debugPrint(e);
   }
 }
 
 void openCheckoutyear() async {
+  
+  print("Just came to checkoutyear function");
   var oneyear = {
     'key': 'rzp_test_b3k6BBYp7rce8M',
     'currency': "INR",
@@ -262,37 +279,63 @@ void openCheckoutyear() async {
     'prefill': {'contact':'+91'+ phone, 'email': email}
   };
   try {
+    
+    print("Trying to go to razorpay");
     razorpay.open(oneyear);
   } catch (e) {
+    
+    print("catch block jp");
     debugPrint(e);
   }
 }
 
 void openCheckoutweek() async {
+  print("Just came to checkout functionfds");
+  print(phone);
   var oneweek = {
     'key': 'rzp_test_b3k6BBYp7rce8M',
     'currency': "INR",
     'amount': 00, //in the smallest currency sub-unit.
     'name': 'Nutshell',
-    //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
+    // 'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Subscription',
     'prefill': {'contact':'+91'+ phone, 'email': email}
   };
-
+// print("Just before going to razorpay try");
   try {
-    razorpay.open(oneweek);
+    print("Trying to go to razorpay");
+    // sendToServer();
+    // razorpay.open(oneweek);
   } catch (e) {
+    
+    print("catch block jp");
     debugPrint(e);
   }
 }
 
 
-void _handlePaymentSuccess(PaymentSuccessResponse response) {
+void _handlePaymentSuccess(PaymentSuccessResponse response) async {
   Fluttertoast.showToast(
     msg: "SUCCESS: " + response.paymentId,
   );
-  _currentUser.sID = response.orderId;
-  Get.to(HomeScreen());
+
+  try{
+FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  print("current user id");
+  print(user.uid);
+   final Firestore fireStore =  Firestore.instance;
+  await fireStore.collection("users").document(user.uid).updateData({
+    "subscription": true
+});
+    print("updated");
+
+}
+catch(e){
+  print(e.toString());
+}
+
+print("account page");
+  HomeScreen();
   }
   
 //  navigator(BuildContext context){

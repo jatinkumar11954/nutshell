@@ -196,152 +196,158 @@
 115            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 115-->[com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:30:13-72
 116        <activity
-116-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:8:9-11:20
-117            android:name="com.razorpay.CheckoutActivity"
-117-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:9:13-57
-118            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-118-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:20:13-83
-119            android:label="Razorpay Checkout"
-119-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:10:13-46
-120            android:theme="@style/CheckoutTheme" >
-120-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:21:13-49
-121            <intent-filter>
-121-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:22:13-28:29
-122                <action android:name="android.intent.action.MAIN" />
-122-->D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:37:17-68
-122-->D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:37:25-66
-123
-124                <data
-124-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:25:17-27:47
-125                    android:host="rzp.io"
-125-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:26:21-42
-126                    android:scheme="io.rzp" />
-126-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:27:21-44
-127            </intent-filter>
-128        </activity>
-129
-130        <receiver
-130-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
-131            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-131-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
-132            android:enabled="true"
-132-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
-133            android:exported="false" >
-133-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
-134        </receiver>
-135        <receiver
-135-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
-136            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-136-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
-137            android:enabled="true"
-137-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
-138            android:exported="true"
-138-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
-139            android:permission="android.permission.INSTALL_PACKAGES" >
-139-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
-140            <intent-filter>
-140-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
-141                <action android:name="com.android.vending.INSTALL_REFERRER" />
-141-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
-141-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
-142            </intent-filter>
-143        </receiver>
-144
-145        <service
-145-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
-146            android:name="com.google.android.gms.measurement.AppMeasurementService"
-146-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
-147            android:enabled="true"
-147-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
-148            android:exported="false" />
-148-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
-149        <service
-149-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
-150            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-150-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
-151            android:enabled="true"
-151-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
-152            android:exported="false"
-152-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
-153            android:permission="android.permission.BIND_JOB_SERVICE" />
-153-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
-154
-155        <activity
-155-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
-156            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-156-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
-157            android:excludeFromRecents="true"
-157-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
-158            android:exported="false"
-158-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
-159            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-159-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
-160        <!--
-161            Service handling Google Sign-In user revocation. For apps that do not integrate with
-162            Google Sign-In, this service will never be started.
-163        -->
-164        <service
-164-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
-165            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-165-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
-166            android:exported="true"
-166-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
-167            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-167-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
-168
-169        <receiver
-169-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
-170            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-170-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
-171            android:exported="true"
-171-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
-172            android:permission="com.google.android.c2dm.permission.SEND" >
-172-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
-173            <intent-filter>
-173-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
-174                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-174-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
-174-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
-175            </intent-filter>
-176        </receiver>
-177
-178        <activity
-178-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
-179            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-179-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
-180            android:exported="false"
-180-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
-181            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-181-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
-182
-183        <provider
-183-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-184            android:name="com.google.firebase.provider.FirebaseInitProvider"
-184-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-185            android:authorities="com.example.nutshell.firebaseinitprovider"
-185-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
-186            android:exported="false"
-186-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-187            android:initOrder="100" />
-187-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
-188
-189        <meta-data
-189-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-190            android:name="com.google.android.gms.version"
-190-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-191            android:value="@integer/google_play_services_version" />
-191-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-192
-193        <receiver android:name="com.razorpay.RzpTokenReceiver" >
-193-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:12:9-16:20
-193-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:12:19-63
-194            <intent-filter>
-194-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:13:13-15:29
-195                <action android:name="rzp.device_token.share" />
-195-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:14:17-65
-195-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:14:25-62
-196            </intent-filter>
-197        </receiver>
-198    </application>
-199
-200</manifest>
+116-->[:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\release\AndroidManifest.xml:8:9-10:88
+117            android:name="com.hashbnm.razorpayplugin.RazorpayActivity"
+117-->[:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\release\AndroidManifest.xml:9:13-71
+118            android:configChanges="orientation|screenSize|keyboardHidden|navigation" />
+118-->[:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\release\AndroidManifest.xml:10:13-85
+119        <activity
+119-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:8:9-11:20
+120            android:name="com.razorpay.CheckoutActivity"
+120-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:9:13-57
+121            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+121-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:20:13-83
+122            android:label="Razorpay Checkout"
+122-->[:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\release\AndroidManifest.xml:10:13-46
+123            android:theme="@style/CheckoutTheme" >
+123-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:21:13-49
+124            <intent-filter>
+124-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:22:13-28:29
+125                <action android:name="android.intent.action.MAIN" />
+125-->D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:37:17-68
+125-->D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:37:25-66
+126
+127                <data
+127-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:25:17-27:47
+128                    android:host="rzp.io"
+128-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:26:21-42
+129                    android:scheme="io.rzp" />
+129-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:27:21-44
+130            </intent-filter>
+131        </activity>
+132
+133        <receiver
+133-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
+134            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+134-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
+135            android:enabled="true"
+135-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
+136            android:exported="false" >
+136-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
+137        </receiver>
+138        <receiver
+138-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
+139            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+139-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
+140            android:enabled="true"
+140-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
+141            android:exported="true"
+141-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
+142            android:permission="android.permission.INSTALL_PACKAGES" >
+142-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
+143            <intent-filter>
+143-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
+144                <action android:name="com.android.vending.INSTALL_REFERRER" />
+144-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
+144-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
+145            </intent-filter>
+146        </receiver>
+147
+148        <service
+148-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
+149            android:name="com.google.android.gms.measurement.AppMeasurementService"
+149-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
+150            android:enabled="true"
+150-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
+151            android:exported="false" />
+151-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
+152        <service
+152-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
+153            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+153-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
+154            android:enabled="true"
+154-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
+155            android:exported="false"
+155-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
+156            android:permission="android.permission.BIND_JOB_SERVICE" />
+156-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
+157
+158        <activity
+158-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
+159            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+159-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
+160            android:excludeFromRecents="true"
+160-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
+161            android:exported="false"
+161-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
+162            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+162-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
+163        <!--
+164            Service handling Google Sign-In user revocation. For apps that do not integrate with
+165            Google Sign-In, this service will never be started.
+166        -->
+167        <service
+167-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
+168            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+168-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
+169            android:exported="true"
+169-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
+170            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+170-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
+171
+172        <receiver
+172-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
+173            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+173-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
+174            android:exported="true"
+174-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
+175            android:permission="com.google.android.c2dm.permission.SEND" >
+175-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
+176            <intent-filter>
+176-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
+177                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+177-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
+177-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
+178            </intent-filter>
+179        </receiver>
+180
+181        <activity
+181-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+182            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+182-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+183            android:exported="false"
+183-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+184            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+184-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+185
+186        <provider
+186-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+187            android:name="com.google.firebase.provider.FirebaseInitProvider"
+187-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+188            android:authorities="com.example.nutshell.firebaseinitprovider"
+188-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+189            android:exported="false"
+189-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+190            android:initOrder="100" />
+190-->[com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+191
+192        <meta-data
+192-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+193            android:name="com.google.android.gms.version"
+193-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+194            android:value="@integer/google_play_services_version" />
+194-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\800b8ed2c3155495d8d4e578edb50288\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+195
+196        <receiver android:name="com.razorpay.RzpTokenReceiver" >
+196-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:12:9-16:20
+196-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:12:19-63
+197            <intent-filter>
+197-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:13:13-15:29
+198                <action android:name="rzp.device_token.share" />
+198-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:14:17-65
+198-->[com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:14:25-62
+199            </intent-filter>
+200        </receiver>
+201    </application>
+202
+203</manifest>

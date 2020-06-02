@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\rzp_loader.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\05a91e72e0bbf0a2f236ee2f98b2f84b\\checkout-1.5.2\\res\\layout\\rzp_loader.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\activity_razorpay.xml",
+        "source": "E:\\software\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\razorpay_plugin-0.3.0\\android\\src\\main\\res\\layout\\activity_razorpay.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\rzp_magic_base.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\05a91e72e0bbf0a2f236ee2f98b2f84b\\checkout-1.5.2\\res\\layout\\rzp_magic_base.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\techtutes\\nutshell\\build\\razorpay_plugin\\intermediates\\res\\merged\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\maginificient\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout\\custom_dialog.xml"
+    }
+]

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -23,28 +24,47 @@ bool _isLoading=false;
   void initState() {
     super.initState();
     existingUser();
-    _mainLogoAnimationController = new AnimationController(
+     _mainLogoAnimationController = new AnimationController(
         duration: new Duration(milliseconds: 1500), vsync: this);
     _mainLogoAnimation = new CurvedAnimation(
         parent: _mainLogoAnimationController, curve: Curves.easeIn);
     _mainLogoAnimation.addListener(() => (this.setState(() {})));
     _mainLogoAnimationController.forward();
   }
+
+
  Future existingUser() async {
- await new Future.delayed(const Duration(milliseconds: 2000));
+     final Firestore _firestore = Firestore.instance;
+
+//  await new Future.delayed(const Duration(milliseconds: 2000));
  try{
 FirebaseUser user = await FirebaseAuth.instance.currentUser();
-  if(user!=null){
+ print(user.toString());
+
+  if(user!=null ){
+     DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
+
+    if(_docSnap.data['subscription'])
      Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
   }
   else{
-    goToLoginPage();
+
+      // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+    // goToLoginPage();
+    
+ await new Future.delayed(const Duration(milliseconds: 2000));
+      Navigator.pushNamedAndRemoveUntil(context, "/Login", (_) => false);
+  
   }
  }catch(e){
    print(e);
  }
 
  }
+
+
+ 
+  // not using below code for splash screen
   Future goToLoginPage() async {
     await new Future.delayed(const Duration(milliseconds: 2000));
     String retVal = "error";

@@ -272,7 +272,7 @@ class _PhoneState extends State<Phone> {
       });
     }).then((user) {
       if (user.additionalUserInfo.isNewUser) {
-        // print("firest uset");
+        print("firest uset");
         return Navigator.pushNamed(context, '/subs');
       }
       setState(() {
@@ -464,7 +464,7 @@ class _PhoneState extends State<Phone> {
         if (user != null) {
           Navigator.of(context).pop();
           // Navigator.pushReplacementNamed(context, 'Main');
-          Navigator.pushNamedAndRemoveUntil(context, '/details', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, '/subs', (route) => false);
         } else {
           // Navigator.of(context).pop();
           Navigator.pushNamed(context, '/Login');

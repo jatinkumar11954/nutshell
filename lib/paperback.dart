@@ -8,11 +8,11 @@ class Paperbacks extends StatefulWidget {
 
 class _PaperbacksState extends State<Paperbacks> {
   PDFDocument _doc;
-  bool _loading;
+  bool _loading=false;
   @override
   void initState() {
     super.initState();
-    _initPDF();
+    // _initPDF();
   }
 
   _initPDF() async {
@@ -38,7 +38,8 @@ class _PaperbacksState extends State<Paperbacks> {
                 context: context,
                 child: 
                 Scaffold(
-                body: _loading
+                body: 
+                _loading
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
