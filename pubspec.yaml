@@ -41,7 +41,7 @@ dependencies:
   get:
   provider: ^3.2.0
   flutter_html: 
-  
+  #removed html version
   share:
   carousel_slider: ^2.1.0
   url_launcher:
