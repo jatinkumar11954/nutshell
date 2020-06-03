@@ -5,28 +5,31 @@ INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:1:1
 INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:1:1-47:12
 INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:1:1-47:12
-MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core_web] D:\techtutes\nutshell\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
-MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:flutter_plugin_pdf_viewer] D:\techtutes\nutshell\build\flutter_plugin_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences] D:\techtutes\nutshell\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:share] D:\techtutes\nutshell\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:url_launcher_web] D:\techtutes\nutshell\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:17:1-42:12
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:15:1-36:12
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\516d475c610d5ee0701cc5d0e0043980\firebase-auth-interop-19.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\3018cadfc00ba33fe947be2e327f9dd5\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:2:1-7:12
@@ -64,9 +67,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\ma
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\d51e0220d8e43d4bfbf3a1c4895b8a97\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ec735b528ee8f52f56a38a2f27a69a4b\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\dff04f4f27a157ea6f57a15b661fd9d7\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:2:1-32:12
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\34268753bded0b91ecc4a1af1815ce82\grpc-android-1.21.0\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:2:1-11:12
-MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:2:1-32:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b6af014a2c327ee5be3b6ff514bba95a\firebase-database-collection-17.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a354eb536d40d44205558c740c860a07\protolite-well-known-types-17.0.0\AndroidManifest.xml:2:1-11:12
 INJECTED from D:\techtutes\nutshell\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -88,30 +91,32 @@ INJECTED from D:\techtutes\nutshell\android\app\src\debug\AndroidManifest.xml:1:
 		ADDED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:1:11-69
 application
 ADDED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml:8:5-46:19
-MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:19
-MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:19
 MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:19
+MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:19
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:23:5-40:19
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:29:5-35:19
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:29:5-35:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:28:5-34:19
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:28:5-34:19
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:29:5-35:19
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:29:5-35:19
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\516d475c610d5ee0701cc5d0e0043980\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\516d475c610d5ee0701cc5d0e0043980\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:22:5-37:19
@@ -148,10 +153,10 @@ MERGED from [androidx.core:core:1.1.0] C:\Users\maginificient\.gradle\caches\tra
 MERGED from [androidx.core:core:1.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\3aaf6e5219b7f981ec263df919098c6f\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4227c25f5adddf6ac1aa1a65c6b6f6a4\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4227c25f5adddf6ac1aa1a65c6b6f6a4\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:9:5-20
 MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:11:5-30:19
 MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:11:5-30:19
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:9:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\3aaf6e5219b7f981ec263df919098c6f\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
@@ -206,50 +211,56 @@ uses-sdk
 INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\techtutes\nutshell\android\app\src\main\AndroidManifest.xml
-MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore_web] D:\techtutes\nutshell\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core_web] D:\techtutes\nutshell\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core_web] D:\techtutes\nutshell\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_pdf_viewer] D:\techtutes\nutshell\build\flutter_plugin_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_pdf_viewer] D:\techtutes\nutshell\build\flutter_plugin_pdf_viewer\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth_web] D:\techtutes\nutshell\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] D:\techtutes\nutshell\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] D:\techtutes\nutshell\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:share] D:\techtutes\nutshell\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:share] D:\techtutes\nutshell\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] D:\techtutes\nutshell\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] D:\techtutes\nutshell\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] D:\techtutes\nutshell\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] D:\techtutes\nutshell\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\techtutes\nutshell\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:21:5-44
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\516d475c610d5ee0701cc5d0e0043980\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\516d475c610d5ee0701cc5d0e0043980\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:20:5-44
@@ -324,12 +335,12 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\maginificient\.g
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ec735b528ee8f52f56a38a2f27a69a4b\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\dff04f4f27a157ea6f57a15b661fd9d7\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\dff04f4f27a157ea6f57a15b661fd9d7\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:5:5-7:41
+MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:5:5-7:41
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\34268753bded0b91ecc4a1af1815ce82\grpc-android-1.21.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\34268753bded0b91ecc4a1af1815ce82\grpc-android-1.21.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\7b0de68065f121dff00595b122679d76\constraintlayout-1.1.2\AndroidManifest.xml:5:5-7:41
-MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:5:5-7:41
-MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b6af014a2c327ee5be3b6ff514bba95a\firebase-database-collection-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b6af014a2c327ee5be3b6ff514bba95a\firebase-database-collection-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a354eb536d40d44205558c740c860a07\protolite-well-known-types-17.0.0\AndroidManifest.xml:7:5-9:41
@@ -346,12 +357,12 @@ uses-permission#android.permission.INTERNET
 ADDED from D:\techtutes\nutshell\android\app\src\debug\AndroidManifest.xml:6:5-66
 MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
 MERGED from [:google_sign_in] D:\techtutes\nutshell\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:27:5-67
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:26:5-67
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:27:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:23:5-67
@@ -366,24 +377,36 @@ MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches
 MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:9:5-67
 	android:name
 		ADDED from D:\techtutes\nutshell\android\app\src\debug\AndroidManifest.xml:6:22-64
+activity#com.razorpay.CheckoutActivity
+ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:20
+MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:18:9-29:20
+MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:18:9-29:20
+	android:label
+		ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-46
+	android:configChanges
+		ADDED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:20:13-83
+	android:theme
+		ADDED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:21:13-49
+	android:name
+		ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-57
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+ADDED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:33:9-39:19
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:30:9-34:19
-MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:30:9-34:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:29:9-33:19
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:29:9-33:19
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:30:9-34:19
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:30:9-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:29:9-35:19
@@ -397,55 +420,51 @@ MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\b03bebea6ec7d906c69f77672b9cf836\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
 	android:name
-		ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
-meta-data#com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar
-ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
-	android:name
-		ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
-ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
-	android:name
-		ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
+		ADDED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar
 ADDED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:cloud_firestore] D:\techtutes\nutshell\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
+meta-data#com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_auth] D:\techtutes\nutshell\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_database] D:\techtutes\nutshell\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-127
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_storage] D:\techtutes\nutshell\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] D:\techtutes\nutshell\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] D:\techtutes\nutshell\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 activity#com.hashbnm.razorpayplugin.RazorpayActivity
 ADDED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-10:88
 	android:configChanges
 		ADDED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-85
 	android:name
 		ADDED from [:razorpay_plugin] D:\techtutes\nutshell\build\razorpay_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-71
-activity#com.razorpay.CheckoutActivity
-ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:20
-MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:18:9-29:20
-MERGED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:18:9-29:20
-	android:label
-		ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-46
-	android:configChanges
-		ADDED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:20:13-83
-	android:theme
-		ADDED from [com.razorpay:checkout:1.5.16] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\55f7950a441b1b95db8e1d0ee542a326\checkout-1.5.16\AndroidManifest.xml:21:13-49
-	android:name
-		ADDED from [:razorpay_flutter] D:\techtutes\nutshell\build\razorpay_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-57
 activity#com.google.firebase.auth.internal.FederatedSignInActivity
 ADDED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:24:9-31:50
 	android:excludeFromRecents
@@ -469,11 +488,11 @@ ADDED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gr
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:19.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\9c33277eac85ef91cf2d07b9e5899c22\firebase-auth-19.3.0\AndroidManifest.xml:37:17-109
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
-MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
+ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:25:5-79
 MERGED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:26:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:22:5-79
@@ -487,13 +506,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\34268753bded0b91ecc4a1af1815ce82\grpc-android-1.21.0\AndroidManifest.xml:11:5-79
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\34268753bded0b91ecc4a1af1815ce82\grpc-android-1.21.0\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:26:22-76
-meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
-ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:31:13-33:85
-	android:value
-		ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:33:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:32:17-107
+		ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:22-76
 meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
 ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\a8836b243d095406890d943804e550ae\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:20:13-22:85
 	android:value
@@ -506,6 +519,12 @@ ADDED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient
 		ADDED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:32:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-database:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\774f30af04691664006288fd5d1bcff4\jetified-firebase-database-17.0.0\AndroidManifest.xml:31:17-109
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:31:13-33:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:33:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:17.0.0] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\8d0c6b24f2fe4228a45b4bd68bc2cdb4\jetified-firebase-storage-17.0.0\AndroidManifest.xml:32:17-107
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\maginificient\.gradle\caches\transforms-2\files-2.1\4c04b686811fd5e8f48010af8248d594\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents

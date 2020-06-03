@@ -31,7 +31,7 @@ dependencies:
 
   firebase_database:
   firebase_storage:
-  flutter_plugin_pdf_viewer:
+  flutter_plugin_pdf_viewer: ^1.0.7
   google_sign_in:
   firebase_auth:
   fluttertoast: 
@@ -40,7 +40,7 @@ dependencies:
   shared_preferences:
   get:
   provider: ^3.2.0
-  flutter_html: ^1.0.0
+  flutter_html: 
   
   share:
   carousel_slider: ^2.1.0
