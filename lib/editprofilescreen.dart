@@ -314,7 +314,7 @@
 
 
 
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nutshell/home.dart';
 import 'package:nutshell/orderConfirmation.dart';
@@ -330,9 +330,9 @@ TextEditingController _fnamecontroller = TextEditingController();
 TextEditingController _lnamecontroller = TextEditingController();
 TextEditingController _schoolcontroller = TextEditingController();
 TextEditingController _classcontroller = TextEditingController();
-TextEditingController _emailcontroller = TextEditingController();
-TextEditingController _phonecontroller = TextEditingController();
-TextEditingController _citycontroller = TextEditingController();
+// TextEditingController _emailcontroller = TextEditingController();
+// TextEditingController _phonecontroller = TextEditingController();
+// TextEditingController _citycontroller = TextEditingController();
 
 //  _fnamecontroller = 
 //  _lnamecontroller = 
@@ -352,18 +352,56 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  Users _currentUser = Users();
-  Users get getCurrentUser => _currentUser;
-    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  _EditProfileScreenState({
-    Key key,
-  });
-
+ 
   bool _validate = false;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+ 
+  
+  Users _currentUser = Users();
+
+  Users get getCurrentUser => _currentUser;
+  bool isLoading=false;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<String> onStartUp() async {
+    String retVal = "error";
+
+    try {
+      setState(() {
+        isLoading=true;
+        _dropformSelected=_currentUser.group==null?"Select Group":_currentUser.group.toString();
+       
+
+      });
+      FirebaseUser _firebaseUser = await _auth.currentUser();
+      print(_firebaseUser.email);
+      if (_firebaseUser != null) {
+        print(_firebaseUser.uid);
+        _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
+        if (_currentUser != null) {
+          retVal = "success";
+          print("in if ");
+          print(_currentUser.phone);
+            setState(() {
+        isLoading=false;
+      });
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+    return retVal;
+  }
+
+
+
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
+    onStartUp();
   }
+
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -418,7 +456,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           },
         ),
         ),
-      body: Center(
+      body: isLoading?
+      Center(child: CircularProgressIndicator()): Center(
         child: new Form(
           key: _formKey,
           autovalidate: _validate,
@@ -509,9 +548,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   //   );
   // }
 var _dropforms= [
-   'Group-A','Group-B'
+   'Select Group','Group-A','Group-B'
   ]; 
-  var _dropformSelected="Group-A";
+  var _dropformSelected;
 
   
 
@@ -521,7 +560,7 @@ var _dropforms= [
      bool selected = false;
     return ListView(
        children: <Widget>[
-         
+      Text("\n"),
      Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -530,13 +569,14 @@ var _dropforms= [
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            // SizedBox(height: 50,width: 50,),
             SizedBox(
               width: 140,
               child: TextFormField(
                   controller: _fnamecontroller,
                   autovalidate: true,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(labelText: 'Enter First Name'),
+                  decoration: InputDecoration(labelText: 'Enter First Name',hintText: _currentUser.fname.toString()),
                   validator: validateName,
                   onSaved: (String value) {
                     _currentUser.fname = value;
@@ -548,7 +588,7 @@ var _dropforms= [
                   controller: _lnamecontroller,
                   autovalidate: true,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(labelText: 'Enter Last Name'),
+                  decoration: InputDecoration(labelText: 'Enter Last Name',hintText: _currentUser.lname.toString()),
                   validator: validateName,
                   onSaved: (String value) {
                     _currentUser.lname = value;
@@ -563,7 +603,7 @@ var _dropforms= [
               controller: _schoolcontroller,
               autovalidate: true,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(labelText: 'Enter School Name'),
+              decoration: InputDecoration(labelText: 'Enter School Name',hintText: _currentUser.school.toString()),
               validator: validateSchool,
               onSaved: (String value) {
                 _currentUser.school = value;
@@ -576,62 +616,74 @@ var _dropforms= [
               controller: _classcontroller,
               autovalidate: true,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'Enter Class'),
+              decoration: InputDecoration(labelText: 'Enter Class',),
               validator: validateClass,
               onSaved: (String value) {
                 _currentUser.grade = value;
               }),
         ),
+        // Padding(padding: EdgeInsets.all(10)),
+        // SizedBox(
+        //   width: 320,
+        //   child: TextFormField(
+        //       controller: _emailcontroller,
+        //       autovalidate: true,
+        //       keyboardType: TextInputType.emailAddress,
+        //       decoration: InputDecoration(labelText: 'Enter Email Address'),
+        //       validator: validateEmail,
+        //       onSaved: (String value) {
+        //         _currentUser.email = value;
+        //         email = value;
+        //       }),
+        // ),
         Padding(padding: EdgeInsets.all(10)),
-        SizedBox(
-          width: 320,
-          child: TextFormField(
-              controller: _emailcontroller,
-              autovalidate: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: 'Enter Email Address'),
-              validator: validateEmail,
-              onSaved: (String value) {
-                _currentUser.email = value;
-                email = value;
-              }),
-        ),
-        Padding(padding: EdgeInsets.all(10)),
-        SizedBox(
-          width: 320,
-          child: TextFormField(
-              controller: _citycontroller,
-              autovalidate: true,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(labelText: 'Enter City'),
-              validator: validateCity,
-              onSaved: (String value) {
-                _currentUser.city = value;
-              }),
-        ),
-        Padding(padding: EdgeInsets.all(10)),
-        SizedBox(
-          width: 320,
-          child: TextFormField(
-              controller: _phonecontroller,
-              autovalidate: true,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  labelText: 'Enter Phone Number', prefix: Text("+91")),
-              validator: validatePhone,
-              onSaved: (String value) {
-                _currentUser.phone = value;
-                phone = value;
-              }),
-        ),
+        // SizedBox(
+        //   width: 320,
+        //   child: TextFormField(
+        //       controller: _citycontroller,
+        //       autovalidate: true,
+        //       keyboardType: TextInputType.text,
+        //       decoration: InputDecoration(labelText: 'Enter City',hintText: _currentUser.city.toString()),
+        //       validator: validateCity,
+        //       onSaved: (String value) {
+        //         _currentUser.city = value;
+        //       }),
+        // ),
+      //   Padding(padding: EdgeInsets.all(10)),
+      //   SizedBox(
+      //     width: 320,
+      //     child: TextFormField(
+      //         controller: _phonecontroller,
+      //         autovalidate: true,
+      //         keyboardType: TextInputType.number,
+      //         decoration: InputDecoration(
+      //             labelText: 'Enter Phone Number', prefix: Text("+91")),
+      //         validator: validatePhone,
+      //         onSaved: (String value) {
+      //           _currentUser.phone = value;
+      //           phone = value;
+      //         }),
+      //   ),
         Padding(padding: EdgeInsets.all(10)),
         SizedBox( 
           width: 320,
-          child: Text("Select Group\n1.Group A Suitable for students of ages 9-12\n2.Suitable for students of ages 13-1"),
+          child: Column(
+            children: <Widget>[
+              
+              Text("Select Group",style: TextStyle(color:Colors.black,fontSize: 20.0),),
+              Text("\n1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
+              // Text("Suitable for students of ages 9-12")"),)
+              // Padding.EdgeInsets.only()
+
+            ],
+          ),
+          // Text("Select Group",),
+
+          // 1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
       //         Text("Suitable for students of ages 9-12")"),
           // height: MediaQuery.of(context).size.height / 6,
         ),
-        Padding(padding: EdgeInsets.all(10)),
+        Padding(padding: EdgeInsets.only(left:10)),
          SizedBox( 
           width: 320,
                         child:DropdownButton<String>(
@@ -705,7 +757,8 @@ var _dropforms= [
         child: GestureDetector(
           onTap: () {
               sendToServer();
-             Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
+           
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
           },
           child: Container(
             width: MediaQuery.of(context).size.width - 50,
@@ -736,9 +789,10 @@ var _dropforms= [
     if (_formKey.currentState.validate()) {
       // No any error in validation
       _formKey.currentState.save();
+       Navigator.pushNamed(context,"/account");
       print("CLicked successfully");
-      // OurDatabase().createUser(_currentUser);   JP update
-      print("created user");
+      OurDatabase().updateDetails(_currentUser);   
+      print("updated user user");
       // Navigator.push(
       //   context, MaterialPageRoute(builder: (context) => HomeScreen()));
       // Navigator.pushNamed(context, "/dummy");
@@ -795,23 +849,23 @@ String validateCity(String value) {
   return null;
 }
 
-String validateEmail(String value) {
-  String pattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-  RegExp regExp = new RegExp(pattern);
-  if (value.length == 0) {
-    return "Email is Required";
-  } else if (!regExp.hasMatch(value)) {
-    return "Invalid Email";
-  } else {
-    return null;
-  }
-}
+// String validateEmail(String value) {
+//   String pattern =
+//       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+//   RegExp regExp = new RegExp(pattern);
+//   if (value.length == 0) {
+//     return "Email is Required";
+//   } else if (!regExp.hasMatch(value)) {
+//     return "Invalid Email";
+//   } else {
+//     return null;
+//   }
+// }
 
-String validatePhone(String value) {
-// Indian Mobile number are of 10 digit only
-  if (value.length != 10)
-    return 'Mobile Number must be of 10 digit';
-  else
-    return null;
-}
+// String validatePhone(String value) {
+// // Indian Mobile number are of 10 digit only
+//   if (value.length != 10)
+//     return 'Mobile Number must be of 10 digit';
+//   else
+//     return null;
+// }

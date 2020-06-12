@@ -226,7 +226,7 @@
 //     );
 //   }
 // }
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
@@ -270,7 +270,7 @@ class _PhoneState extends State<Phone> {
       setState(() {
         status = 'Something has gone wrong, please try later';
       });
-    }).then((user) {
+    }).then((user) async{
       if (user.additionalUserInfo.isNewUser) {
         print("firest uset");
         return Navigator.pushNamed(context, '/subs');
@@ -278,7 +278,39 @@ class _PhoneState extends State<Phone> {
       setState(() {
         status = 'Authentication successful';
       });
-      Navigator.pushNamed(context, '/subs');
+           final Firestore _firestore = Firestore.instance;
+
+ try{
+FirebaseUser user = await FirebaseAuth.instance.currentUser();
+ print(user.toString());
+
+  if(user!=null ){
+    
+     DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
+    
+    await new Future.delayed(const Duration(milliseconds: 5000));  
+    if(_docSnap.data['subscription'])
+    {
+     Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+    }
+    else
+    {
+      Navigator.pushNamed(context,"/subs");
+    }
+  } 
+  else{
+      // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+    // goToLoginPage();
+  await new Future.delayed(const Duration(milliseconds: 5000));
+  Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
+  
+  }
+ }catch(e){
+   print(e);
+ }
+
+ 
+      // Navigator.pushNamed(context, '/subs');
     });
   }
 
@@ -467,7 +499,7 @@ class _PhoneState extends State<Phone> {
           Navigator.pushNamedAndRemoveUntil(context, '/subs', (route) => false);
         } else {
           // Navigator.of(context).pop();
-          Navigator.pushNamed(context, '/Login');
+          // Navigator.pushNamed(context, '/Login');
           PhoneS(value);
         }
       });

@@ -164,9 +164,9 @@ class _DetailsState extends State<Details> {
   //   );
   // }
 var _dropforms= [
-   'Group-A','Group-B'
+   'Select Group','Group-A','Group-B'
   ]; 
-  var _dropformSelected="Group-A";
+  var _dropformSelected="Select Group";
 
   
 

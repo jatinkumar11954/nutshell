@@ -1,5 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class Privacy extends StatefulWidget
 {
@@ -15,7 +19,7 @@ class _PrivacyState extends State<Privacy> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Privacy Statement",style: TextStyle(color: Colors.black),),
+          title: Text("Privacy Policy",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
           leading: new IconButton(
           icon: Icon(
@@ -34,9 +38,9 @@ class _PrivacyState extends State<Privacy> {
           onWillPop: (){
             Navigator.pushNamed(context, '/account');
           },
-        child:Column(
+        child:ListView(
           children: <Widget>[
-              Text("Privacy statement will be updated")
+            _buildPrivacy(),
             // Text("\n\n\n No Privacys till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         ),
@@ -44,4 +48,47 @@ class _PrivacyState extends State<Privacy> {
       )
     );
   }
+  
+  // TODO: refactor the code
+  _buildPrivacy() {
+    print("called me");
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.95,
+      height: MediaQuery.of(context).size.height *1 ,
+      // width: 100,
+      child: FutureBuilder<Directory>(
+        future: getApplicationDocumentsDirectory(),
+        builder: (BuildContext context, AsyncSnapshot<Directory> snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.green,)
+              ),
+              child: Container(
+                child: FutureBuilder<String>(
+                  future: rootBundle.loadString('assets/privacy.html'),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return SingleChildScrollView(
+                                              child: Html(
+                          data: '''
+                            ${snapshot.data}
+                          ''',
+                        ),
+                      );
+                    } else {
+                      return IgnorePointer();
+                    }
+                  }
+                ),
+              )
+            );
+          }
+          return IgnorePointer();
+        },
+      ),
+    );
+  }
+
 }

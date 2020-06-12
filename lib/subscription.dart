@@ -13,6 +13,8 @@ import 'currentUser.dart';
 import 'details.dart';
 import 'home.dart';
 import 'account.dart';
+import 'orderConfirmation.dart';
+import 'global.dart' as global;
 
 bool selection1 = false;
 
@@ -193,16 +195,10 @@ class _SubscriptionState extends State<Subscription> {
       ]).toList())),
     );
   }
-
   @override
   void initState() {
     super.initState();
     razorpay = Razorpay();
-
-    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    
-    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   }
 
   @override
@@ -210,7 +206,7 @@ class _SubscriptionState extends State<Subscription> {
     super.dispose();
     razorpay.clear();
     setState(() {
-      selection1 = false; 
+      selection1 = false;
       payone = 0;
       paythree = 0;
       paytwo = 0;
@@ -218,88 +214,241 @@ class _SubscriptionState extends State<Subscription> {
   }
 }
 
-void openCheckout() async {
-  
+void openCheckout(BuildContext context) async {
+  _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    // String selectedPlan=global.subPlan;
+    Fluttertoast.showToast(
+      msg: "SUCCESS: " + response.paymentId,
+    );
+
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      print("current user id");
+      print(user.uid);
+
+      final Firestore fireStore = Firestore.instance;
+
+      await fireStore
+          .collection("users")
+          .document(user.uid)
+          .updateData({"subPlan": global.subPlan, "subscription": true});
+      print("updated");
+    } catch (e) {
+      print(e.toString());
+    }
+
+    print("account page");
+        razorpay.clear();
+
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+void _handlePaymentError(PaymentFailureResponse response) {
+  Fluttertoast.showToast(
+    msg: "ERROR: " + response.code.toString() + " - " + response.message,
+  );
+}
+
+void _handleExternalWallet(ExternalWalletResponse response) {
+  Fluttertoast.showToast(
+    msg: "EXTERNAL_WALLET: " + response.walletName,
+  );
+}
   print("Just came to opencheckout function");
-    print(_currentUser.uid);
+  print(_currentUser.uid);
 
   var onemonth = {
-    'key': 'rzp_test_b3k6BBYp7rce8M',
+    'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
-    'amount': 6900, //in the smallest currency sub-unit.
+    'amount': 110, //in the smallest currency sub-unit.
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'One month Nutshell Subscription',
-     'prefill': {'contact': '+91'+ phone, 'email': email}
+    'prefill': {'contact': '+91' + phone, 'email': email}
   };
 
   try {
-    
     print("Trying to go to razorpay");
     razorpay.open(onemonth);
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   } catch (e) {
     print("catch block jp");
     debugPrint(e);
   }
 }
 
-void openCheckoutthree() async {
-  
+void openCheckoutthree(BuildContext context) async {
+   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    // String selectedPlan=global.subPlan;
+    Fluttertoast.showToast(
+      msg: "SUCCESS: " + response.paymentId,
+    );
+
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      print("current user id");
+      print(user.uid);
+
+      final Firestore fireStore = Firestore.instance;
+
+      await fireStore
+          .collection("users")
+          .document(user.uid)
+          .updateData({"subPlan": global.subPlan, "subscription": true});
+      print("updated");
+    } catch (e) {
+      print(e.toString());
+    }
+
+    print("account page");    razorpay.clear();
+
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+  void _handlePaymentError(PaymentFailureResponse response) {
+  Fluttertoast.showToast(
+    msg: "ERROR: " + response.code.toString() + " - " + response.message,
+  );
+}
+
+void _handleExternalWallet(ExternalWalletResponse response) {
+  Fluttertoast.showToast(
+    msg: "EXTERNAL_WALLET: " + response.walletName,
+  );
+}
   print("Just came to checkout3 function");
   var threemonths = {
-    'key': 'rzp_test_b3k6BBYp7rce8M',
+    'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
-    'amount': 16800, //in the smallest currency sub-unit.
+    'amount': 120, //in the smallest currency sub-unit.
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Subscription',
-    'prefill': {'contact': '+91'+phone, 'email': email}
+    'prefill': {'contact': '+91' + phone, 'email': email}
   };
   try {
-    
     print("Trying to go to razorpay");
     razorpay.open(threemonths);
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   } catch (e) {
-    
     print("catch block jp");
     debugPrint(e);
   }
 }
 
-void openCheckoutyear() async {
-  
+void openCheckoutyear(BuildContext context) async {
+   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    // String selectedPlan=global.subPlan;
+    Fluttertoast.showToast(
+      msg: "SUCCESS: " + response.paymentId,
+    );
+
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      print("current user id");
+      print(user.uid);
+
+      final Firestore fireStore = Firestore.instance;
+
+      await fireStore
+          .collection("users")
+          .document(user.uid)
+          .updateData({"subPlan": global.subPlan, "subscription": true});
+      print("updated");
+    } catch (e) {
+      print(e.toString());
+    }
+
+    print("account page");    razorpay.clear();
+
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+  void _handlePaymentError(PaymentFailureResponse response) {
+  Fluttertoast.showToast(
+    msg: "ERROR: " + response.code.toString() + " - " + response.message,
+  );
+}
+
+void _handleExternalWallet(ExternalWalletResponse response) {
+  Fluttertoast.showToast(
+    msg: "EXTERNAL_WALLET: " + response.walletName,
+  );
+}
   print("Just came to checkoutyear function");
   var oneyear = {
-    'key': 'rzp_test_b3k6BBYp7rce8M',
+    'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
-    'amount': 29900, //in the smallest currency sub-unit.
+    'amount': 130, //in the smallest currency sub-unit.
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Subscription',
-    'prefill': {'contact':'+91'+ phone, 'email': email}
+    'prefill': {'contact': '+91' + phone, 'email': email}
   };
   try {
-    
     print("Trying to go to razorpay");
     razorpay.open(oneyear);
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   } catch (e) {
-    
     print("catch block jp");
     debugPrint(e);
   }
 }
 
-void openCheckoutweek() async {
+void openCheckoutweek(BuildContext context) async {
+   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    // String selectedPlan=global.subPlan;
+    Fluttertoast.showToast(
+      msg: "SUCCESS: " + response.paymentId,
+    );
+
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      print("current user id");
+      print(user.uid);
+
+      final Firestore fireStore = Firestore.instance;
+
+      await fireStore
+          .collection("users")
+          .document(user.uid)
+          .updateData({"subPlan": global.subPlan, "subscription": true});
+      print("updated");
+    } catch (e) {
+      print(e.toString());
+    }
+
+    print("account page");    razorpay.clear();
+
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+  void _handlePaymentError(PaymentFailureResponse response) {
+  Fluttertoast.showToast(
+    msg: "ERROR: " + response.code.toString() + " - " + response.message,
+  );
+}
+
+void _handleExternalWallet(ExternalWalletResponse response) {
+  Fluttertoast.showToast(
+    msg: "EXTERNAL_WALLET: " + response.walletName,
+  );
+}
   print("Just came to checkout functionfds");
   print(phone);
   var oneweek = {
-    'key': 'rzp_test_b3k6BBYp7rce8M',
+    'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
     'amount': 00, //in the smallest currency sub-unit.
     'name': 'Nutshell',
     // 'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Subscription',
-    'prefill': {'contact':'+91'+ phone, 'email': email}
+    'prefill': {'contact': '+91' + phone, 'email': email}
   };
 // print("Just before going to razorpay try");
   try {
@@ -307,37 +456,11 @@ void openCheckoutweek() async {
     // sendToServer();
     // razorpay.open(oneweek);
   } catch (e) {
-    
     print("catch block jp");
     debugPrint(e);
   }
 }
 
-
-void _handlePaymentSuccess(PaymentSuccessResponse response) async {
-  Fluttertoast.showToast(
-    msg: "SUCCESS: " + response.paymentId,
-  );
-
-  try{
-FirebaseUser user = await FirebaseAuth.instance.currentUser();
-  print("current user id");
-  print(user.uid);
-   final Firestore fireStore =  Firestore.instance;
-  await fireStore.collection("users").document(user.uid).updateData({
-    "subscription": true
-});
-    print("updated");
-
-}
-catch(e){
-  print(e.toString());
-}
-
-print("account page");
-  HomeScreen();
-  }
-  
 //  navigator(BuildContext context){
 //     Navigator.pushNamedAndRemoveUntil(context, '/HomeScreen', (route) => false);
 //     }

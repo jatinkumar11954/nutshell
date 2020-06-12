@@ -83,8 +83,8 @@ class _NewsState extends State<News> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
                     height: 100,

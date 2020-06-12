@@ -1,5 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class Refund extends StatefulWidget
 {
@@ -34,9 +38,9 @@ class _RefundState extends State<Refund> {
           onWillPop: (){
             Navigator.pushNamed(context, '/account');
           },
-        child:Column(
+        child:ListView(
           children: <Widget>[
-
+            _buildRefund(),
             // Text("\n\n\n No Refunds till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         ),
@@ -44,4 +48,47 @@ class _RefundState extends State<Refund> {
       )
     );
   }
+  
+  // TODO: refactor the code
+  _buildRefund() {
+    print("called me");
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.95,
+      height: MediaQuery.of(context).size.height *1 ,
+      // width: 100,
+      child: FutureBuilder<Directory>(
+        future: getApplicationDocumentsDirectory(),
+        builder: (BuildContext context, AsyncSnapshot<Directory> snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.green,)
+              ),
+              child: Container(
+                child: FutureBuilder<String>(
+                  future: rootBundle.loadString('assets/refund.html'),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return SingleChildScrollView(
+                                              child: Html(
+                          data: '''
+                            ${snapshot.data}
+                          ''',
+                        ),
+                      );
+                    } else {
+                      return IgnorePointer();
+                    }
+                  }
+                ),
+              )
+            );
+          }
+          return IgnorePointer();
+        },
+      ),
+    );
+  }
+
 }
