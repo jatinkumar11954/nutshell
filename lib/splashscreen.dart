@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nutshell/home.dart';
 import 'package:nutshell/login.dart';
+import 'package:nutshell/phone.dart';
 import 'dart:async';
 
 import 'package:nutshell/subscription.dart';
@@ -44,23 +45,31 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
  print(user.toString());
 
   if(user!=null ){
-     DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
+    //  DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
     
-    if(_docSnap.data['subscription'])
-    {
-     Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
-    }
-    else
-    {
-      Navigator.pushNamed(context,"/subs");
-    }
+    // if(_docSnap.data['subscription'])
+    // {
+           Navigator.of(context).push(
+                        new MaterialPageRoute(
+                            builder: (BuildContext context) => new Phone()
+                            )
+                            );
+    // //  Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+    // }
+    // else
+    // {
+    //   Navigator.pushNamed(context,"/subs");
+    // }
   } 
   else{
       // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
     // goToLoginPage();
   await new Future.delayed(const Duration(milliseconds: 1000));
-  Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
-  
+Navigator.of(context).push(
+                        new MaterialPageRoute(
+                            builder: (BuildContext context) => new Phone()
+                            )
+                            );  
   }
  }catch(e){
    print(e);

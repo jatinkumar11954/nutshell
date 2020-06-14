@@ -12,6 +12,7 @@ import 'AccountModule.dart/pricing.dart';
 import 'AccountModule.dart/privacy.dart';
 import 'AccountModule.dart/refund.dart';
 import 'AccountModule.dart/termsandconditions.dart';
+import 'Otp.dart';
 import 'editprofilescreen.dart';
 import 'account.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
        '/details': (BuildContext context) => Details(),
        '/subs': (BuildContext context) => Subscription(),
        '/intro': (BuildContext context) => IntroScreen(),
-       
+ 'otp': (BuildContext context) => Otp(),
        '/dummy': (BuildContext context) => DummyScreen(),
        
        '/account': (BuildContext context) => Account(),
