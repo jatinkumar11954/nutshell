@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
 import 'package:nutshell/phone.dart';
 import 'dart:async';
@@ -45,31 +45,27 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
  print(user.toString());
 
   if(user!=null ){
-    //  DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
+     DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
     
-    // if(_docSnap.data['subscription'])
-    // {
-           Navigator.of(context).push(
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) => new Phone()
-                            )
-                            );
-    // //  Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
-    // }
-    // else
-    // {
-    //   Navigator.pushNamed(context,"/subs");
-    // }
+    if(_docSnap.data['subscription'])
+    {
+          
+     Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
+    }
+    else
+    {
+      Navigator.pushNamed(context,"/subs");
+    }
   } 
   else{
-      // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
-    // goToLoginPage();
   await new Future.delayed(const Duration(milliseconds: 1000));
-Navigator.of(context).push(
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) => new Phone()
-                            )
-                            );  
+        Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+
+// Navigator.of(context).push(
+//                         new MaterialPageRoute(
+//                             builder: (BuildContext context) => new Phone()
+//                             )
+//                             );  
   }
  }catch(e){
    print(e);
@@ -102,7 +98,7 @@ Navigator.of(context).push(
       if (_authResult.additionalUserInfo.isNewUser) {
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
       } else {
-        Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
       }
       //Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new IntroScreen()),(_)=> false);
     } catch (e) {

@@ -14,12 +14,12 @@ class _PhoneState extends State<Phone> {
   bool isLoading=false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   // bool _isLoading = false;
-
+TextEditingController phn =TextEditingController() ;
   void callSnackBar(String msg, [int er]) {
     // msg="There is no record with this user, please register first by clicking Register or check the user mail id or Password";
     final SnackBar = new prefix0.SnackBar(
       content: new Text(msg),
-      duration: new Duration(seconds: 1),
+      duration: new Duration(seconds: 3),
   
     );
     _scaffoldKey.currentState.showSnackBar(SnackBar);
@@ -42,8 +42,10 @@ class _PhoneState extends State<Phone> {
       callSnackBar("Phone Number must be of 10 digits");
       //return null;
     } else {
+       setState(() {
+                      isLoading=true;
+                    });
       verifyPhone();
-        Navigator.pushNamed(context, "otp",arguments: phoneNo);
       //return null;
     }
   }
@@ -62,6 +64,7 @@ class _PhoneState extends State<Phone> {
 
       setState(() {
         print('Code sent to $phoneNo');
+        callSnackBar("Code sent to $phoneNo");
         status = "\nEnter the code sent to " + phoneNo;
       });
 
@@ -69,6 +72,14 @@ class _PhoneState extends State<Phone> {
     final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
         (String verificationId) {
       this.actualCode = verificationId;
+      print("timeout");
+       callSnackBar("Auto retrieval failed");
+phn.clear();
+       setState(() {
+                      isLoading=false;
+                    });
+              Navigator.pushNamed(context, "otp",arguments: actualCode);
+
       setState(() {
         status = "\nAuto retrieval time out";
       });
@@ -76,10 +87,16 @@ class _PhoneState extends State<Phone> {
 
     final PhoneVerificationFailed verificationFailed =
         (AuthException authException) {
+           setState(() {
+                      isLoading=false;
+                    });
       setState(() {
         status = '${authException.message}';
-
+ callSnackBar("Please enter a valid phone number");
         print("Error message: " + status);
+        setState(() {
+          isLoading=false;
+        });
         if (authException.message.contains('not authorized'))
           status = 'Something has gone wrong, please try later';
         else if (authException.message.contains('Network'))
@@ -93,24 +110,63 @@ class _PhoneState extends State<Phone> {
       setState(() {
         status = 'Auto retrieving verification code';
       });
+        callSnackBar("Auto retrieving verification code");
 
       _authCredential = auth;
       print("auth");
-              Navigator.pushNamed(context, "otp",arguments: phoneNo);
 
       firebaseAuth
           .signInWithCredential(_authCredential)
           .then((AuthResult value) async {
-        if (value.additionalUserInfo.isNewUser) {
-          print("firest uset");
-          return Navigator.pushNamed(context, '/subs');
-        }
-        setState(() {
-          status = 'Authentication successful';
-        });
-        final Firestore _firestore = Firestore.instance;
+       if (value.additionalUserInfo.isNewUser) {
+        print(value.user.uid);
+        print("firest uset");
+         setState(() {
+                      isLoading=false;
+                    });
+        return Navigator.pushNamed(context, '/subs');
+      }
+      setState(() {
+        status = 'Authentication successful';
+      });
+      final Firestore _firestore = Firestore.instance;
 
-                   Navigator.pushNamed(context, "otp",arguments: phoneNo);
+      try {
+        FirebaseUser user = await FirebaseAuth.instance.currentUser();
+        print(user.toString());
+
+        if (user != null) {
+          DocumentSnapshot _docSnap =
+              await _firestore.collection("users").document(user.uid).get();
+
+          await new Future.delayed(const Duration(milliseconds: 5000));
+          if (_docSnap.data['subscription']) {
+             setState(() {
+                      isLoading=false;
+                    });
+            Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
+          } else {
+             setState(() {
+                      isLoading=false;
+                    });
+            Navigator.pushNamed(context, "/subs");
+          }
+        } else {
+          // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+          // goToLoginPage();
+          await new Future.delayed(const Duration(milliseconds: 5000));
+           setState(() {
+                      isLoading=false;
+                    });
+          Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
+        }
+      } catch (e) {
+        print(e);
+        setState(() {
+          isLoading=false;
+        });
+      }
+
 
 
         // Navigator.pushNamed(context, '/subs');
@@ -125,14 +181,18 @@ class _PhoneState extends State<Phone> {
         codeSent: codeSent,
         codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
   }
-
- 
+@override
+ void dispose(){
+   phn.dispose();
+super.dispose();
+ }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
     return Scaffold(
+      
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -177,7 +237,7 @@ class _PhoneState extends State<Phone> {
                 width: 300,
                 child: TextField(
                   maxLength: 10,
-                  
+                  controller: phn,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(hintText: 'Enter Phone Number'),
                   onChanged: (value) {
@@ -191,9 +251,7 @@ class _PhoneState extends State<Phone> {
               BottomAppBar(
                 child: GestureDetector(
                   onTap: () {
-                    setState(() {
-                      isLoading=true;
-                    });
+                   
 
                    phoneValidator(phoneNo);
 
@@ -204,7 +262,9 @@ class _PhoneState extends State<Phone> {
                     child: Center(
                       child: SizedBox(
                         width: 100,
-                        child: Text(
+                        child:isLoading?Center(child: CircularProgressIndicator(
+                          backgroundColor: Colors.blue,
+                        )) :Text(
                           'Submit',
                           style: TextStyle(
                               fontSize: 20,

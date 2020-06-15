@@ -87,7 +87,7 @@ Future<String> signInWithGoogle(BuildContext context) async {
       if(_docSnap.data['subscription'])
       {
           print("Already subscribed");
-       Navigator.pushNamedAndRemoveUntil(context, "/home",  (_)=> false);
+       Navigator.pushNamedAndRemoveUntil(context, "/paperback",  (_)=> false);
     
       }
       else

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nutshell/AccountModule.dart/help.dart';
 import 'package:nutshell/details.dart';
 import 'package:nutshell/dummy.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/splashscreen.dart';
 import 'package:flutter/services.dart';
 import 'package:nutshell/subscription.dart';
@@ -18,7 +20,8 @@ import 'account.dart';
 
 void main() {
   runApp(MyApp());
-  SystemChrome.setEnabledSystemUIOverlays([]);
+     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +31,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-      '/home': (BuildContext context) => HomeScreen(),
+            '/paperback': (BuildContext context) => Paperbacks(),
+
       '/Login': (BuildContext context) => LoginScreen(),
        '/details': (BuildContext context) => Details(),
        '/subs': (BuildContext context) => Subscription(),
@@ -38,6 +42,8 @@ class MyApp extends StatelessWidget {
        
        '/account': (BuildContext context) => Account(),
        '/about': (BuildContext context) => About(),
+              '/help': (BuildContext context) => Help(),
+
        '/contact': (BuildContext context) => ContactUs(),
        '/pricing': (BuildContext context) => Pricing(),
        '/privacy': (BuildContext context) => Privacy(),
