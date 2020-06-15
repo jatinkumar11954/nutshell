@@ -299,6 +299,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:nutshell/bottomNav.dart';
 
 class Paperbacks extends StatefulWidget {
   @override
@@ -317,7 +318,6 @@ class _PaperbacksState extends State<Paperbacks> {
 
   @override
   Widget build(BuildContext context) {
-     SystemChrome.setEnabledSystemUIOverlays([]);
 
 
     ///create book grid tiles
@@ -357,15 +357,21 @@ class _PaperbacksState extends State<Paperbacks> {
     }).toList(),
   );
 
-    return Container(
-      // body: _loading ? Center(child: CircularProgressIndicator(),):
-      // PDFViewer(
-      //   document: _doc,
+    return    Scaffold(
 
-      // ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: widget,
+    backgroundColor: Colors.white,
+      bottomNavigationBar: bottomBar(context, 0),   body: Container(
+        // body: _loading ? Center(child: CircularProgressIndicator(),):
+        // PDFViewer(
+        //   document: _doc,
+
+        // ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: widget,
+          ),
+        ),
       ),
     );
   }
@@ -415,8 +421,10 @@ class _PdfState extends State<Pdf> {
   }
   @override
   Widget build(BuildContext context) { 
- 
+   SystemChrome.setEnabledSystemUIOverlays([]);
+
     return Scaffold(
+
      body: FutureBuilder<PDFDocument>(
                 future:    _initPDF(widget.pdf),
 

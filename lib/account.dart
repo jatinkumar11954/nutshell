@@ -82,6 +82,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/google.dart';
 import 'package:nutshell/users.dart';
@@ -146,9 +147,10 @@ bool isLoading=false;
     // print("jp"+_currentUser.photoUrl.toString());
     return WillPopScope(
     onWillPop: (){
-      Navigator.pushNamed(context,"/home");
+      Navigator.pushNamed(context,"/paperback");
     },
     child:Scaffold(
+      bottomNavigationBar: bottomBar(context, 2),
       appBar: new AppBar(
         actions: <Widget>[
           IconButton(
@@ -179,7 +181,7 @@ bool isLoading=false;
         //               ),
         //               tooltip: 'Back',
         //               onPressed: () {
-        //                 Navigator.pushNamed(context,"/home");
+        //                 Navigator.pushNamed(context,"/paperback");
                     
         //   },
         // ),
@@ -495,10 +497,11 @@ bool isLoading=false;
                              },
                            ),
                             ListTile( 
-                             title: new Text('Terms & Conditions'),
+                             title: new Text('Help'),
                              leading: new Icon(Icons.assignment),
+                             subtitle: Text("T n C"),
                              onTap: () {
-                              Navigator.pushNamed(context,"/termsandconditions");
+                              Navigator.pushNamed(context,"/help");
                              },
                            ),
                             ListTile( 

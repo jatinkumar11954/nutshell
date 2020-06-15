@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -15,9 +16,8 @@ class _RefundState extends State<Refund> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
+        bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
           title: Text("Refund/Cancellation Policy",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -45,7 +45,7 @@ class _RefundState extends State<Refund> {
           ],
         ),
         ),
-      )
+     
     );
   }
   

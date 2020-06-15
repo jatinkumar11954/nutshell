@@ -29,7 +29,7 @@ class _DummyScreenState extends State<DummyScreen> {
                         child: Text("Skip or HomeScreen"),
                         color: Colors.redAccent,
                         onPressed: () async
-                        {    Navigator.pushNamed(context, "/home");
+                        {    Navigator.pushNamed(context, "/paperback");
                         }
           ),
           ],

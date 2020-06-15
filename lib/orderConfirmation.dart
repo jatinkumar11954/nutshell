@@ -115,7 +115,7 @@
 //                 // OurDatabase().createUser(_currentUser);
 //                 CallForFreeUpdation();
 //                                 Navigator.of(context)
-//                                     .pushNamedAndRemoveUntil('/home', (_) => false);},
+//                                     .pushNamedAndRemoveUntil('/paperback', (_) => false);},
 //                   );
                 
 //                   // set up the AlertDialog
@@ -319,7 +319,7 @@ showAlertDialog(BuildContext context) {
       //  OurDatabase().freesubscription(user.uid);
       // OurDatabase().createUser(_currentUser);
       CallForFreeUpdation();
-      Navigator.of(context).pushNamedAndRemoveUntil('/home', (_) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil('/paperback', (_) => false);
     },
   );
 

@@ -6,7 +6,7 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:nutshell/details.dart';
 import 'package:nutshell/google.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/navigate.dart';
 import 'package:nutshell/phone.dart';
 import 'package:nutshell/subscription.dart';

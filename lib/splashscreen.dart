@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
+import 'package:nutshell/phone.dart';
 import 'dart:async';
 
 import 'package:nutshell/subscription.dart';
@@ -48,7 +49,8 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
     
     if(_docSnap.data['subscription'])
     {
-     Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+          
+     Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
     }
     else
     {
@@ -56,11 +58,14 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
     }
   } 
   else{
-      // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
-    // goToLoginPage();
   await new Future.delayed(const Duration(milliseconds: 1000));
-  Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
-  
+        Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+
+// Navigator.of(context).push(
+//                         new MaterialPageRoute(
+//                             builder: (BuildContext context) => new Phone()
+//                             )
+//                             );  
   }
  }catch(e){
    print(e);
@@ -93,7 +98,7 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
       if (_authResult.additionalUserInfo.isNewUser) {
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
       } else {
-        Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
       }
       //Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new IntroScreen()),(_)=> false);
     } catch (e) {
