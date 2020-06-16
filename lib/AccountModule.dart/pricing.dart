@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
+import '../global.dart' as global;
 
 class Pricing extends StatefulWidget
 {
@@ -17,7 +18,7 @@ class _PricingState extends State<Pricing> {
 
   Users get getCurrentUser => _currentUser;
   bool isLoading=false;
-  String Plan=" ";
+  var Plan=" ";
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<String> onStartUp() async {
@@ -25,18 +26,20 @@ class _PricingState extends State<Pricing> {
 
     try {
       setState(() {
+
         isLoading=true;
       });
       FirebaseUser _firebaseUser = await _auth.currentUser();
-      print(_firebaseUser.email);
+      // print(_firebaseUser.email);
       if (_firebaseUser != null) {
-        print(_firebaseUser.uid);
+        // print(_firebaseUser.uid);
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
         if (_currentUser != null) {
           retVal = "success";
-          print("in if "+_currentUser.subPlan);
+          print("in if "+_currentUser.subPlan+" jui");
           print(_currentUser.phone);
             setState(() {
+              // _currentUser.subPlan==null?_currentUser.subPlan=global.subPlan:print("Yes, value is found");
         isLoading=false;
       });
         }
@@ -112,7 +115,7 @@ class _PricingState extends State<Pricing> {
                 // height: 200,
                 // width: 200,
                 child:Column(children: <Widget>[
-                  Text("   \n\n         Your Subsciption type is  is:",style: TextStyle(fontSize:20.0),),
+                  Text("   \n\n         Your Subsciption type is :",style: TextStyle(fontSize:20.0),),
                    Text(Plan,style: TextStyle(fontSize:25.0),),
                   // Text("Will be added")
                 _currentUser.subPlan.toString()=='f'?Text("Price: ₹0\nPlan:FREE includes:\nDuration: 7 days\n No. of paperbacks:2\nIssues:2"):_currentUser.subPlan.toString()=='b'? Text("Price: ₹69\nPlan:Basic includes:\nDuration: 2 months\n No. of paperbacks:1\nIssues:1"):_currentUser.subPlan.toString()=='s'?Text("Price: ₹56 per issue\nPlan:Standard includes:\nDuration: 6 months\n No. of paperbacks:3\n"):
