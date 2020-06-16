@@ -2,7 +2,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'currentUser.dart';
 import 'details.dart';
-import 'home.dart';
 import 'account.dart';
 import 'orderConfirmation.dart';
 import 'global.dart' as global;
@@ -240,7 +238,7 @@ void openCheckout(BuildContext context) async {
     print("account page");
         razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/paperback');
   }
 void _handlePaymentError(PaymentFailureResponse response) {
   Fluttertoast.showToast(
@@ -304,7 +302,7 @@ void openCheckoutthree(BuildContext context) async {
 
     print("account page");    razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/paperback');
   }
   void _handlePaymentError(PaymentFailureResponse response) {
   Fluttertoast.showToast(
@@ -365,7 +363,7 @@ void openCheckoutyear(BuildContext context) async {
 
     print("account page");    razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/paperback');
   }
   void _handlePaymentError(PaymentFailureResponse response) {
   Fluttertoast.showToast(
@@ -426,7 +424,7 @@ void openCheckoutweek(BuildContext context) async {
 
     print("account page");    razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/paperback');
   }
   void _handlePaymentError(PaymentFailureResponse response) {
   Fluttertoast.showToast(
@@ -462,7 +460,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 }
 
 //  navigator(BuildContext context){
-//     Navigator.pushNamedAndRemoveUntil(context, '/HomeScreen', (route) => false);
+//     Navigator.pushNamedAndRemoveUntil(context, '/paperbackScreen', (route) => false);
 //     }
 
 void _handlePaymentError(PaymentFailureResponse response) {

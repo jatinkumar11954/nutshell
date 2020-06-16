@@ -5,6 +5,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
+import '../bottomNav.dart';
+
 class Privacy extends StatefulWidget
 {
   @override
@@ -15,9 +17,9 @@ class _PrivacyState extends State<Privacy> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
+                bottomNavigationBar: bottomBar(context, 2),
+
         appBar: AppBar(
           title: Text("Privacy Policy",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -45,7 +47,7 @@ class _PrivacyState extends State<Privacy> {
           ],
         ),
         ),
-      )
+    
     );
   }
   

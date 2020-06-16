@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
 
@@ -80,9 +81,8 @@ bool isLoading=false;
 
     }
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
+        bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
           title: Text("Pricing",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -125,7 +125,7 @@ bool isLoading=false;
           ],
         ),
         ),
-      )
+    
     );
   }
 }

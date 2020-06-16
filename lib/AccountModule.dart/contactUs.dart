@@ -55,6 +55,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -69,9 +70,8 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     // versionCheckBloc = versionCheckBloc ?? VersionCheckBlocProvider.of(context);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
+        bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
           title: Text("Contact US",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -99,7 +99,7 @@ class ContactUs extends StatelessWidget {
           ],
         ),
         ),
-      )
+     
     );
   }
 
