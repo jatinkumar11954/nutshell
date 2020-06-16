@@ -355,7 +355,7 @@ void CallForFreeUpdation() async {
         .collection("users")
         .document(user.uid)
         .updateData({"subPlan": global.subPlan, "subscription": true});
-    print("updated");
+    print("updated free "+ global.subPlan);
   } catch (e) {
     print(e.toString());
   }
