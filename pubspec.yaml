@@ -49,6 +49,8 @@ dependencies:
   provider_architecture: ^1.0.3
   cloud_firestore:
   razorpay_plugin: ^0.3.0
+  geolocator:
+  location:
   
 
 dev_dependencies:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nutshell/paperback.dart';
 import 'package:nutshell/orderConfirmation.dart';
 import 'package:nutshell/users.dart';
 
+import 'package:geolocator/geolocator.dart';
 import 'database.dart';
 import 'subscription.dart';
 
@@ -16,6 +16,7 @@ TextEditingController _classcontroller = TextEditingController();
 TextEditingController _emailcontroller = TextEditingController();
 TextEditingController _phonecontroller = TextEditingController();
 TextEditingController _citycontroller = TextEditingController();
+TextEditingController _pinCodecontroller = TextEditingController();
 
 class Details extends StatefulWidget {
   @override
@@ -168,9 +169,58 @@ var _dropforms= [
   ]; 
   var _dropformSelected="Select Group";
 
+  String pinCode;
   
+  Geolocator geolocator = Geolocator();
+
+   Future<Position> _getLocation() async {
+    var currentLocation;
+    try {
+        currentLocation= await geolocator.getCurrentPosition(
+          // desiredAccuracy: LocationAccuracy.best
+        
+        );
+      // currentLocation = await geolocator.getCurrentPosition(
+      //     // desiredAccuracy: LocationAccuracy.best
+      //     );
+
+          
+       } catch (e) {
+      currentLocation = null;
+    }
+    return currentLocation;
+  }
 
   Widget FormUI() {
+    
+
+  Position userLocation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getLocation().then((position) {
+      userLocation = position;
+      
+    });
+  }
+
+
+  
+
+  void callMe(Position userLocation)async{
+    print("called for pLacemark");
+    List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(userLocation.latitude,userLocation.longitude);
+    
+    print(placemark[0].postalCode);
+    setState(() {
+      
+    pinCode= placemark[0].postalCode;
+    });
+    print(placemark[0].name+placemark[0].administrativeArea+placemark[0].name+placemark[0].administrativeArea);
+  }
+  
      
     _currentUser.sID = sID;
      bool selected = false;
@@ -278,6 +328,49 @@ var _dropforms= [
               }),
         ),
         Padding(padding: EdgeInsets.all(10)),
+        
+        SizedBox(
+           width: 320,
+           child:Row(
+             children: <Widget>[
+              SizedBox(
+          width: MediaQuery.of(context).size.width/3,
+          child: TextFormField(
+              controller: _pinCodecontroller,
+              autovalidate: true,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                hintText: _currentUser.pinCode==null?pinCode:"",
+                labelText: pinCode==null?'Enter Pincode':pinCode),
+              // validator: validateCity,
+              onSaved: (String value) {
+                _currentUser.pinCode = value;
+              }),
+        ),
+              Text("Or use Auto Locate  ",style: TextStyle(fontSize: 15.0),),
+              InkWell(
+              child:Icon(
+                
+                 Icons.my_location,
+                 color: Colors.green,
+                 size: 40,
+                //  my_location
+               ),
+               onTap: ()async{
+                 _getLocation().then((value) {
+                    setState(() {
+                      userLocation = value;
+                    });
+                    // await 
+                    callMe(userLocation);
+                  });
+               },
+              )
+             ],
+           ),
+            
+        ),
+        Padding(padding: EdgeInsets.all(10)),
         SizedBox(
           width: 320,
           child: TextFormField(
@@ -300,7 +393,7 @@ var _dropforms= [
           // height: MediaQuery.of(context).size.height / 6,
         ),
         Padding(padding: EdgeInsets.all(10)),
-         SizedBox( 
+        SizedBox( 
           width: 320,
                         child:DropdownButton<String>(
                     items: _dropforms.map((String dropDownStringItem)
@@ -320,7 +413,10 @@ var _dropforms= [
                     value: _dropformSelected,
                     ),
               ),
-              Padding(padding: EdgeInsets.all(20)),
+        Padding(padding: EdgeInsets.all(20)),
+        
+
+
       ],
     ),
     // Container(
@@ -397,6 +493,7 @@ var _dropforms= [
       )
        ]
     );
+    
   }
 
   sendToServer() async {
