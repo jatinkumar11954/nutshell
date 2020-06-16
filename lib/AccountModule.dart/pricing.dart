@@ -16,8 +16,8 @@ class _PricingState extends State<Pricing> {
     Users _currentUser = Users();
 
   Users get getCurrentUser => _currentUser;
-bool isLoading=false;
-  String Plan;
+  bool isLoading=false;
+  String Plan=" ";
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<String> onStartUp() async {
@@ -34,7 +34,7 @@ bool isLoading=false;
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
         if (_currentUser != null) {
           retVal = "success";
-          print("in if ");
+          print("in if "+_currentUser.subPlan);
           print(_currentUser.phone);
             setState(() {
         isLoading=false;

@@ -24,6 +24,8 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  bool isLoading=false;
+  bool submitLoading=false;
   Users _currentUser = Users();
   Users get getCurrentUser => _currentUser;
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -217,8 +219,10 @@ var _dropforms= [
     setState(() {
       
     pinCode= placemark[0].postalCode;
+    _currentUser.pinCode=placemark[0].postalCode;
+    isLoading=false;
     });
-    print(placemark[0].name+placemark[0].administrativeArea+placemark[0].name+placemark[0].administrativeArea);
+    // print(placemark[0].name+placemark[0].administrativeArea+placemark[0].name+placemark[0].administrativeArea);
   }
   
      
@@ -349,16 +353,20 @@ var _dropforms= [
         ),
               Text("Or use Auto Locate  ",style: TextStyle(fontSize: 15.0),),
               InkWell(
-              child:Icon(
-                
+              child: isLoading?CircularProgressIndicator():
+              Icon(
                  Icons.my_location,
                  color: Colors.green,
                  size: 40,
                 //  my_location
                ),
                onTap: ()async{
+                 setState(() {
+                      isLoading=true;
+                      });
                  _getLocation().then((value) {
                     setState(() {
+                      // isLoading=true;
                       userLocation = value;
                     });
                     // await 
@@ -477,14 +485,16 @@ var _dropforms= [
             child: Center(
               child: SizedBox(
                 width: 100,
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
+                child: submitLoading?Center(child: CircularProgressIndicator(
+                          backgroundColor: Colors.blue,
+                        )) :Text(
+                          'Submit',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
               ),
             ),
             color: Colors.deepOrange,
@@ -499,11 +509,19 @@ var _dropforms= [
   sendToServer() async {
     // Users _user = Users();
     if (_formKey.currentState.validate()) {
+      setState(() {
+         submitLoading=true;
+      });
+     
       // No any error in validation
       _formKey.currentState.save();
       print("CLicked successfully");
       OurDatabase().createUser(_currentUser);
       print("created user");
+      setState(() {
+         submitLoading=false;
+      });
+     
       // Navigator.push(
       //   context, MaterialPageRoute(builder: (context) => HomeScreen()));
       // Navigator.pushNamed(context, "/dummy");
