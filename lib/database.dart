@@ -5,10 +5,12 @@ class OurDatabase {
   final Firestore _firestore = Firestore.instance;
 
   Future<String> createUser(Users user) async {
-    print("current user uid ${user.uid}");
+    print("current user pincode ${user.fname}");
+    print("Current Pincode is ${user.pinCode}");
     String retVal = "error";
 FirebaseUser uid = await FirebaseAuth.instance.currentUser();
-    print("firebase user uid ${uid.uid}");
+    print("firebase user uid ${uid.uid}" );
+
 
     try {
       await _firestore.collection("users").document(uid.uid). setData({
@@ -24,9 +26,10 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         'group': user.group,
         'accountCreated': Timestamp.now(),
         'photoUrl': user.photoUrl,
+        'pinCode': user.pinCode,
         'subPlan': user.subPlan
       });
-       print("Uploaded Info successfully in Firebase");
+       print("Uploaded Info successfully in Firebase"+user.pinCode);
       retVal = "success";
     } catch (e) {
       print(e);
@@ -40,7 +43,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
 
     try {
       print("called for data");
-      print(uid);
+      // print(uid);
       DocumentSnapshot _docSnapshot = await _firestore.collection("users").document(uid).get();
       print("waiting jp");
       print(retVal.fname = _docSnapshot.data["first Name"]);
@@ -57,13 +60,14 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
       retVal.accountCreated = _docSnapshot.data["accountCreated"];
       retVal.photoUrl= _docSnapshot.data["photoUrl"];
       retVal.subPlan= _docSnapshot.data["subPlan"];
-     
+      retVal.pinCode= _docSnapshot.data["pinCode"];
+     print(retVal.subPlan);
     
     } catch (e) {
       print("in catch");
       print(e);
     }
-    print(retVal.fname);
+    // print(retVal.fname);
     return retVal;
   }
 
@@ -131,7 +135,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         'class': currentUser.grade,
         'city': currentUser.city,
         // 'phone': user.phone,
-        'group': currentUser.group,
+        // 'group': currentUser.group,
         // 'accountCreated': Timestamp.now(),
       });
        print("Updated Info successfully in Firebase");

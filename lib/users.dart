@@ -13,6 +13,7 @@ class Users{
   String group;
   String photoUrl;
   String subPlan;
+  String pinCode;
   Timestamp accountCreated;
 
 Users({
@@ -28,6 +29,7 @@ Users({
   this.group,
   this.accountCreated,
   this.photoUrl,
+  this.pinCode,
   this.subPlan
 });
 

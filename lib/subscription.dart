@@ -70,7 +70,7 @@ class _SubscriptionState extends State<Subscription> {
                   style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
             ],
           ),
-          contentPadding: EdgeInsets.all(30),
+          contentPadding: EdgeInsets.only(left:30,right: 30.0,bottom: 10.0),
           onTap: () {
             setState(() {
               selection1 = true;
@@ -92,7 +92,7 @@ class _SubscriptionState extends State<Subscription> {
             ),
           ),
         ),
-                
+              Divider(thickness: 3.0,color:Colors.blue,),         
         ListTile(
           selected: true,
           trailing: Column(
@@ -104,6 +104,7 @@ class _SubscriptionState extends State<Subscription> {
             ],
           ),
           contentPadding: EdgeInsets.all(30),
+          
           onTap: () {
             setState(() {
               selection1 = true;
@@ -125,6 +126,7 @@ class _SubscriptionState extends State<Subscription> {
             ),
           ),
         ),
+        Divider(thickness: 3.0,color:Colors.blue,),       
         ListTile(
           trailing: Column(
             children: [
@@ -157,6 +159,7 @@ class _SubscriptionState extends State<Subscription> {
           ),
           selected: true,
         ),
+        Divider(thickness: 3.0,color:Colors.blue,),       
         ListTile(
           trailing: Column(
             children: [
