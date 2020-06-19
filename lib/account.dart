@@ -248,10 +248,10 @@ bool isLoading=false;
                       // Text("No image")
                       // Image.network("https://nofrdz.com/images/l.png")
                       Icon(Icons.account_circle,
-                      size:80
+                      size:90
                       )
                       :CircleAvatar(
-                        radius: 40.0,
+                        radius: 60.0,
                         backgroundImage:
                             NetworkImage(_currentUser.photoUrl.toString()),
                         backgroundColor: Colors.transparent,
@@ -292,6 +292,13 @@ bool isLoading=false;
                              leading: new Icon(Icons.chat_bubble_outline),
                              onTap: () {
                               Navigator.pushNamed(context,"/about");
+                             },
+                           ),
+                           ListTile( 
+                             title: new Text('Pricing Plan'),
+                             leading: new Icon(Icons.account_balance_wallet),
+                             onTap: () {
+                              Navigator.pushNamed(context,"/pricing");
                              },
                            ),
                             ListTile( 

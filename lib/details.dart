@@ -5,6 +5,7 @@ import 'package:nutshell/users.dart';
 import 'package:geolocator/geolocator.dart';
 import 'database.dart';
 import 'subscription.dart';
+import 'global.dart' as global;
 
 String phone;
 String email;
@@ -43,26 +44,6 @@ class _DetailsState extends State<Details> {
 
   final text = TextEditingController();
 
-
-
-  //  void callSnackBar(String msg,[int er])
-  // {
-    
-  //     // msg="There is no record with this user, please register first by clicking Register";
-  //   //  final SnackBar= new SnackBar(content: null)
-  //     final SnackBar=new SnackBar(
-  //     content: new Text(msg),
-  //     duration: new Duration(seconds: 3),
-  //   //   action: new SnackBarAction(label: "Register",
-  //   //   onPressed: (){
-  //   //     Navigator.pushNamed(context, "Register");
-  //   //   },),
-  //   );
-  //    _scaffoldKey.currentState.showSnackBar(SnackBar);
-  //   }
-  
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,10 +52,10 @@ class _DetailsState extends State<Details> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-          size: 80.0,
-        ),
+        // iconTheme: IconThemeData(
+        //   color: Colors.black,
+        //   size: 80.0,
+        // ),
       ),
       body: Center(
         child: new Form(
@@ -86,93 +67,16 @@ class _DetailsState extends State<Details> {
     );
   }
 
-  // Widget GroupUi() {
-  //   bool selected = false;
-  //   return Column(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     crossAxisAlignment: CrossAxisAlignment.center,
-  //     children: <Widget>[
-  //       Container(
-  //         child: Title(
-  //           color: Colors.black,
-  //           child: Text("Select Group"),
-  //         ),
-  //       ),
-  //       GestureDetector(
-  //         onTap: (){
-  //           _currentUser.group = 'GroupA';
-  //            setState(() {
-  //             selected = true;
-  //           });
-  //         },
-  //                 child: Container(
-  //                   color: selected == true ? Colors.amber : Colors.grey,
-  //           height: MediaQuery.of(context).size.height / 3,
-  //           width: MediaQuery.of(context).size.width - 100,
-  //           child: Column(
-  //             children: <Widget>[
-  //               Text("Group A", style: Theme.of(context).textTheme.headline3),
-  //               Text("Suitable for students of ages 9-12")
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-        
-  //       GestureDetector(
-  //         onTap: () {
-  //           _currentUser.group = 'GroupB';
-  //           setState(() {
-  //             selected = true;
-  //           });
-  //         },
-  //                 child: Container(
-  //                   color: selected == true ? Colors.amber : Colors.grey,
-  //           height: MediaQuery.of(context).size.height / 3,
-  //           width: MediaQuery.of(context).size.width - 100,
-  //           child: Column(
-  //             children: <Widget>[
-  //               Text("Group B", style: Theme.of(context).textTheme.headline3),
-  //               Text("Suitable for students of ages 13-18")
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //       BottomAppBar(
-  //         child: GestureDetector(
-  //           onTap: () {
-  //             sendToServer();
-  //             //  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
-  //           },
-  //           child: Container(
-  //             width: MediaQuery.of(context).size.width - 50,
-  //             height: 62.5,
-  //             child: Center(
-  //               child: SizedBox(
-  //                 width: 100,
-  //                 child: Text(
-  //                   'Submit',
-  //                   style: TextStyle(
-  //                       fontSize: 20,
-  //                       color: Colors.white,
-  //                       fontWeight: FontWeight.bold),
-  //                   textAlign: TextAlign.center,
-  //                 ),
-  //               ),
-  //             ),
-  //             color: Colors.deepOrange,
-  //           ),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
 var _dropforms= [
    'Select Group','Group-A','Group-B'
   ]; 
   var _dropformSelected="Select Group";
 
   String pinCode;
-  
+  String birthDateInString;
+  DateTime birthDate;
+  bool isDateSelected= false;
+
   Geolocator geolocator = Geolocator();
 
    Future<Position> _getLocation() async {
@@ -247,7 +151,7 @@ var _dropforms= [
             textAlign: TextAlign.left,
           ),
         ),
-        Padding(padding: EdgeInsets.all(20)),
+        // Padding(padding: EdgeInsets.all(20)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -292,6 +196,40 @@ var _dropforms= [
               }),
         ),
         Padding(padding: EdgeInsets.all(10)),
+       SizedBox(
+          width: 320,
+       child: Row(
+          children: <Widget>[
+          Text(birthDateInString==null?"Please add Your DOB ":"DOB is "+birthDateInString+"  ",style: TextStyle(color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,),),
+          GestureDetector(
+                child: new Icon(Icons.calendar_today,
+                size: 50.0,
+                ),
+                onTap: ()async{
+                  final datePick= await showDatePicker(
+                      context: context,
+                      initialDate: new DateTime(1999,06,25),
+                      firstDate: new DateTime(1970),
+                      lastDate: new DateTime(2013)
+                  );
+                  if(datePick!=null && datePick!=birthDate){
+                    setState(() {
+                            birthDate=datePick;
+                        isDateSelected=true;
+
+                        // put it here
+                        birthDateInString = "${birthDate.month}/${birthDate.day}/${birthDate.year}"; // 08/14/2019
+                        global.dob=birthDateInString;
+                      });
+                    }
+                  }
+              ),
+          ],
+        ),
+       ),
+        // Padding(padding: EdgeInsets.all(10)),
         SizedBox(
           width: 320,
           child: TextFormField(
@@ -351,15 +289,23 @@ var _dropforms= [
                 _currentUser.pinCode = value;
               }),
         ),
-              Text("Or use Auto Locate  ",style: TextStyle(fontSize: 15.0),),
+              
               InkWell(
               child: isLoading?CircularProgressIndicator():
+              SizedBox(
+          width: MediaQuery.of(context).size.width/3,
+              child:Row(
+                  children: <Widget>[
+              Text(" Or Tap here:  "),
               Icon(
                  Icons.my_location,
-                 color: Colors.green,
+                 color: Colors.blueGrey,
                  size: 40,
                 //  my_location
                ),
+                  ],
+              )
+              ),
                onTap: ()async{
                  setState(() {
                       isLoading=true;
@@ -412,6 +358,7 @@ var _dropforms= [
 
                        );
                     }).toList(),
+                    
                     onChanged: (String newValueSelected){
                       setState(() {
                          _currentUser.group = newValueSelected;
@@ -477,7 +424,7 @@ var _dropforms= [
         child: GestureDetector(
           onTap: () {
               sendToServer();
-             Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
+            //  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
           },
           child: Container(
             width: MediaQuery.of(context).size.width - 50,
@@ -519,6 +466,7 @@ var _dropforms= [
       print("CLicked successfully");
       OurDatabase().createUser(_currentUser);
       print("created user");
+      Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
       setState(() {
          submitLoading=false;
       });
