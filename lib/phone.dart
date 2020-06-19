@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
+import 'Otp.dart';
 import 'package:nutshell/editprofilescreen.dart';
 import 'short.dart';
 
@@ -20,7 +21,7 @@ TextEditingController phn =TextEditingController() ;
     // msg="There is no record with this user, please register first by clicking Register or check the user mail id or Password";
     final SnackBar = new prefix0.SnackBar(
       content: new Text(msg),
-      duration: new Duration(seconds: 3),
+      duration: new Duration(seconds: 4),
   
     );
     _scaffoldKey.currentState.showSnackBar(SnackBar);
@@ -43,6 +44,10 @@ TextEditingController phn =TextEditingController() ;
       callSnackBar("Phone Number must be of 10 digits");
       //return null;
     } else {
+
+
+
+      
        setState(() {
                       isLoading=true;
                     });
@@ -79,7 +84,7 @@ phn.clear();
        setState(() {
                       isLoading=false;
                     });
-              Navigator.pushNamed(context, "otp",arguments: actualCode);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Otp(PhoneNo:phoneNo),settings: RouteSettings(arguments: actualCode)));
 
       setState(() {
         status = "\nAuto retrieval time out";

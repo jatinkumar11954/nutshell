@@ -56,142 +56,167 @@ class _SubscriptionState extends State<Subscription> {
         ),
       ),
       body: Container(
-        
+        margin: EdgeInsets.only(top: 10,left: 7,right: 7),
 
           child: ListView(
               children: ListTile.divideTiles(context: context, tiles: [
-        ListTile(
-          selected: true,
-          trailing: Column(
-            children: [
-              Text("₹0/-",
-                  style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("Two issues",
-                  style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-            ],
-          ),
-          contentPadding: EdgeInsets.only(left:30,right: 30.0,bottom: 10.0),
-          onTap: () {
-            setState(() {
-              selection1 = true;
-              payfree=1;
-            });
-           Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-          },
-          title: Text(
-            "FREE",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
+        Card(
+          color: Colors.greenAccent,
+          elevation: 5,
+          clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+            selected: true,
+            trailing: Column(
+              children: [
+                Text("₹0/-",
+                    style: TextStyle(fontSize: 30, color: Colors.black)),
+                Text("Two issues",
+                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
+              ],
             ),
-          ),
-          subtitle: Text(
-            "7 Days \n2 Paperbacks",
-            style: TextStyle(
-              fontSize: 20,
+            contentPadding: EdgeInsets.only(left:30,right: 30.0,bottom: 10.0),
+            onTap: () {
+              setState(() {
+                selection1 = true;
+                payfree=1;
+              });
+             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
+            },
+            title: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text(
+                "FREE",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text(
+                "7 Days \n2 Paperbacks",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
             ),
           ),
         ),
               Divider(thickness: 3.0,color:Colors.blue,),         
-        ListTile(
-          selected: true,
-          trailing: Column(
-            children: [
-              Text("₹69/-",
-                  style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("One issue",
-                  style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-            ],
-          ),
-          contentPadding: EdgeInsets.all(30),
-          
-          onTap: () {
-            setState(() {
-              selection1 = true;
-              payone=1;
-            });
-           Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-          },
-          title: Text(
-            "Basic",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
+        Card( color: Colors.greenAccent,
+          elevation: 5,
+          clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+            selected: true,
+            trailing: Column(
+              children: [
+                Text("₹69/-",
+                    style: TextStyle(fontSize: 30, color: Colors.black)),
+                Text("One issue",
+                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
+              ],
             ),
-          ),
-          subtitle: Text(
-            "2 months \n1 Paperbacks",
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
-        Divider(thickness: 3.0,color:Colors.blue,),       
-        ListTile(
-          trailing: Column(
-            children: [
-              Text("₹56/-",
-                  style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("per issue",
-                  style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-            ],
-          ),
-          contentPadding: EdgeInsets.all(30),
-          onTap: () {
-            setState(() {
-              selection1 = true;
-              paytwo=1;
-            });
-           Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-          },
-          title: Text(
-            "Standard",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
-            ),
-          ),
-          subtitle: Text(
-            "6 months \n3 Paperbacks",
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          selected: true,
-        ),
-        Divider(thickness: 3.0,color:Colors.blue,),       
-        ListTile(
-          trailing: Column(
-            children: [
-              Text("₹50/-",
-                  style: TextStyle(fontSize: 30, color: Colors.black)),
-              Text("per issue",
-                  style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-            ],
-          ),
-          contentPadding: EdgeInsets.all(30),
-          onTap: () {
-            setState(() {
-              selection1 = true;
-            paythree=1;
-            });
+            contentPadding: EdgeInsets.all(30),
             
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-          },
-          title: Text(
-            "Premium",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
+            onTap: () {
+              setState(() {
+                selection1 = true;
+                payone=1;
+              });
+             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
+            },
+            title: Text(
+              "Basic",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.black,
+              ),
+            ),
+            subtitle: Text(
+              "2 months \n1 Paperbacks",
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
           ),
-          subtitle: Text(
-            "12 months \n6 Paperbacks",
-            style: TextStyle(
-              fontSize: 20,
+        ),
+        Divider(thickness: 3.0,color:Colors.blue,),       
+        Card(
+           color: Colors.greenAccent,
+          elevation: 5,
+          clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+            trailing: Column(
+              children: [
+                Text("₹56/-",
+                    style: TextStyle(fontSize: 30, color: Colors.black)),
+                Text("per issue",
+                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
+              ],
             ),
+            contentPadding: EdgeInsets.all(30),
+            onTap: () {
+              setState(() {
+                selection1 = true;
+                paytwo=1;
+              });
+             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
+            },
+            title: Text(
+              "Standard",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.black,
+              ),
+            ),
+            subtitle: Text(
+              "6 months \n3 Paperbacks",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            selected: true,
           ),
-          selected: true,
+        ),
+        Divider(thickness: 3.0,color:Colors.blue,),       
+        Card(
+           color: Colors.greenAccent,
+          elevation: 5,
+          clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+            trailing: Column(
+              children: [
+                Text("₹50/-",
+                    style: TextStyle(fontSize: 30, color: Colors.black)),
+                Text("per issue",
+                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
+              ],
+            ),
+            contentPadding: EdgeInsets.all(30),
+            onTap: () {
+              setState(() {
+                selection1 = true;
+              paythree=1;
+              });
+              
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
+            },
+            title: Text(
+              "Premium",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.black,
+              ),
+            ),
+            subtitle: Text(
+              "12 months \n6 Paperbacks",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            selected: true,
+          ),
         ),
       ]).toList())),
     );

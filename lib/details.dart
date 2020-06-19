@@ -256,7 +256,7 @@ var _dropforms= [
               width: 140,
               child: TextFormField(
                   controller: _fnamecontroller,
-                  autovalidate: true,
+                  
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Enter First Name'),
                   validator: validateName,
@@ -268,7 +268,7 @@ var _dropforms= [
               width: 140,
               child: TextFormField(
                   controller: _lnamecontroller,
-                  autovalidate: true,
+                  
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Enter Last Name'),
                   validator: validateName,
@@ -283,7 +283,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _schoolcontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.text,
               decoration: InputDecoration(labelText: 'Enter School Name'),
               validator: validateSchool,
@@ -296,7 +296,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _classcontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.number,
               decoration: InputDecoration(labelText: 'Enter Class'),
               validator: validateClass,
@@ -309,7 +309,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _emailcontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: 'Enter Email Address'),
               validator: validateEmail,
@@ -323,7 +323,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _citycontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.text,
               decoration: InputDecoration(labelText: 'Enter City'),
               validator: validateCity,
@@ -341,7 +341,7 @@ var _dropforms= [
           width: MediaQuery.of(context).size.width/3,
           child: TextFormField(
               controller: _pinCodecontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 hintText: _currentUser.pinCode==null?pinCode:"",
@@ -383,7 +383,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _phonecontroller,
-              autovalidate: true,
+              
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   labelText: 'Enter Phone Number', prefix: Text("+91")),
