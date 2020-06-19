@@ -29,14 +29,14 @@ class _RefundState extends State<Refund> {
                       ),
                       tooltip: 'back',
                       onPressed: () {
-                        Navigator.pushNamed(context,"/account");
+                        Navigator.pushNamed(context,"/help");
                     
           },
         ),
         ),
         body:WillPopScope(
           onWillPop: (){
-            Navigator.pushNamed(context, '/account');
+            Navigator.pushNamed(context, '/help');
           },
         child:ListView(
           children: <Widget>[
@@ -78,7 +78,7 @@ class _RefundState extends State<Refund> {
                         ),
                       );
                     } else {
-                      return IgnorePointer();
+                      return Center(child: CircularProgressIndicator());
                     }
                   }
                 ),

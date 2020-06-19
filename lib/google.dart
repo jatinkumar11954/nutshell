@@ -48,7 +48,7 @@ Future<String> signInWithGoogle(BuildContext context) async {
 
   try {
     print("trying jp to login with mail");
-    GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
+    GoogleSignInAccount _googleUser = await _googleSignIn. signIn();
     GoogleSignInAuthentication _googleAuth = await _googleUser.authentication;
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: _googleAuth.idToken, accessToken: _googleAuth.accessToken);
