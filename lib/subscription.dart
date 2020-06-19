@@ -50,10 +50,10 @@ class _SubscriptionState extends State<Subscription> {
             style: Theme.of(context).textTheme.headline6),
         backgroundColor: Colors.white,
         elevation: 0.0,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-          size: 80.0,
-        ),
+        // iconTheme: IconThemeData(
+        //   color: Colors.black,
+        //   size: 80.0,
+        // ),
       ),
       body: Container(
         margin: EdgeInsets.only(top: 10,left: 7,right: 7),
@@ -103,7 +103,7 @@ class _SubscriptionState extends State<Subscription> {
             ),
           ),
         ),
-              Divider(thickness: 3.0,color:Colors.blue,),         
+              Divider(thickness: 3.0,color:Colors.yellow,),         
         Card( color: Colors.greenAccent,
           elevation: 5,
           clipBehavior: Clip.hardEdge,
@@ -141,7 +141,7 @@ class _SubscriptionState extends State<Subscription> {
             ),
           ),
         ),
-        Divider(thickness: 3.0,color:Colors.blue,),       
+        Divider(thickness: 3.0,color:Colors.yellow,),       
         Card(
            color: Colors.greenAccent,
           elevation: 5,
@@ -179,7 +179,7 @@ class _SubscriptionState extends State<Subscription> {
             selected: true,
           ),
         ),
-        Divider(thickness: 3.0,color:Colors.blue,),       
+      Divider(thickness: 3.0,color:Colors.yellow,),    
         Card(
            color: Colors.greenAccent,
           elevation: 5,
