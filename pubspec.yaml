@@ -50,6 +50,7 @@ dependencies:
   razorpay_plugin: ^0.3.0
   geolocator:
   location:
+  datetime_picker_formfield:
 
 dev_dependencies:
   flutter_test:

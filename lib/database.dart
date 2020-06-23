@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nutshell/users.dart';
+import 'global.dart' as global;
+
 class OurDatabase {
   final Firestore _firestore = Firestore.instance;
 
@@ -19,6 +21,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         'Last Name': user.lname,
         'email': user.email,
         'school': user.school,
+        'DOB': global.dob,
         'class': user.grade,
         'city': user.city,
         'subscription':false,
