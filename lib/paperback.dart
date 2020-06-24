@@ -309,7 +309,7 @@ class _PaperbacksState extends State<Paperbacks> {
     // _initPDF();
   }
 
-  List<String> books = ["jan.png","nov.png"];
+  List<String> books = ["assets/book/jan.png","assets/book/nov.png"];
 
   @override
   Widget build(BuildContext context) {
