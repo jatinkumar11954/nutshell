@@ -309,7 +309,7 @@ class _PaperbacksState extends State<Paperbacks> {
     // _initPDF();
   }
 
-  List books = ["a"];
+  List<String> books = ["jan.png","nov.png"];
 
   @override
   Widget build(BuildContext context) {
@@ -330,17 +330,13 @@ class _PaperbacksState extends State<Paperbacks> {
                 decoration: BoxDecoration(color: Colors.grey[300]),
                 child: GestureDetector(
                     child: Image.asset(
-                      book.image,
+                      book,
                       fit: BoxFit.fill,
                     ),
                     onTap: () {
-                      print("this is pdf ${book.pdf}");
+                      print("this is pdf ");
 
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return ;
-                        },
-                      ));
+                     
                     }));
           },
         );
