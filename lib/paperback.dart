@@ -291,11 +291,14 @@
 //   //     'assets/book/soon.pdf'),
 // ];
 
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:nutshell/bottomNav.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Paperbacks extends StatefulWidget {
   @override
@@ -309,7 +312,7 @@ class _PaperbacksState extends State<Paperbacks> {
     // _initPDF();
   }
 
-  List<String> books = ["assets/book/jan.png","assets/book/nov.png"];
+  List<String> books = ["assets/images/INTRO1.svg"];
 
   @override
   Widget build(BuildContext context) {
@@ -329,7 +332,7 @@ class _PaperbacksState extends State<Paperbacks> {
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 decoration: BoxDecoration(color: Colors.grey[300]),
                 child: GestureDetector(
-                    child: Image.asset(
+                    child: SvgPicture.asset(
                       book,
                       fit: BoxFit.fill,
                     ),
