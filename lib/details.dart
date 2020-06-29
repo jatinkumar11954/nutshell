@@ -3,12 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:nutshell/orderConfirmation.dart';
 import 'package:nutshell/users.dart';
 import './paperback.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'database.dart';
-import 'subscription.dart';
 import 'global.dart' as global;
-
+import 'AccountModule.dart/about.dart';
+import 'AccountModule.dart/contactUs.dart';
+import 'AccountModule.dart/pricing.dart';
+import 'AccountModule.dart/privacy.dart';
+import 'AccountModule.dart/refund.dart';
+import 'AccountModule.dart/termsandconditions.dart';
+import 'editprofilescreen.dart';
+import 'account.dart';
+import 'AccountModule.dart/aboutUs.dart';
+import 'orderConfirmation.dart';
+import 'AccountModule.dart/help.dart';
 String phone;
 String email;
 
@@ -29,6 +38,18 @@ class Details extends StatelessWidget {
         '/instution': (BuildContext context) => new Instution(),
         '/pincode': (BuildContext context) => new PinCode(),
         '/paperback': (BuildContext context) => Paperbacks(),
+       '/group': (BuildContext context) => GroupScreen(),
+       '/account': (BuildContext context) => Account(),
+       '/about': (BuildContext context) => About(),
+        '/help': (BuildContext context) => Help(),
+       '/contact': (BuildContext context) => ContactUs(),
+       '/pricing': (BuildContext context) => Pricing(),
+       '/privacy': (BuildContext context) => Privacy(),
+       '/refund': (BuildContext context) => Refund(),
+       '/termsandconditions': (BuildContext context) => TermsAndConditions(),
+       '/editprofile': (BuildContext context) => EditProfileScreen(),
+       '/aboutUs': (BuildContext context) => AboutUs(),
+
       },
     );
   }
@@ -83,12 +104,14 @@ class _NameScreenState extends State<NameScreen> {
                 Future.delayed(Duration.zero).then((_) {
                   setState(() {
                     btn_enable = true;
+                    global.name = txt;
                   });
                 });
               } else {
                 Future.delayed(Duration.zero).then((_) {
                   setState(() {
                     btn_enable = false;
+
                   });
                 });
               }
@@ -119,6 +142,7 @@ class _NameScreenState extends State<NameScreen> {
               onPressed: btn_enable == true
                   ? () {
                       Navigator.of(context).pushNamed('/email');
+
                     }
                   : null,
             ),
@@ -184,6 +208,7 @@ class _EmailState extends State<Email> {
                 Future.delayed(Duration.zero).then((_) {
                   setState(() {
                     btn_enable = true;
+                    global.emailOrNumVal=txt;
                   });
                 });
               } else {
@@ -277,34 +302,21 @@ class _BirthDayState extends State<BirthDay> {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
           ),
-          TextFormField(
-            autovalidate: true,
-            // validator: (String txt) {
-            //   if (txt.length >= 1) {
-            //     Future.delayed(Duration.zero).then((_) {
-            //       setState(() {
-            //         btn_enable = true;
-            //       });
-            //     });
-            //   } else {
-            //     Future.delayed(Duration.zero).then((_) {
-            //       setState(() {
-            //         btn_enable = false;
-            //       });
-            //     });
-            //   }
-            // },
-            // controller: cont,
-            decoration: InputDecoration(
-                hintText: birthDateInString==null?'DD/MM/YYYY':birthDateInString,
-                hintStyle:
-                    TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
-                suffixIcon: IconButton(
-                  color: Colors.red,
-                  icon: Icon(Icons.calendar_today),
-                  onPressed: () async{
-                    print("clicked");
-                    final datePick= await showDatePicker(
+          SizedBox(
+          width: MediaQuery.of(context).size.width * 0.95,
+          height: MediaQuery.of(context).size.height * 0.07,
+          child:InkWell(
+            child: Row(children: <Widget>[
+            Text(birthDateInString==null?'DD/MM/YYYY     ':"   "+birthDateInString+"  ",
+            style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600),
+            ),
+             Icon(Icons.calendar_today,
+             color: Colors.red,
+             size: 35.0,
+             )
+            ],),
+            onTap: ()async{
+                final datePick= await showDatePicker(
                       context: context,
                       initialDate: new DateTime(1999,06,25),
                       firstDate: new DateTime(1970),
@@ -314,20 +326,55 @@ class _BirthDayState extends State<BirthDay> {
                     setState(() {
                             birthDate=datePick;
                         isDateSelected=true;
-
-                        // put it here
                         birthDateInString = "${birthDate.month}/${birthDate.day}/${birthDate.year}"; // 08/14/2019
-                        // global.dob=birthDateInString;
+                        global.dob=birthDateInString;
                       });
                     }
                     
                   setState(() {
                     btn_enable = true;
                   });
-                        
-                  },
-                )),
+            },
           ),
+         ),
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height * 0.05,
+          // ),
+          // TextFormField(
+          //   autovalidate: true,
+          //   decoration: InputDecoration(
+          //       hintText: birthDateInString==null?'DD/MM/YYYY':birthDateInString,
+          //       hintStyle:
+          //           TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
+          //       suffixIcon: IconButton(
+          //         color: Colors.red,
+          //         icon: Icon(Icons.calendar_today),
+          //         onPressed: () async{
+          //           print("clicked");
+          //           final datePick= await showDatePicker(
+          //             context: context,
+          //             initialDate: new DateTime(1999,06,25),
+          //             firstDate: new DateTime(1970),
+          //             lastDate: new DateTime(2013)
+          //         );
+          //         if(datePick!=null && datePick!=birthDate){
+          //           setState(() {
+          //                   birthDate=datePick;
+          //               isDateSelected=true;
+
+          //               // put it here
+          //               birthDateInString = "${birthDate.month}/${birthDate.day}/${birthDate.year}"; // 08/14/2019
+          //               global.dob=birthDateInString;
+          //             });
+          //           }
+                    
+          //         setState(() {
+          //           btn_enable = true;
+          //         });
+                        
+          //         },
+          //       )),
+          // ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
@@ -393,7 +440,7 @@ class _InstutionState extends State<Instution> {
             height: MediaQuery.of(context).size.height * 0.1,
           ),
           Text(
-            'My \nInstution is',
+            'My \nInstitution is',
             style: TextStyle(
                 fontSize: 75.0,
                 color: Colors.redAccent[700],
@@ -409,6 +456,7 @@ class _InstutionState extends State<Instution> {
                 Future.delayed(Duration.zero).then((_) {
                   setState(() {
                     btn_enable = true;
+                    global.ins=txt;
                   });
                 });
               } else {
@@ -421,7 +469,7 @@ class _InstutionState extends State<Instution> {
             },
             // controller: cont,
             decoration: InputDecoration(
-                hintText: 'Enter Your Instution',
+                hintText: 'Enter Your Institution',
                 hintStyle:
                     TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600)),
           ),
@@ -547,6 +595,7 @@ class _PinCodeState extends State<PinCode> {
                     Future.delayed(Duration.zero).then((_) {
                       setState(() {
                         btn_enable = true;
+                        global.pincode=txt;
                       });
                     });
                   } else {
@@ -622,7 +671,8 @@ class _PinCodeState extends State<PinCode> {
                 // padding: EdgeInsets.fromLTRB(180.0, 15.0, 190.0, 15.0),
                 onPressed: btn_enable == true ? () {
                   print("clik");
-                  Navigator.pushNamed(context,"/aboutUs");
+                  Navigator.pushNamed(context, "/group");
+                  
                   
                 } : null),
           ),
@@ -635,6 +685,80 @@ class _PinCodeState extends State<PinCode> {
   }
 }
 
+
+
+class GroupScreen extends StatefulWidget{
+  @override
+  _GroupScreenState createState() => _GroupScreenState();
+}
+
+class _GroupScreenState extends State<GroupScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(
+                left: 20.0, top: 10.0, bottom: 10.0, right: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // SizedBox(
+                //   height: MediaQuery.of(context).size.height * 0.08,
+                // ),
+                Text(
+                  'Please select \na group',
+                  style: TextStyle(
+                      fontSize: 50.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent[700]),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height/3,
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                  splashColor: Colors.white,
+                  onPressed: () {
+                    global.group="A";
+                    OurDatabase().createUser();
+                    // Navigator.pushNamed(context, "/orderConfirm");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
+                  },
+                  
+                  child:SvgPicture.asset('assets/images/GroupB.svg'),
+                  
+                ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height/3,
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                  splashColor: Colors.white,
+                  onPressed: () {
+                    global.group="B";
+                    OurDatabase().createUser();
+                    
+                    // Navigator.pushNamed(context, "/orderConfirm");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => OrderConfirmation()));
+                  },
+                  
+                  child:SvgPicture.asset('assets/images/GroupA.svg'),
+                  
+                ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
 
 
 

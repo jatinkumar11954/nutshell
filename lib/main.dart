@@ -18,7 +18,7 @@ import 'Otp.dart';
 import 'editprofilescreen.dart';
 import 'account.dart';
 import 'AccountModule.dart/aboutUs.dart';
-
+import 'orderConfirmation.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
        '/termsandconditions': (BuildContext context) => TermsAndConditions(),
        '/editprofile': (BuildContext context) => EditProfileScreen(),
        '/aboutUs': (BuildContext context) => AboutUs(),
+        '/orderConfirm': (BuildContext context) => OrderConfirmation(),
        //'/': (BuildContext context) => Details(),
     },
       title: 'Nutshell',
@@ -63,11 +64,13 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: 
+      Splash() ,
+      //  OrderConfirmation(),
       // AboutUs()
       // Details()
       // IntroScreen()
       // Paperbacks(),
-       Splash() ,
+      //  Splash() ,
     );
   }
 }
