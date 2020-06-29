@@ -145,38 +145,37 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool checkValue = false;
-  // SharedPreferences sharedPreferences;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getCredential();
-  // }
 
   Widget _buildPhone(Function onTap) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        SizedBox(height: 10.0),
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            alignment: Alignment.centerLeft,
-            decoration: kBoxDecorationStyle,
-            height: 60.0,
-            child: Center(
-              child: Text(
-                "Continue with Phone Number",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontFamily: 'OpenSans',
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: RaisedButton(
+                color: Colors.white,
+                onPressed: () {
+                   signInWithGoogle(context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('assets/images/google.png'),
+                    Text(
+                      ' Login with Google',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
                 ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
               ),
             ),
-          ),
-        ),
       ],
     );
   }
@@ -205,47 +204,47 @@ class _LoginScreenState extends State<LoginScreen> {
     //   ),
     // );
     return Center(
-      child: MaterialButton(
-        textColor: Colors.white,
-        color: Colors.white,
-
-        // splashColor: Colors.white,
-        onPressed: () {
-          signInWithGoogle(context);
-        },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        highlightElevation: 0,
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                  height: 60,
-                  child: Image.asset(
-                    'assets/images/google.png',
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'Sign in with Google',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
+      child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: RaisedButton(
+                color: Colors.white,
+                onPressed: () {
+                  print("clicked 1");
+                  Navigator.of(context).push(
+                        new MaterialPageRoute(
+                            builder: (BuildContext context) => new Phone()
+                            )
+                            );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      Icons.phone,
+                      size: 35.0,
+                      color: Colors.blue,
+                    ),
+                    Text(
+                      'Login with Phone',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
+              ),
+            ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(191, 30, 46, 1),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -253,15 +252,15 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      Color.fromRGBO(250, 112, 154, 1.0),
-                      Color.fromRGBO(254, 225, 64, 1.0)
-                    ]),
-              ),
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //       begin: Alignment.centerLeft,
+              //       end: Alignment.centerRight,
+              //       colors: [
+              //         Color.fromRGBO(250, 112, 154, 1.0),
+              //         Color.fromRGBO(254, 225, 64, 1.0)
+              //       ]),
+              // ),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(
@@ -272,13 +271,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    new Hero(
-                        tag: 'logo',
-                        child: new Image(
-                          image: new AssetImage('assets/images/logo.png'),
-                          width: MediaQuery.of(context).size.width - 100,
-                        )),
-                    SizedBox(height: 60.0),
+                    
+                     SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                    Text('Hello \nThere.',
+                        style: TextStyle(
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                    ),
                     _buildPhone(() => 
                     Navigator.of(context).push(
                         new MaterialPageRoute(
@@ -286,15 +290,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             )
                             )
                             ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: Text(
-                        "OR",
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                    ),
+                   SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+                    // Center(
+                    //   child: Text(
+                    //     "OR",
+                    //     style: Theme.of(context).textTheme.headline3,
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 20,
                     ),

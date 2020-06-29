@@ -63,7 +63,8 @@ class MyApp extends StatelessWidget {
           subtitle1: TextStyle(fontSize: 20, color: Colors.black) 
         )
       ),
-      home: 
+      home:
+      //  IntroScreen()
       Splash() ,
       //  OrderConfirmation(),
       // AboutUs()
