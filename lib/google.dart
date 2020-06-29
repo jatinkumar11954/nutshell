@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'global.dart' as global;
 import 'navigate.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -61,11 +61,15 @@ Future<String> signInWithGoogle(BuildContext context) async {
       print("new user");
       _user.uid = _authResult.user.uid;
       _user.email = _authResult.user.email;
+      global.email = _authResult.user.email;
       _user.fname = _authResult.user.displayName;
-      _user.photoUrl=_authResult.user.photoUrl.toString();
+      
+      global.name = _authResult.user.displayName;
+      _user.photoUrl =_authResult.user.photoUrl.toString();
+      global.photoUrl = _authResult.user.photoUrl.toString();
       print("name"+_user.fname);
-      print(_user.photoUrl);
-      OurDatabase().createUser(_user);
+      // print(_user.photoUrl);
+      OurDatabase().createUser();
       Navigator.pushNamedAndRemoveUntil(context, '/subs', (_)=> false);
     }
 

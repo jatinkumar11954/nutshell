@@ -30,14 +30,12 @@ dependencies:
   pin_code_fields: ^3.0.0
   firebase_database:
   firebase_storage:
-  flutter_plugin_pdf_viewer: ^1.0.7
   google_sign_in:
   firebase_auth:
   fluttertoast:
   razorpay_flutter:
   intro_slider:
   shared_preferences:
-
   provider: ^3.2.0
   flutter_html:
   #removed html version
@@ -51,6 +49,8 @@ dependencies:
   geolocator:
   location:
   datetime_picker_formfield:
+  flutter_svg:
+  path_provider:
 
 dev_dependencies:
   flutter_test:

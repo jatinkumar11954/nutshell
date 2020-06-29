@@ -3,14 +3,14 @@ import 'package:nutshell/paperback.dart';
 import 'package:nutshell/news.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:nutshell/phone.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'account.dart';
 
 Widget bottomBar(BuildContext context, int index) {
   return SafeArea(
       child: BottomNavigationBar(
     
-    backgroundColor: Colors.greenAccent,
+    backgroundColor: Color.fromRGBO(191, 30, 46, 1),
     //  Colors.white,
     // elevation: 3,
     onTap: (index) {
@@ -39,14 +39,30 @@ Widget bottomBar(BuildContext context, int index) {
         //  <BottomNavigationBarItem>
         [
       BottomNavigationBarItem(
-       icon: Icon(Icons.book),
+       icon: SvgPicture.asset("assets/images/PAPERBACKICON.svg",    
+         fit: BoxFit.contain,
+        // color:Colors.red,
+           height: 40,
+
+          ),
+        // Icon(Icons.book),
         title: Text('Paperbacks'),
       ),
       BottomNavigationBarItem(
-      icon: Icon(Icons.new_releases),
+      icon: SvgPicture.asset("assets/images/NEWSICON.svg",    
+         fit: BoxFit.contain,
+        // color:Colors.red,
+           height: 40,
+
+          ),
         title: Text('News'),),
       BottomNavigationBarItem(
-         icon: Icon(Icons.account_circle),
+         icon: SvgPicture.asset("assets/images/ACCOUNTICON.svg",    
+         fit: BoxFit.contain,
+        // color:Colors.red,
+           height: 40,
+
+          ),
         title: Text('Account'),
       ),
     ],

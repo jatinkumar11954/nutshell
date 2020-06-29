@@ -258,7 +258,7 @@ bool isLoading=false;
                       ),
                       title: Padding(
                         padding: const EdgeInsets.only(top:18.0),
-                        child: Text(_currentUser.fname.toString()+" "+_currentUser.lname.toString(),
+                        child: Text(_currentUser.fname.toString()+" ",
                                 // textAlign: TextAlign.end,
                                 style: TextStyle(
                                   color: Colors.black,
@@ -312,7 +312,7 @@ bool isLoading=false;
                             ListTile( 
                              title: new Text('Help'),
                              leading: new Icon(Icons.assignment),
-                             subtitle: Text("Privacy, Refund, TnC"),
+                             subtitle: Text("Privacy, Refund, TnC, About Us"),
                              onTap: () {
                               Navigator.pushNamed(context,"/help");
                              },
