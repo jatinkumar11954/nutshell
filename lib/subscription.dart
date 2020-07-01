@@ -1,7 +1,8 @@
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
 import 'package:provider/provider.dart';
@@ -19,13 +20,12 @@ bool selection1 = false;
 String sID;
 Razorpay razorpay;
 int payfree = 0;
-int payone =0;
+int payone = 0;
 int paytwo = 0;
 int paythree = 0;
 final CollectionReference users = Firestore.instance.collection('users');
 Users _currentUser = Users();
 Users get getCurrentUser => _currentUser;
-
 
 class Subscription extends StatefulWidget {
   @override
@@ -33,194 +33,110 @@ class Subscription extends StatefulWidget {
 }
 
 class _SubscriptionState extends State<Subscription> {
-
-
   var oneval = false;
   var twoval = false;
+  bool isVisible = false;
+  int svgIndex;
   var threeval = false;
 
+  static const List<String> svgNames = <String>[
+    "assets/images/1Year.svg",
+    "assets/images/2Months.svg",
+    "assets/images/6Months.svg",
+    "assets/images/7Days.svg",
+  ];
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Pick your subscription plan",
-            style: Theme.of(context).textTheme.headline6),
         backgroundColor: Colors.white,
-        elevation: 0.0,
-        // iconTheme: IconThemeData(
-        //   color: Colors.black,
-        //   size: 80.0,
+        // appBar: AppBar(
+        //   centerTitle: true,
+        //   title: Text("Pick your subscription plan",
+        //       style: Theme.of(context).textTheme.headline6),
+        //   backgroundColor: Colors.white,
+        //   elevation: 0.0,
+        //   // iconTheme: IconThemeData(
+        //   //   color: Colors.black,
+        //   //   size: 80.0,
+        //   // ),
         // ),
-      ),
-      body: Container(
-        margin: EdgeInsets.only(top: 10,left: 7,right: 7),
-
-          child: ListView(
-              children: ListTile.divideTiles(context: context, tiles: [
-        Card(
-          color: Colors.greenAccent,
-          elevation: 5,
-          clipBehavior: Clip.hardEdge,
-                  child: ListTile(
-            selected: true,
-            trailing: Column(
-              children: [
-                Text("₹0/-",
-                    style: TextStyle(fontSize: 30, color: Colors.black)),
-                Text("Two issues",
-                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-              ],
+        body:
+            // Container(
+            // margin: EdgeInsets.only(top: 10, left: 7, right: 7),
+            // child:
+            ListView(
+          children: <Widget>[
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            Text(
+              "Pick your subscription plan",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 45.0, fontWeight: FontWeight.bold),
             ),
-            contentPadding: EdgeInsets.only(left:30,right: 30.0,bottom: 10.0),
-            onTap: () {
-              setState(() {
-                selection1 = true;
-                payfree=1;
-              });
-             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-            },
-            title: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text(
-                "FREE",
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.4,
+              child: CarouselSlider(
+                  options: CarouselOptions(
+                    aspectRatio: 8 / 25,
+                    autoPlay: false,
+                    // height: 2000,
+                    // width: MediaQuery.of(context).size.height * 0.90,
+                  ),
+                  items: svgNames.map((sv) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isVisible = !isVisible;
+                                svgIndex = svgNames.indexOf(sv);
+                              });
+                            },
+                            child: Stack(
+                              children: <Widget>[
+                                Align(
+                                  child: SvgPicture.asset(
+                                    "$sv",
+                                  ),
+                                ),
+                                Visibility(
+                                    visible: svgNames.indexOf(sv) == svgIndex
+                                        ? true
+                                        : false,
+                                    child: Align(
+                                      child: Icon(Icons.add),
+                                    ))
+                              ],
+                            ));
+                      },
+                    );
+                  }).toList()),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 300.0, right: 10.0),
+              // child: Visibility(
+              // visible: isVisible,
+              child: RaisedButton(
+                padding: EdgeInsets.only(
+                    left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
+                onPressed: isVisible == true ? () {} : null,
+                disabledColor: Colors.grey,
+                color: Colors.redAccent[700],
+                child: Text(
+                  'Continue',
+                  style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
                 ),
               ),
-            ),
-            subtitle: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text(
-                "7 Days \n2 Paperbacks",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
-        ),
-              Divider(thickness: 3.0,color:Colors.yellow,),         
-        Card( color: Colors.greenAccent,
-          elevation: 5,
-          clipBehavior: Clip.hardEdge,
-                  child: ListTile(
-            selected: true,
-            trailing: Column(
-              children: [
-                Text("₹69/-",
-                    style: TextStyle(fontSize: 30, color: Colors.black)),
-                Text("One issue",
-                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-              ],
-            ),
-            contentPadding: EdgeInsets.all(30),
-            
-            onTap: () {
-              setState(() {
-                selection1 = true;
-                payone=1;
-              });
-             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-            },
-            title: Text(
-              "Basic",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.black,
-              ),
-            ),
-            subtitle: Text(
-              "2 months \n1 Paperbacks",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-        Divider(thickness: 3.0,color:Colors.yellow,),       
-        Card(
-           color: Colors.greenAccent,
-          elevation: 5,
-          clipBehavior: Clip.hardEdge,
-                  child: ListTile(
-            trailing: Column(
-              children: [
-                Text("₹56/-",
-                    style: TextStyle(fontSize: 30, color: Colors.black)),
-                Text("per issue",
-                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-              ],
-            ),
-            contentPadding: EdgeInsets.all(30),
-            onTap: () {
-              setState(() {
-                selection1 = true;
-                paytwo=1;
-              });
-             Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-            },
-            title: Text(
-              "Standard",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.black,
-              ),
-            ),
-            subtitle: Text(
-              "6 months \n3 Paperbacks",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            selected: true,
-          ),
-        ),
-      Divider(thickness: 3.0,color:Colors.yellow,),    
-        Card(
-           color: Colors.greenAccent,
-          elevation: 5,
-          clipBehavior: Clip.hardEdge,
-                  child: ListTile(
-            trailing: Column(
-              children: [
-                Text("₹50/-",
-                    style: TextStyle(fontSize: 30, color: Colors.black)),
-                Text("per issue",
-                    style: TextStyle(fontSize: 20, color: Colors.deepOrange)),
-              ],
-            ),
-            contentPadding: EdgeInsets.all(30),
-            onTap: () {
-              setState(() {
-                selection1 = true;
-              paythree=1;
-              });
-              
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Details()));
-            },
-            title: Text(
-              "Premium",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.black,
-              ),
-            ),
-            subtitle: Text(
-              "12 months \n6 Paperbacks",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            selected: true,
-          ),
-        ),
-      ]).toList())),
-    );
+              // ),
+            )
+          ],
+        )
+        // )
+        );
   }
+
   @override
   void initState() {
     super.initState();
@@ -264,21 +180,23 @@ void openCheckout(BuildContext context) async {
     }
 
     print("account page");
-        razorpay.clear();
+    razorpay.clear();
 
     Navigator.pushReplacementNamed(context, '/paperback');
   }
-void _handlePaymentError(PaymentFailureResponse response) {
-  Fluttertoast.showToast(
-    msg: "ERROR: " + response.code.toString() + " - " + response.message,
-  );
-}
 
-void _handleExternalWallet(ExternalWalletResponse response) {
-  Fluttertoast.showToast(
-    msg: "EXTERNAL_WALLET: " + response.walletName,
-  );
-}
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+      msg: "ERROR: " + response.code.toString() + " - " + response.message,
+    );
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+      msg: "EXTERNAL_WALLET: " + response.walletName,
+    );
+  }
+
   print("Just came to opencheckout function");
   print(_currentUser.uid);
 
@@ -306,7 +224,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 }
 
 void openCheckoutthree(BuildContext context) async {
-   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+  _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // String selectedPlan=global.subPlan;
     Fluttertoast.showToast(
       msg: "SUCCESS: " + response.paymentId,
@@ -328,21 +246,24 @@ void openCheckoutthree(BuildContext context) async {
       print(e.toString());
     }
 
-    print("account page");    razorpay.clear();
+    print("account page");
+    razorpay.clear();
 
     Navigator.pushReplacementNamed(context, '/paperback');
   }
-  void _handlePaymentError(PaymentFailureResponse response) {
-  Fluttertoast.showToast(
-    msg: "ERROR: " + response.code.toString() + " - " + response.message,
-  );
-}
 
-void _handleExternalWallet(ExternalWalletResponse response) {
-  Fluttertoast.showToast(
-    msg: "EXTERNAL_WALLET: " + response.walletName,
-  );
-}
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+      msg: "ERROR: " + response.code.toString() + " - " + response.message,
+    );
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+      msg: "EXTERNAL_WALLET: " + response.walletName,
+    );
+  }
+
   print("Just came to checkout3 function");
   var threemonths = {
     'key': 'rzp_live_A94dLEeQb2Cj5s',
@@ -367,7 +288,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 }
 
 void openCheckoutyear(BuildContext context) async {
-   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+  _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // String selectedPlan=global.subPlan;
     Fluttertoast.showToast(
       msg: "SUCCESS: " + response.paymentId,
@@ -389,21 +310,24 @@ void openCheckoutyear(BuildContext context) async {
       print(e.toString());
     }
 
-    print("account page");    razorpay.clear();
+    print("account page");
+    razorpay.clear();
 
     Navigator.pushReplacementNamed(context, '/paperback');
   }
-  void _handlePaymentError(PaymentFailureResponse response) {
-  Fluttertoast.showToast(
-    msg: "ERROR: " + response.code.toString() + " - " + response.message,
-  );
-}
 
-void _handleExternalWallet(ExternalWalletResponse response) {
-  Fluttertoast.showToast(
-    msg: "EXTERNAL_WALLET: " + response.walletName,
-  );
-}
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+      msg: "ERROR: " + response.code.toString() + " - " + response.message,
+    );
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+      msg: "EXTERNAL_WALLET: " + response.walletName,
+    );
+  }
+
   print("Just came to checkoutyear function");
   var oneyear = {
     'key': 'rzp_live_A94dLEeQb2Cj5s',
@@ -428,7 +352,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 }
 
 void openCheckoutweek(BuildContext context) async {
-   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+  _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // String selectedPlan=global.subPlan;
     Fluttertoast.showToast(
       msg: "SUCCESS: " + response.paymentId,
@@ -450,21 +374,24 @@ void openCheckoutweek(BuildContext context) async {
       print(e.toString());
     }
 
-    print("account page");    razorpay.clear();
+    print("account page");
+    razorpay.clear();
 
     Navigator.pushReplacementNamed(context, '/paperback');
   }
-  void _handlePaymentError(PaymentFailureResponse response) {
-  Fluttertoast.showToast(
-    msg: "ERROR: " + response.code.toString() + " - " + response.message,
-  );
-}
 
-void _handleExternalWallet(ExternalWalletResponse response) {
-  Fluttertoast.showToast(
-    msg: "EXTERNAL_WALLET: " + response.walletName,
-  );
-}
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+      msg: "ERROR: " + response.code.toString() + " - " + response.message,
+    );
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+      msg: "EXTERNAL_WALLET: " + response.walletName,
+    );
+  }
+
   print("Just came to checkout functionfds");
   print(phone);
   var oneweek = {
@@ -504,7 +431,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 }
 
 // class Details extends StatefulWidget {
-  
+
 //   @override
 //   _DetailsState createState() => _DetailsState();
 // }
@@ -512,7 +439,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 // class _DetailsState extends State<Details> {
 //   Users _currentUser = Users();
 
-  // _DetailsState({
+// _DetailsState({
 //     Key key,
 //   });
 
@@ -662,7 +589,7 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 //           BottomAppBar(
 //             child: GestureDetector(
 //               onTap: () {
-               
+
 //                 if (payone==1) {
 //                   openCheckout();
 //                 } else if (paytwo== 1) {
@@ -779,7 +706,3 @@ void _handleExternalWallet(ExternalWalletResponse response) {
 //     else
 //       return null;
 //   }
- 
-
-
-
