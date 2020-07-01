@@ -35,12 +35,13 @@ dependencies:
   fluttertoast:
   razorpay_flutter:
   intro_slider:
+  carousel_slider:
   shared_preferences:
   provider: ^3.2.0
   flutter_html:
   #removed html version
   share:
-  carousel_slider: ^2.1.0
+  # carousel_slider: ^2.1.0
   url_launcher:
   # provider architecture
   provider_architecture: ^1.0.3
