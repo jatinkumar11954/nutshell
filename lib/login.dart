@@ -34,6 +34,7 @@ class _IntroScreenState extends State<IntroScreen> {
         description:
             "New, innovative approach to general knowledge for school students",
         pathImage: "assets/images/p1.png",
+
          heightImage: 400,
         widthImage: 400,
         backgroundColor: Colors.greenAccent,
@@ -41,12 +42,12 @@ class _IntroScreenState extends State<IntroScreen> {
     );
     slides.add(
       new Slide(
+        centerWidget: ,
         styleDescription: TextStyle(
             color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         // title: "PENCIL",
         description:
             "Captivating experience with refreshing topics, interesting stories and detailed answers",
-        pathImage: "assets/images/p2.png",
          heightImage: 400,
         widthImage: 400,
         backgroundColor: Colors.blueAccent,
