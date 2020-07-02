@@ -31,14 +31,14 @@ class _PrivacyState extends State<Privacy> {
                       ),
                       tooltip: 'back',
                       onPressed: () {
-                        Navigator.pushNamed(context,"/account");
+                        Navigator.pushNamed(context,"/help");
                     
           },
         ),
         ),
         body:WillPopScope(
           onWillPop: (){
-            Navigator.pushNamed(context, '/account');
+            Navigator.pushNamed(context, '/help');
           },
         child:ListView(
           children: <Widget>[
@@ -80,7 +80,7 @@ class _PrivacyState extends State<Privacy> {
                         ),
                       );
                     } else {
-                      return IgnorePointer();
+                      return Center(child: CircularProgressIndicator());
                     }
                   }
                 ),
