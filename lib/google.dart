@@ -48,68 +48,65 @@ Future<String> signInWithGoogle(BuildContext context) async {
 
   try {
     print("trying jp to login with mail");
-    GoogleSignInAccount _googleUser = await _googleSignIn. signIn();
+    GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication _googleAuth = await _googleUser.authentication;
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: _googleAuth.idToken, accessToken: _googleAuth.accessToken);
 
-   final AuthResult _authResult = await _auth.signInWithCredential(credential);
-   
-  FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    if (_authResult.additionalUserInfo.isNewUser) {
+    final AuthResult _authResult = await _auth.signInWithCredential(credential);
 
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    if (_authResult.additionalUserInfo.isNewUser) {
       print("new user");
       _user.uid = _authResult.user.uid;
       _user.email = _authResult.user.email;
       global.email = _authResult.user.email;
       _user.fname = _authResult.user.displayName;
-      
+
       global.name = _authResult.user.displayName;
-      _user.photoUrl =_authResult.user.photoUrl.toString();
+      _user.photoUrl = _authResult.user.photoUrl.toString();
       global.photoUrl = _authResult.user.photoUrl.toString();
-      print("name"+_user.fname);
+      print("name" + _user.fname);
       // print(_user.photoUrl);
       OurDatabase().createUser();
-      Navigator.pushNamedAndRemoveUntil(context, '/subs', (_)=> false);
-    }
-
-    else {
+      global.isGLogin = true;
+      Navigator.pushNamedAndRemoveUntil(context, '/subs', (_) => false);
+    } else {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
-  print("current user id");
-  print(user.uid);
-  
-   final Firestore fireStore =  Firestore.instance;
+      print("current user id");
+      print(user.uid);
 
-  await fireStore.collection("users").document(user.uid).updateData({
-    "photoUrl":_authResult.user.photoUrl.toString()
-    // "subscription": true
-});
-      
+      final Firestore fireStore = Firestore.instance;
+
+      await fireStore.collection("users").document(user.uid).updateData({
+        "photoUrl": _authResult.user.photoUrl.toString()
+        // "subscription": true
+      });
+
       print("existing user");
-      DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
-    
-      if(_docSnap.data['subscription'])
-      {
-          print("Already subscribed");
-       Navigator.pushNamedAndRemoveUntil(context, "/paperback",  (_)=> false);
-    
-      }
-      else
-      {
+      DocumentSnapshot _docSnap =
+          await _firestore.collection("users").document(user.uid).get();
+
+      if (_docSnap.data['subscription']) {
+        print("Already subscribed");
+              global.isGLogin = true;
+
+        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
+      } else {
         print("going for subscription");
-        Navigator.pushNamed(context,"/subs");
+              global.isGLogin = true;
+
+        Navigator.pushNamed(context, "/subs");
       }
-      }
+    }
     _currentUser = await OurDatabase().getUserInfo(_authResult.user.uid);
-   
-     if (_currentUser != null) {
+
+    if (_currentUser != null) {
       retVal = "success";
     }
   } on PlatformException catch (e) {
     retVal = e.message;
-  } catch (e) 
-  {
-    
+  } catch (e) {
     print(e);
   }
 

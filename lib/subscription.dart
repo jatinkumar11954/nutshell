@@ -94,6 +94,8 @@ class _SubscriptionState extends State<Subscription> {
                   options: CarouselOptions(
                     aspectRatio: 8 / 25,
                     autoPlay: false,
+                    enableInfiniteScroll: false,
+                    
                     // height: 2000,
                     // width: MediaQuery.of(context).size.height * 0.90,
                   ),
@@ -119,13 +121,12 @@ class _SubscriptionState extends State<Subscription> {
                                         : false,
                                     child: Positioned(
                                       left: MediaQuery.of(context).size.width *
-                                          0.52,
-                                      top: MediaQuery.of(context).size.height *
-                                          0.28,
+                                          0.32,
+                                      top:  MediaQuery.of(context).size.height * 0.05,
                                       child: Icon(
                                         Icons.check_circle,
-                                        color: Colors.white,
-                                        size: 45,
+                                        color: Color.fromRGBO(191, 30, 46, 1),
+                                        size: 60,
                                       ),
                                     ))
                               ],

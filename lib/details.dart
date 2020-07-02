@@ -190,8 +190,9 @@ class _EmailState extends State<Email> {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
           ),
-          Text(
-            'My \nEmail/Phone \nis',
+          Text( global.isGLogin ?
+'My \nPhone \nis':'My \nEmail \nis '
+            ,
             style: TextStyle(
                 fontSize: 75.0,
                 color: Colors.redAccent[700],
@@ -204,7 +205,16 @@ class _EmailState extends State<Email> {
             // controller: validateEmail(),
             autovalidate: true,
             validator: (String txt) {
-              if (txt.length >= 6) {
+              if(      global.isGLogin )
+              {if( txt.length ==10)
+                 Future.delayed(Duration.zero).then((_) {
+                  setState(() {
+                    btn_enable = true;
+                    global.phone=txt;
+                  });
+                });
+              }
+            else if (txt.length >= 6) {
                 Future.delayed(Duration.zero).then((_) {
                   setState(() {
                     btn_enable = true;
@@ -218,9 +228,10 @@ class _EmailState extends State<Email> {
                   });
                 });
               }
-            },
+            },keyboardType:      global.isGLogin? TextInputType.number:TextInputType.emailAddress,
             decoration: InputDecoration(
-                hintText: 'Enter Your Email/Phone',
+                hintText:       global.isGLogin ?
+'Enter Your Phone':'Enter Your Email',
                 hintStyle:
                     TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600)),
           ),
