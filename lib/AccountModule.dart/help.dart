@@ -59,6 +59,14 @@ class _HelpState extends State<Help> {
                                   Navigator.pushNamed(context,"/refund");
                                  },
                                ),
+                                ListTile( 
+                                 title: new Text('About Us'),
+                                 leading: new Icon(Icons.autorenew),
+                                 onTap: () {
+                                  
+                                  Navigator.pushNamed(context,"/aboutUs");
+                                 },
+                               ),
                               ]),
             ),
           )

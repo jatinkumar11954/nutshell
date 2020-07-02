@@ -114,7 +114,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nutshell/users.dart';
-
+import 'global.dart' as global;
 import 'database.dart';
 
 class CurrentUser extends ChangeNotifier {
@@ -165,7 +165,7 @@ class CurrentUser extends ChangeNotifier {
       _user.uid = _authResult.user.uid;
       _user.email = _authResult.user.email;
       _user.fname = fullName;
-      String _returnString = await OurDatabase().createUser(_user);
+      String _returnString = await OurDatabase().createUser();
       if (_returnString == "success") {
         retVal = "success";
       }
@@ -215,9 +215,12 @@ class CurrentUser extends ChangeNotifier {
       }
       if (_authResult.additionalUserInfo.isNewUser) {
         _user.uid = _authResult.user.uid;
+        global.uid= _authResult.user.uid;
         _user.email = _authResult.user.email;
+        global.email= _authResult.user.email;
         _user.fname = _authResult.user.displayName;
-        OurDatabase().createUser(_user);
+        global.name= _authResult.user.displayName;
+        OurDatabase().createUser();
       }
       _currentUser = await OurDatabase().getUserInfo(_authResult.user.uid);
       if (_currentUser != null) {

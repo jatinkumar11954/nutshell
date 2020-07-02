@@ -6,33 +6,33 @@ import 'global.dart' as global;
 class OurDatabase {
   final Firestore _firestore = Firestore.instance;
 
-  Future<String> createUser(Users user) async {
-    print("current user pincode ${user.fname}");
-    print("Current Pincode is ${user.pinCode}");
+  Future<String> createUser() async {
+    // print("current user pincode ${user.fname}");
+    // print("Current Pincode is ${user.pinCode}");
     String retVal = "error";
 FirebaseUser uid = await FirebaseAuth.instance.currentUser();
-    print("firebase user uid ${uid.uid}" );
+    // print("firebase user uid ${uid.uid}" );
 
 
     try {
       await _firestore.collection("users").document(uid.uid). setData({
-        'OrderID': user.sID,
-        'first Name': user.fname,
-        'Last Name': user.lname,
-        'email': user.email,
-        'school': user.school,
+        // 'OrderID': user.sID,
+        'first Name': global.name,
+        // 'Last Name': user.lname,
+        'email': global.email,
+        'school': global.ins,
         'DOB': global.dob,
-        'class': user.grade,
-        'city': user.city,
+        // 'class': user.grade,
+        // 'city': user.city,
         'subscription':false,
-        'phone': user.phone,
-        'group': user.group,
+        'phone': global.phone,
+        'group': global.group,
         'accountCreated': Timestamp.now(),
-        'photoUrl': user.photoUrl,
-        'pinCode': user.pinCode,
-        'subPlan': user.subPlan
+        'photoUrl': global.photoUrl,
+        'pinCode': global.pincode,
+        'subPlan': global.subPlan
       });
-       print("Uploaded Info successfully in Firebase"+user.pinCode);
+      //  print("Uploaded Info successfully in Firebase"+user.pinCode);
       retVal = "success";
     } catch (e) {
       print(e);
