@@ -82,6 +82,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/google.dart';
 import 'package:nutshell/users.dart';
@@ -121,6 +122,7 @@ bool isLoading=false;
           retVal = "success";
           print("in if ");
           print(_currentUser.phone);
+          print(_currentUser.subPlan);
             setState(() {
         isLoading=false;
       });
@@ -146,9 +148,10 @@ bool isLoading=false;
     // print("jp"+_currentUser.photoUrl.toString());
     return WillPopScope(
     onWillPop: (){
-      Navigator.pushNamed(context,"/home");
+      Navigator.pushNamed(context,"/paperback");
     },
     child:Scaffold(
+      bottomNavigationBar: bottomBar(context, 2),
       appBar: new AppBar(
         actions: <Widget>[
           IconButton(
@@ -179,7 +182,7 @@ bool isLoading=false;
         //               ),
         //               tooltip: 'Back',
         //               onPressed: () {
-        //                 Navigator.pushNamed(context,"/home");
+        //                 Navigator.pushNamed(context,"/paperback");
                     
         //   },
         // ),
@@ -238,223 +241,41 @@ bool isLoading=false;
         //     ),
         //   ),
         // ),
-        Center(child:  SizedBox(
-                  height: 130.0,
-                  width: 130.0,
-                  child: 
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100.0),
-                    child:
-                    _currentUser.photoUrl.toString()=="null"?
-                    // Text("No image")
-                    // Image.network("https://nofrdz.com/images/l.png")
-                    Icon(Icons.account_circle,
-                    size:120
-                    )
-                    :Image.network(_currentUser.photoUrl.toString())
-                    //  Image.asset("assets/images/userimg.png")
-                  ),
-                ),
-                ),
-          Center(
-            child:   RichText(
-  text: TextSpan(
-    children: [
-      TextSpan(
-                           text: _currentUser.fname.toString()+" "+_currentUser.lname.toString(),
-                            // textAlign: TextAlign.end,
+        Padding(
+          padding: const EdgeInsets.only(top:8.0,bottom: 8),
+          child: ListTile(
+                      leading: _currentUser.photoUrl.toString()=="null"?
+                      // Text("No image")
+                      // Image.network("https://nofrdz.com/images/l.png")
+                      Icon(Icons.account_circle,
+                      size:90
+                      )
+                      :CircleAvatar(
+                        radius: 60.0,
+                        backgroundImage:
+                            NetworkImage(_currentUser.photoUrl.toString()),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Padding(
+                        padding: const EdgeInsets.only(top:18.0),
+                        child: Text(_currentUser.fname.toString()+" ",
+                                // textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                    fontSize: 25.0,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w500),),
+                      ),
+                      subtitle: Text(
+                          _currentUser.group.toString() ,
                             style: TextStyle(
-                              color: Colors.black,
                                 fontSize: 20.0,
                                 fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w500),
-                          ),
-      WidgetSpan(
-        child: Icon(Icons.check_circle, size: 22,color: Colors.blue,),
-      ),
-     
-    ],
-  ),
-),
-                    //  Text(
-                    //        _currentUser.fname.toString()+" "+_currentUser.lname.toString(),
-                    //         textAlign: TextAlign.end,
-                    //         style: TextStyle(
-                    //             fontSize: 20.0,
-                    //             fontFamily: 'Montserrat',
-                    //             fontWeight: FontWeight.w500),
-                    //       ), 
-          ),
-              Center(child:   Text(
-                          _currentUser.group.toString(),
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w500),
-                        ),),
-                        //  Center(child:   Text(
-                        //   _currentUser.subPlan.toString(),
-                        //   textAlign: TextAlign.end,
-                        //   style: TextStyle(
-                        //       fontSize: 20.0,
-                        //       fontFamily: 'Montserrat',
-                        //       fontWeight: FontWeight.w500),
-                        // ),),
-        // SizedBox(
-        //   height: MediaQuery.of(context).size.height * 0.15,
-        //   width: MediaQuery.of(context).size.width * 1.0,
-        //   child: Padding(
-        //     padding: EdgeInsets.only(left: 25.0),
-        //     child: Row(
-        //       children: <Widget>[
-        //         SizedBox(
-        //           height: 130.0,
-        //           width: 130.0,
-        //           child: ClipRRect(
-        //             borderRadius: BorderRadius.circular(100.0),
-        //             child:
-        //             _currentUser.photoUrl.toString()==null?
-        //             Icon(Icons.account_circle,
-        //             size:120
-        //             ):Image.network(_currentUser.photoUrl.toString())
-        //             //  Image.asset("assets/images/userimg.png")
-        //           ),
-        //         ),
-        //         SizedBox(
-        //           height: MediaQuery.of(context).size.height * 0.15,
-        //           width: MediaQuery.of(context).size.width * 0.6,
-        //           child: Column(
-        //             mainAxisAlignment: MainAxisAlignment.center,
-        //             crossAxisAlignment: CrossAxisAlignment.end,
-        //             children: <Widget>[
-        //               Padding(
-        //                 padding: EdgeInsets.only(top: 5.0),
-        //                 child: Text(
-        //                   _currentUser.fname.toString()+" "+_currentUser.lname.toString(),
-        //                   textAlign: TextAlign.end,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w500),
-        //                 ),
-        //               ),
-        //               Divider(
-        //                 thickness: 4.0,
-        //                 endIndent: 4.0,
-        //                 color: Colors.redAccent,
-        //               ),
-        //               Padding(
-        //                 padding: EdgeInsets.only(left: 15.0),
-        //                 child: Text(
-        //                   // "jp@mail.id",
-        //                 // global.EmailId,
-        //                   _currentUser.email.toString(),
-        //                   textAlign: TextAlign.end,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w400),
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-        // Divider(
-        //   thickness: 3.0,
-        // ),
-        // Text(""),
-        // SizedBox(
-        //     // height: MediaQuery.of(context).size.height * 0.2,
-        //     // width: MediaQuery.of(context).size.width * 0.98,
-        //     child: Padding(
-        //       padding: EdgeInsets.only(left: 35.0, right: 35.0),
-        //       child: Row(
-        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //         children: <Widget>[
-        //           Column(
-        //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //               crossAxisAlignment: CrossAxisAlignment.start,
-        //               children: <Widget>[
-        //                 Text(
-        //                   'Mobile Number',
-        //                   textDirection: TextDirection.ltr,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w500),
-        //                 ),
-        //                  Padding(
-        //       padding: EdgeInsets.all(10.0),),
-        //                 Text(
-        //                   'Class',
-        //                   textDirection: TextDirection.ltr,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w500),
-        //                 ),
-        //                 // Text(
-        //                 //   'DoDo Coins',
-        //                 //   textDirection: TextDirection.ltr,
-        //                 //   style: TextStyle(
-        //                 //       fontSize: 20.0,
-        //                 //       fontFamily: 'Montserrat',
-        //                 //       fontWeight: FontWeight.w500),
-        //                 // ),
-        //               ]),
-        //           Column(
-        //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //               crossAxisAlignment: CrossAxisAlignment.end,
-        //               children: <Widget>[
-        //                 Text(
-        //                   _currentUser.phone.toString(),
-        //                   // global.MobileNumber.text,
-        //                   textDirection: TextDirection.ltr,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w400),
-        //                 ),
-        //                 Padding(
-        //       padding: EdgeInsets.all(10.0),),
-        //                 Text(
-        //                   // global.ReferralCode,
-        //                   _currentUser.grade.toString(),
-        //                   textDirection: TextDirection.ltr,
-        //                   style: TextStyle(
-        //                       fontSize: 20.0,
-        //                       fontFamily: 'Montserrat',
-        //                       fontWeight: FontWeight.w400),
-        //                 ),
-        //                 // Row(
-        //                 //   children: <Widget>[
-        //                 //     SizedBox(
-        //                 //         height: 25.0,
-        //                 //         width: 25.0,
-        //                 //         child: Image.asset('images/account_dodo.png')),
-        //                 //     Padding(
-        //                 //       padding: EdgeInsets.only(left: 30.0),
-        //                 //       child: Text(
-        //                 //         // global.coins,
-        //                 //         textDirection: TextDirection.ltr,
-        //                 //         style: TextStyle(
-        //                 //             fontSize: 20.0,
-        //                 //             fontFamily: 'Montserrat',
-        //                 //             fontWeight: FontWeight.w400),
-        //                 //       ),
-        //                 //     ),
-        //                 //   ],
-        //                 // )
-        //               ])
-        //         ],
-        //       ),
-        //     )),
-        Divider(
+                                fontWeight: FontWeight.w500),),
+                      trailing: Wrap()),
+        ),
+               Divider(
+                 height: 45,
           thickness: 2.0,
           color: Colors.orange,
         ),
@@ -473,6 +294,13 @@ bool isLoading=false;
                               Navigator.pushNamed(context,"/about");
                              },
                            ),
+                           ListTile( 
+                             title: new Text('Pricing Plan'),
+                             leading: new Icon(Icons.account_balance_wallet),
+                             onTap: () {
+                              Navigator.pushNamed(context,"/pricing");
+                             },
+                           ),
                             ListTile( 
                              title: new Text('Contact Us'),
                              leading: new Icon(Icons.call),
@@ -480,35 +308,16 @@ bool isLoading=false;
                               Navigator.pushNamed(context,"/contact");
                              },
                            ),
+                            
                             ListTile( 
-                             title: new Text('Pricing'),
-                             leading: new Icon(Icons.attach_money),
-                             onTap: () {
-                              Navigator.pushNamed(context,"/pricing");
-                             },
-                           ),
-                            ListTile( 
-                             title: new Text('Privacy Policy'),
-                             leading: new Icon(Icons.description),
-                             onTap: () {
-                              Navigator.pushNamed(context,"/privacy");
-                             },
-                           ),
-                            ListTile( 
-                             title: new Text('Terms & Conditions'),
+                             title: new Text('Help'),
                              leading: new Icon(Icons.assignment),
+                             subtitle: Text("Privacy, Refund, TnC, About Us"),
                              onTap: () {
-                              Navigator.pushNamed(context,"/termsandconditions");
+                              Navigator.pushNamed(context,"/help");
                              },
                            ),
-                            ListTile( 
-                             title: new Text('Cancellation/Refund Policy'),
-                             leading: new Icon(Icons.autorenew),
-                             onTap: () {
-                              
-                              Navigator.pushNamed(context,"/refund");
-                             },
-                           ),
+                           
                              ListTile( 
                              title: new Text('Logout',
                              style: TextStyle(fontSize: 20.0

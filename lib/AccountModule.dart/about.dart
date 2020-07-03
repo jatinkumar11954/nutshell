@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nutshell/bottomNav.dart';
 
 class About extends StatefulWidget
 {
@@ -11,9 +12,8 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
+        bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
           title: Text("About US",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -47,7 +47,7 @@ class _AboutState extends State<About> {
       
         ),
         
-      )
+    
     );
   }
 }

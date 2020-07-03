@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -15,9 +16,8 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
+        bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
           title: Text("Terms and Conditions",style: TextStyle(color: Colors.black),),
           backgroundColor:Colors.orange[300],
@@ -29,14 +29,14 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                       ),
                       tooltip: 'back',
                       onPressed: () {
-                        Navigator.pushNamed(context,"/account");
+                        Navigator.pushNamed(context,"/help");
                     
           },
         ),
         ),
         body:WillPopScope(
           onWillPop: (){
-            Navigator.pushNamed(context, '/account');
+            Navigator.pushNamed(context, '/help');
           },
         child:ListView(
           children: <Widget>[
@@ -45,7 +45,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
           ],
         ),
         ),
-      )
+      
     );
   }
   
@@ -78,7 +78,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                         ),
                       );
                     } else {
-                      return IgnorePointer();
+                      return Center(child: CircularProgressIndicator());
                     }
                   }
                 ),

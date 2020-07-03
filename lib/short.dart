@@ -6,11 +6,13 @@ class SizeConfig {
  static double blockSizeHorizontal;
  static double blockSizeVertical;
   static double h, w;
- 
+   static double ht, wt;
  void init(BuildContext context) {
   _mediaQueryData = MediaQuery.of(context);
   screenWidth = _mediaQueryData.size.width;
   screenHeight = _mediaQueryData.size.height;
+    ht = _mediaQueryData.size.width;
+ wt = _mediaQueryData.size.height;
   blockSizeHorizontal = screenWidth / 100;
   blockSizeVertical = screenHeight / 100;
  }

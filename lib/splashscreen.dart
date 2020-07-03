@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
+import 'package:nutshell/phone.dart';
 import 'dart:async';
 
 import 'package:nutshell/subscription.dart';
@@ -19,12 +20,12 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   Animation<double> _mainLogoAnimation;
   AnimationController _mainLogoAnimationController;
-bool _isLoading=false;
+  bool _isLoading = false;
   @override
-  void initState()  {
+  void initState() {
     super.initState();
-    
-     _mainLogoAnimationController = new AnimationController(
+
+    _mainLogoAnimationController = new AnimationController(
         duration: new Duration(milliseconds: 1900), vsync: this);
     _mainLogoAnimation = new CurvedAnimation(
         parent: _mainLogoAnimationController, curve: Curves.easeIn);
@@ -33,43 +34,40 @@ bool _isLoading=false;
     existingUser();
   }
 
+  Future existingUser() async {
+    final Firestore _firestore = Firestore.instance;
 
- Future existingUser() async {
-     final Firestore _firestore = Firestore.instance;
+    try {
+      await new Future.delayed(const Duration(milliseconds: 1500));
 
- try{
-       await new Future.delayed(const Duration(milliseconds: 1500));  
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      print(user.toString());
 
-FirebaseUser user = await FirebaseAuth.instance.currentUser();
- print(user.toString());
+      if (user != null) {
+        DocumentSnapshot _docSnap =
+            await _firestore.collection("users").document(user.uid).get();
 
-  if(user!=null ){
-     DocumentSnapshot _docSnap = await _firestore.collection("users").document(user.uid).get();
-    
-    if(_docSnap.data['subscription'])
-    {
-     Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+        if (_docSnap.data['subscription']) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, "/paperback", (_) => false);
+        } else {
+          Navigator.pushNamed(context, "/subs");
+        }
+      } else {
+        await new Future.delayed(const Duration(milliseconds: 1000));
+        Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
+
+// Navigator.of(context).push(
+//                         new MaterialPageRoute(
+//                             builder: (BuildContext context) => new Phone()
+//                             )
+//                             );
+      }
+    } catch (e) {
+      print(e);
     }
-    else
-    {
-      Navigator.pushNamed(context,"/subs");
-    }
-  } 
-  else{
-      // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
-    // goToLoginPage();
-  await new Future.delayed(const Duration(milliseconds: 1000));
-  Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
-  
   }
- }catch(e){
-   print(e);
- }
 
- }
-
-
- 
   // not using below code for splash screen
   Future goToLoginPage() async {
     await new Future.delayed(const Duration(milliseconds: 2000));
@@ -82,7 +80,7 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
         'https://www.googleapis.com/auth/contacts.readonly',
       ],
     );
-   // Users _user = Users();
+    // Users _user = Users();
     try {
       GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
       GoogleSignInAuthentication _googleAuth = await _googleUser.authentication;
@@ -93,7 +91,7 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
       if (_authResult.additionalUserInfo.isNewUser) {
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
       } else {
-        Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
       }
       //Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new IntroScreen()),(_)=> false);
     } catch (e) {
@@ -106,15 +104,7 @@ FirebaseUser user = await FirebaseAuth.instance.currentUser();
     return new Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Color.fromRGBO(250, 112, 154, 1.0),
-                Color.fromRGBO(254, 225, 64, 1.0)
-              ]),
-        ),
+        decoration: BoxDecoration(color: Color.fromRGBO(191, 30, 46, 1.0)),
         child: new Center(
             child: new Opacity(
                 opacity: 1.0 * _mainLogoAnimation.value,

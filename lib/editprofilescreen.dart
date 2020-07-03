@@ -23,7 +23,7 @@
 //   Widget build(BuildContext context) {
 //     return WillPopScope(
 //     onWillPop: (){
-//       Navigator.pushNamed(context,"/home");
+//       Navigator.pushNamed(context,"/paperback");
 //     },
 //     child:Scaffold(
 //       appBar: new AppBar(
@@ -316,7 +316,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nutshell/home.dart';
+import 'package:nutshell/paperback.dart';
 import 'package:nutshell/orderConfirmation.dart';
 import 'package:nutshell/users.dart';
 
@@ -574,7 +574,7 @@ var _dropforms= [
               width: 140,
               child: TextFormField(
                   controller: _fnamecontroller,
-                  autovalidate: true,
+                  // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Enter First Name',hintText: _currentUser.fname.toString()),
                   validator: validateName,
@@ -586,7 +586,7 @@ var _dropforms= [
               width: 140,
               child: TextFormField(
                   controller: _lnamecontroller,
-                  autovalidate: true,
+                  // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Enter Last Name',hintText: _currentUser.lname.toString()),
                   validator: validateName,
@@ -601,7 +601,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _schoolcontroller,
-              autovalidate: true,
+              // autovalidate: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(labelText: 'Enter School Name',hintText: _currentUser.school.toString()),
               validator: validateSchool,
@@ -614,7 +614,7 @@ var _dropforms= [
           width: 320,
           child: TextFormField(
               controller: _classcontroller,
-              autovalidate: true,
+              // autovalidate: true,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(labelText: 'Enter Class',),
               validator: validateClass,
@@ -664,46 +664,46 @@ var _dropforms= [
       //           phone = value;
       //         }),
       //   ),
-        Padding(padding: EdgeInsets.all(10)),
-        SizedBox( 
-          width: 320,
-          child: Column(
-            children: <Widget>[
+      //   Padding(padding: EdgeInsets.all(10)),
+      //   SizedBox( 
+      //     width: 320,
+      //     child: Column(
+      //       children: <Widget>[
               
-              Text("Select Group",style: TextStyle(color:Colors.black,fontSize: 20.0),),
-              Text("\n1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
-              // Text("Suitable for students of ages 9-12")"),)
-              // Padding.EdgeInsets.only()
+      //         Text("Select Group",style: TextStyle(color:Colors.black,fontSize: 20.0),),
+      //         Text("\n1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
+      //         // Text("Suitable for students of ages 9-12")"),)
+      //         // Padding.EdgeInsets.only()
 
-            ],
-          ),
-          // Text("Select Group",),
+      //       ],
+      //     ),
+      //     // Text("Select Group",),
 
-          // 1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
-      //         Text("Suitable for students of ages 9-12")"),
-          // height: MediaQuery.of(context).size.height / 6,
-        ),
-        Padding(padding: EdgeInsets.only(left:10)),
-         SizedBox( 
-          width: 320,
-                        child:DropdownButton<String>(
-                    items: _dropforms.map((String dropDownStringItem)
-                    {
-                       return DropdownMenuItem<String>(
-                          value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
+      //     // 1. Group A Suitable for students of ages 9-12\n2. Suitable for students of ages 13-1"),
+      // //         Text("Suitable for students of ages 9-12")"),
+      //     // height: MediaQuery.of(context).size.height / 6,
+      //   ),
+        // Padding(padding: EdgeInsets.only(left:10)),
+        //  SizedBox( 
+        //   width: 320,
+        //                 child:DropdownButton<String>(
+        //             items: _dropforms.map((String dropDownStringItem)
+        //             {
+        //                return DropdownMenuItem<String>(
+        //                   value: dropDownStringItem,
+        //                   child: Text(dropDownStringItem),
 
-                       );
-                    }).toList(),
-                    onChanged: (String newValueSelected){
-                      setState(() {
-                         _currentUser.group = newValueSelected;
-                        this._dropformSelected =newValueSelected;
-                      });
-                    },
-                    value: _dropformSelected,
-                    ),
-              ),
+        //                );
+        //             }).toList(),
+        //             onChanged: (String newValueSelected){
+        //               setState(() {
+        //                  _currentUser.group = newValueSelected;
+        //                 this._dropformSelected =newValueSelected;
+        //               });
+        //             },
+        //             value: _dropformSelected,
+        //             ),
+        //       ),
               Padding(padding: EdgeInsets.all(20)),
       ],
     ),
