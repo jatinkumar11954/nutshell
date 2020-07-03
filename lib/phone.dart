@@ -32,6 +32,7 @@ class _PhoneState extends State<Phone> {
   String smsCode;
   String verificationId;
   var _authCredential;
+  bool btn_enable = false;
 
   String phoneValidator(String value) {
     if (value.length < 13 || value.length == null) {
@@ -192,6 +193,7 @@ class _PhoneState extends State<Phone> {
     SizeConfig().init(context);
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -202,86 +204,172 @@ class _PhoneState extends State<Phone> {
           size: 80.0,
         ),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: MediaQuery.of(context).size.width - 100,
-                child: Text(
-                  "Enter your Phone Number for verification",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
+      body: Container(
+        padding: EdgeInsets.only(left: 25.0, top: 10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Please enter \nyour number',
+              style: TextStyle(
+                  fontSize: 75.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.redAccent[700]),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            Text(
+              'This number will be used to login to your \naccount via otp.',
+              style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.15,
+            ),
+            TextFormField(
+              autovalidate: true,
+              validator: (String txt) {
+                this.phoneNo = "+91" + txt;
+                if (txt.length >= 1) {
+                  Future.delayed(Duration.zero).then((_) {
+                    setState(() {
+                      btn_enable = true;
+                    });
+                  });
+                } else {
+                  Future.delayed(Duration.zero).then((_) {
+                    setState(() {
+                      btn_enable = false;
+                    });
+                  });
+                }
+              },
+              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
+              cursorWidth: 2.0,
+              cursorRadius: Radius.circular(10),
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                  prefix: Text(
+                '+91\t',
+                style: TextStyle(
+                    fontSize: 30.0,
                     fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width - 100,
+                    color: Colors.grey),
+              )),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: RaisedButton(
+                color: Colors.redAccent[700],
+                disabledColor: Colors.grey,
+                onPressed: btn_enable == true
+                    ? () {
+                        phoneValidator(phoneNo);
+                      }
+                    : null,
                 child: Text(
-                  "Your phone number will be used to login into Nutshell",
+                  'Login with Phone',
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey,
-                  ),
-                  textAlign: TextAlign.left,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
               ),
-              SizedBox(
-                width: 300,
-                child: TextField(
-                  maxLength: 10,
-                  controller: phn,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(hintText: 'Enter Phone Number'),
-                  onChanged: (value) {
-                    this.phoneNo = "+91" + value;
-                    g.phone = phoneNo;
-                  },
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 2 - 90,
-              ),
-              BottomAppBar(
-                child: GestureDetector(
-                  onTap: () {
-                    phoneValidator(phoneNo);
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width - 50,
-                    height: 62.5,
-                    child: Center(
-                      child: SizedBox(
-                        width: 100,
-                        child: isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                backgroundColor: Colors.blue,
-                              ))
-                            : Text(
-                                'Submit',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
-                      ),
-                    ),
-                    color: Colors.deepOrange,
-                  ),
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
+
+      // Center(
+      //   child: SingleChildScrollView(
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //       crossAxisAlignment: CrossAxisAlignment.center,
+      //       children: <Widget>[
+      //         SizedBox(
+      //           width: MediaQuery.of(context).size.width - 100,
+      //           child: Text(
+      //             "Enter your Phone Number for verification",
+      //             style: TextStyle(
+      //               color: Colors.black,
+      //               fontSize: 25,
+      //               fontWeight: FontWeight.bold,
+      //             ),
+      //             textAlign: TextAlign.left,
+      //           ),
+      //         ),
+      //         SizedBox(
+      //           height: 50,
+      //           width: MediaQuery.of(context).size.width - 100,
+      //           child: Text(
+      //             "Your phone number will be used to login into Nutshell",
+      //             style: TextStyle(
+      //               fontSize: 15,
+      //               color: Colors.grey,
+      //             ),
+      //             textAlign: TextAlign.left,
+      //           ),
+      //         ),
+      //         SizedBox(
+      //           width: 300,
+      //           child: TextField(
+      //             maxLength: 10,
+      //             controller: phn,
+      //             keyboardType: TextInputType.number,
+      //             decoration: InputDecoration(hintText: 'Enter Phone Number'),
+      //             onChanged: (value) {
+      //               this.phoneNo = "+91" + value;
+      //               g.phone = phoneNo;
+      //             },
+      //           ),
+      //         ),
+      //         SizedBox(
+      //           height: MediaQuery.of(context).size.height / 2 - 90,
+      //         ),
+      //         BottomAppBar(
+      //           child: GestureDetector(
+      //             onTap: () {
+      //               phoneValidator(phoneNo);
+      //             },
+      //             child: Container(
+      //               width: MediaQuery.of(context).size.width - 50,
+      //               height: 62.5,
+      //               child: Center(
+      //                 child: SizedBox(
+      //                   width: 100,
+      //                   child: isLoading
+      //                       ? Center(
+      //                           child: CircularProgressIndicator(
+      //                           backgroundColor: Colors.blue,
+      //                         ))
+      //                       : Text(
+      //                           'Submit',
+      //                           style: TextStyle(
+      //                               fontSize: 20,
+      //                               color: Colors.white,
+      //                               fontWeight: FontWeight.bold),
+      //                           textAlign: TextAlign.center,
+      //                         ),
+      //                 ),
+      //               ),
+      //               color: Colors.deepOrange,
+      //             ),
+      //           ),
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
