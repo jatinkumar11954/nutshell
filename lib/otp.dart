@@ -76,11 +76,11 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       setState(() {
         _isLoading = false;
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Otp(PhoneNo: phoneNo),
-              settings: RouteSettings(arguments: actualCode)));
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => Otp(PhoneNo: phoneNo),
+      //         settings: RouteSettings(arguments: actualCode)));
 
       setState(() {
         status = "\nAuto retrieval time out";

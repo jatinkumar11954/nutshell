@@ -8,7 +8,7 @@ import 'package:nutshell/paperback.dart';
 import 'package:nutshell/splashscreen.dart';
 import 'package:flutter/services.dart';
 import 'package:nutshell/subscription.dart';
-import 'AccountModule.dart/about.dart';
+// import 'AccountModule.dart/about.dart';
 import 'AccountModule.dart/contactUs.dart';
 import 'AccountModule.dart/pricing.dart';
 import 'AccountModule.dart/privacy.dart';
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         'otp': (BuildContext context) => Otp(),
         '/dummy': (BuildContext context) => DummyScreen(),
         '/account': (BuildContext context) => Account(),
-        '/about': (BuildContext context) => About(),
+        // '/about': (BuildContext context) => About(),
         '/help': (BuildContext context) => Help(),
         '/contact': (BuildContext context) => ContactUs(),
         '/pricing': (BuildContext context) => Pricing(),
@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
       home:
           //  IntroScreen()
           Splash(),
-           
+
       //  OrderConfirmation(),
       // AboutUs()
       // Details()

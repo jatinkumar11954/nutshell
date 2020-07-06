@@ -52,6 +52,7 @@ dependencies:
   datetime_picker_formfield:
   flutter_svg:
   path_provider:
+  image_picker:
 
 dev_dependencies:
   flutter_test:

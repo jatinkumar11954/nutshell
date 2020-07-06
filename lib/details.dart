@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'database.dart';
 import 'global.dart' as global;
-import 'AccountModule.dart/about.dart';
+// import 'AccountModule.dart/about.dart';
 import 'AccountModule.dart/contactUs.dart';
 import 'AccountModule.dart/pricing.dart';
 import 'AccountModule.dart/privacy.dart';
@@ -40,7 +40,7 @@ class Details extends StatelessWidget {
         '/paperback': (BuildContext context) => Paperbacks(),
         '/group': (BuildContext context) => GroupScreen(),
         '/account': (BuildContext context) => Account(),
-        '/about': (BuildContext context) => About(),
+        // '/about': (BuildContext context) => About(),
         '/help': (BuildContext context) => Help(),
         '/contact': (BuildContext context) => ContactUs(),
         '/pricing': (BuildContext context) => Pricing(),
