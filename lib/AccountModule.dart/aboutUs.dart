@@ -7,9 +7,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AboutUs extends StatelessWidget {
-
- 
-
   // VersionCheckBloc versionCheckBloc;
 
   @override
@@ -17,49 +14,73 @@ class AboutUs extends StatelessWidget {
     // versionCheckBloc = versionCheckBloc ?? VersionCheckBlocProvider.of(context);
 
     return Scaffold(
-        bottomNavigationBar: bottomBar(context, 2),
-        appBar: AppBar(
-          title: Text("About US",style: TextStyle(color: Colors.black),),
-          backgroundColor:Colors.orange[300],
-          leading: new IconButton(
+      bottomNavigationBar: bottomBar(context, 2),
+      appBar: AppBar(
+        title: Text(
+          "About US",
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.orange[300],
+        leading: new IconButton(
           icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                        color: Colors.black,
-                      ),
-                      tooltip: 'back',
-                      onPressed: () {
-                        Navigator.pushNamed(context,"/account");
-                    
+            Icons.arrow_back,
+            size: 30.0,
+            color: Colors.black,
+          ),
+          tooltip: 'back',
+          onPressed: () {
+            Navigator.pushNamed(context, "/account");
           },
         ),
-        ),
-        body:WillPopScope(
-          onWillPop: (){
-            Navigator.pushNamed(context, '/account');
-          },
-        child:ListView(
+      ),
+      body: WillPopScope(
+        onWillPop: () {
+          Navigator.pushNamed(context, '/account');
+        },
+        child: ListView(
           children: <Widget>[
-            Text("Will be updated"),
-          //   SizedBox(
-          //     height: MediaQuery.of(context).size.height/2,
-          //     width: MediaQuery.of(context).size.width,
-          //     child:  SvgPicture.asset("assets/images/AboutUs.svg",    
-          // ),
-          //   ),
-           
+            // Text("Will be updated"),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.5,
+              child: SvgPicture.asset(
+                "assets/images/About_us_30.svg",
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.5,
+              child: SvgPicture.asset(
+                "assets/images/About_us_31.svg",
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.5,
+              child: SvgPicture.asset(
+                "assets/images/About_us_32.svg",
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.5,
+              child: SvgPicture.asset(
+                "assets/images/About_us_33.svg",
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              width: MediaQuery.of(context).size.width * 1.5,
+              child: SvgPicture.asset(
+                "assets/images/About_us_34.svg",
+              ),
+            ),
             // SvgPicture.asset("assets/images/INTRO1.svg"),
             // _buildBody(context),
             // Text("\n\n\n No TermsAndConditionss till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         ),
-        ),
-     
+      ),
     );
   }
-
-  
-
 }
-
-
