@@ -44,7 +44,8 @@ class _PhoneState extends State<Phone> {
       setState(() {
         isLoading = true;
       });
-      verifyPhone();
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Otp(PhoneNo: value,)));
+      // verifyPhone();
       //return null;
     }
   }
@@ -213,7 +214,7 @@ class _PhoneState extends State<Phone> {
             Text(
               'Please enter \nyour number',
               style: TextStyle(
-                  fontSize: 75.0,
+                  fontSize: 55.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.redAccent[700]),
             ),

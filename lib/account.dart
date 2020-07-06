@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
+import 'package:nutshell/global.dart';
 import 'package:nutshell/google.dart';
 import 'package:nutshell/users.dart';
 import 'currentUser.dart';
@@ -172,12 +173,12 @@ class _AccountState extends State<Account> {
                       ListTile(
                         contentPadding: EdgeInsets.fromLTRB(0, 10.0, 0.0, 10.0),
                         title: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: CircleAvatar(
-                                radius: 70,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: isGLogin? CircleAvatar(
+                                radius: 50,
                                 backgroundImage: NetworkImage(
                                     _currentUser.photoUrl.toString()),
                                 backgroundColor: Color(0xff476cfb),
@@ -194,7 +195,25 @@ class _AccountState extends State<Account> {
                                         // : Icon(Icons.account_circle,
                                         //     size: 70))
                                         )),
-                              ),
+                              ):
+                             CircleAvatar(
+                                radius: 50,
+                           
+                                backgroundColor: Color(0xff476cfb),
+                                child: ClipOval(
+                                    child: new SizedBox(
+                                        width: 180.0,
+                                        height: 180.0,
+                                        child: (_image != null)
+                                            ? Image.file(
+                                                _image,
+                                                fit: BoxFit.fill,
+                                              )
+                                            : null
+                                        // : Icon(Icons.account_circle,
+                                        //     size: 70))
+                                        )),
+                              ) ,
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 60.0),
@@ -208,10 +227,12 @@ class _AccountState extends State<Account> {
                                 },
                               ),
                             ),
-                            Wrap(
-                              children: <Widget>[
+                           Column(
+                             mainAxisAlignment: MainAxisAlignment.start,
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 15.0),
+                                  padding: const EdgeInsets.only(left: 25.0),
                                   child: Text(
                                     _currentUser.fname.toString() + " ",
                                     textAlign: TextAlign.end,
@@ -222,12 +243,23 @@ class _AccountState extends State<Account> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),
-                                Text(
-                                  _currentUser.group.toString(),
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w500),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Container(
+                                    height: 5,
+                                    width: 220,
+                                    color:Color.fromRGBO(191, 30, 46, 1),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25.0),
+                                  child: Text(
+                                    _currentUser.group.toString(),
+                                    style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ],
                             ),

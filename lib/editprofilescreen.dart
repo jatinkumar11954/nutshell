@@ -124,7 +124,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             Text(
               'Update \nDetails',
               style: TextStyle(
-                  fontSize: 75.0,
+                  fontSize: 55.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.redAccent[700]),
             ),

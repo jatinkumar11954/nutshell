@@ -17,6 +17,9 @@ class Otp extends StatefulWidget {
 }
 
 class _OtpState extends State<Otp> with TickerProviderStateMixin {
+  bool _resendEnble = false;
+  bool _continueEnble = false;
+
   var onTapRecognizer;
   bool _isLoading = false;
   TextEditingController textEditingController;
@@ -25,6 +28,8 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
   StreamController<ErrorAnimationType> errorController;
 
   bool hasError = false;
+  bool _pinEnable = false;
+
   String currentText = "";
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -34,7 +39,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
     // msg="There is no record with this user, please register first by clicking Register or check the user mail id or Password";
     final SnackBar = new prefix0.SnackBar(
       content: new Text(msg),
-      duration: new Duration(seconds: 3),
+      duration: new Duration(seconds: 1),
       // action: new SnackBarAction(label: "Register",
       // onPressed: (){
       //   Navigator.pushNamed(context, "Register");
@@ -52,6 +57,11 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
   AuthCredential _authCredential;
   bool btn_enable = false;
   Future<void> verifyPhone() async {
+    setState(() {
+      _pinEnable = false;
+      _continueEnble = false;
+      _resendEnble = false;
+    });
     var firebaseAuth = await FirebaseAuth.instance;
 
     final PhoneCodeSent codeSent =
@@ -62,9 +72,9 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       // });
 
       setState(() {
-        print('Code sent to $phoneNo');
-        callSnackBar("Code sent to $phoneNo");
-        status = "\nEnter the code sent to " + phoneNo;
+        print('Code sent to $widget.PhoneNo');
+        callSnackBar("Code sent to $widget.PhoneNo");
+        // status = "\nEnter the code sent to " + widget.PhoneNo;
       });
     };
     final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
@@ -75,11 +85,14 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       // phn.clear();
       setState(() {
         _isLoading = false;
+        _pinEnable = true;
+            textEditingController = TextEditingController();
+
       });
       // Navigator.push(
       //     context,
       //     MaterialPageRoute(
-      //         builder: (context) => Otp(PhoneNo: phoneNo),
+      //         builder: (context) => Otp(widget.PhoneNo: widget.PhoneNo),
       //         settings: RouteSettings(arguments: actualCode)));
 
       setState(() {
@@ -176,7 +189,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       });
     };
     firebaseAuth.verifyPhoneNumber(
-        phoneNumber: phoneNo,
+        phoneNumber: widget.PhoneNo,
         timeout: Duration(seconds: 60),
         verificationCompleted: verificationCompleted,
         verificationFailed: verificationFailed,
@@ -186,12 +199,13 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
 
   void initState() {
     // TODO: implement initState
+    verifyPhone();
+
     onTapRecognizer = TapGestureRecognizer()
       ..onTap = () {
         Navigator.pop(context);
       };
     errorController = StreamController<ErrorAnimationType>();
-    textEditingController = TextEditingController();
 
     super.initState();
   }
@@ -217,6 +231,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
         verificationId: actualCode, smsCode: smsCode);
     firebaseAuth.signInWithCredential(_authCredential).catchError((error) {
       setState(() {
+        _resendEnble = true;
         status = 'Something has gone wrong, please try later';
       });
       setState(() {
@@ -286,20 +301,6 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
 
   // }
 
-  String phoneValidator(String value) {
-    if (value.length != 13 || value.length == null) {
-      print("validation failed");
-      // return 'Phone Number must be of 10 digits';
-      callSnackBar("Phone Number must be of 10 digits");
-      //return null;
-    } else {
-      callSnackBar("Sending Otp to mobile Number");
-      Navigator.pushNamed(context, "otp", arguments: phoneNo);
-      // verifyPhone();
-      //return null;
-    }
-  }
-
   String SmsValidator(String value) {
     if (value.length != 6 || value.length == null) {
       print("validation failed");
@@ -363,7 +364,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                 Text(
                   'Please wait while we \nauto verify the otp.',
                   style: TextStyle(
-                      fontSize: 50.0,
+                      fontSize: 40.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent[700]),
                 ),
@@ -372,24 +373,46 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        '0:30',
+                        style: TextStyle(
+                            fontSize: 23,
+                            color: _resendEnble ? Colors.black : Colors.grey),
+                      ),
+                      FlatButton(
+                        onPressed: () => _resendEnble ? verifyPhone() : null,
+                        child: Text(
+                          'Resend otp',
+                          style: TextStyle(
+                              fontSize: 23,
+                              color: _resendEnble ? Colors.black : Colors.grey),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 PinCodeTextField(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  enabled: _pinEnable,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+
                   length: 6,
-                  obsecureText: false,
+                  obsecureText: false, enableActiveFill: true,
+
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.underline,
-                      // borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 50,
-                      fieldWidth: 35,
-                      activeFillColor: Colors.white,
-                      inactiveFillColor: Colors.white,
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(10),
+                      fieldHeight: 60,
+                      fieldWidth: 45,
+                      activeFillColor: Colors.grey[300],
+                      inactiveFillColor: Colors.grey[300],
                       selectedFillColor: Colors.white,
                       inactiveColor: Colors.grey),
                   animationDuration: Duration(milliseconds: 300),
                   // backgroundColor: Colors.blue.shade50,
-                  enableActiveFill: true,
                   errorAnimationController: errorController,
                   controller: textEditingController,
                   onCompleted: (v) {
@@ -412,18 +435,6 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    SizedBox(),
-                    FlatButton(
-                      onPressed: () {
-                        verifyPhone();
-                      },
-                      child: Text('Resend otp'),
-                    )
-                  ],
-                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
@@ -431,8 +442,10 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                   height: MediaQuery.of(context).size.height * 0.07,
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: RaisedButton(
-                    color: Colors.redAccent[700],
-                    onPressed: () {},
+                    color: _continueEnble ? Colors.redAccent[700] : Colors.grey,
+                    onPressed: () => _continueEnble
+                        ? SmsValidator(textEditingController.text)
+                        : null,
                     child: Text(
                       'Continue',
                       style: TextStyle(
