@@ -10,6 +10,7 @@ import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/global.dart';
 import 'package:nutshell/google.dart';
+import 'package:nutshell/login.dart';
 import 'package:nutshell/users.dart';
 import 'currentUser.dart';
 import 'package:image_picker/image_picker.dart';
@@ -209,9 +210,9 @@ class _AccountState extends State<Account> {
                                                 _image,
                                                 fit: BoxFit.fill,
                                               )
-                                            : null
-                                        // : Icon(Icons.account_circle,
-                                        //     size: 70))
+                                            :
+                                         Icon(Icons.account_circle,
+                                            size: 90)
                                         )),
                               ) ,
                             ),
@@ -352,7 +353,7 @@ showAlertDialog(BuildContext context) {
     child: Text("Yes"),
     onPressed: () {
       signOutGoogle();
-      Navigator.of(context).pushNamedAndRemoveUntil('/Login', (_) => false);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>LoginScreen()), (_) => false);
     },
   );
 

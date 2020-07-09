@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'global.dart' as g;
 import 'package:flutter/gestures.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -72,9 +74,9 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       // });
 
       setState(() {
-        print('Code sent to $widget.PhoneNo');
-        callSnackBar("Code sent to $widget.PhoneNo");
-        // status = "\nEnter the code sent to " + widget.PhoneNo;
+        print('Code sent to ${widget.PhoneNo}');
+        callSnackBar("Code sent to ${widget.PhoneNo}");
+        // status = "\nEnter the code sent to " + {widget.PhoneNo};
       });
     };
     final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
@@ -86,13 +88,13 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       setState(() {
         _isLoading = false;
         _pinEnable = true;
-            textEditingController = TextEditingController();
 
+        textEditingController = TextEditingController();
       });
       // Navigator.push(
       //     context,
       //     MaterialPageRoute(
-      //         builder: (context) => Otp(widget.PhoneNo: widget.PhoneNo),
+      //         builder: (context) => Otp({widget.PhoneNo}: {widget.PhoneNo}),
       //         settings: RouteSettings(arguments: actualCode)));
 
       setState(() {
@@ -108,6 +110,14 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       setState(() {
         status = '${authException.message}';
         callSnackBar("Please enter a valid phone number");
+          Fluttertoast.showToast(
+            timeInSecForIosWeb: 3,
+      msg: "Please enter a valid phone number",
+    );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Phone()));
+
+
         print("Error message: " + status);
         setState(() {
           _isLoading = false;
@@ -232,6 +242,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
     firebaseAuth.signInWithCredential(_authCredential).catchError((error) {
       setState(() {
         _resendEnble = true;
+
         status = 'Something has gone wrong, please try later';
       });
       setState(() {
@@ -320,8 +331,6 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    actualCode = ModalRoute.of(context).settings.arguments;
-    print("$actualCode");
     SizeConfig().init(context);
     //  String i=ModalRoute.of(context).settings.arguments;
     //0 is for otp
@@ -398,9 +407,8 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                   enabled: _pinEnable,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                  length: 6,
+                  length: 6, autoValidate: true,
                   obsecureText: false, enableActiveFill: true,
-
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
@@ -417,6 +425,13 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                   controller: textEditingController,
                   onCompleted: (v) {
                     print("Completed");
+                  },
+                  validator: (v) {
+                    if (v.length == 6) {
+                      _continueEnble = true;
+                    } else {
+                      _continueEnble = false;
+                    }
                   },
                   onChanged: (value) {
                     print(value);
@@ -443,9 +458,8 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: RaisedButton(
                     color: _continueEnble ? Colors.redAccent[700] : Colors.grey,
-                    onPressed: () => _continueEnble
-                        ? SmsValidator(textEditingController.text)
-                        : null,
+                    onPressed: () =>
+                        _continueEnble ? SmsValidator(currentText) : null,
                     child: Text(
                       'Continue',
                       style: TextStyle(
@@ -460,156 +474,6 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
               ],
             ),
           ),
-
-          // SingleChildScrollView(
-          //     child:
-          //     Center(
-          //   child: Container(
-          //     color: Colors.white,
-          //     margin: EdgeInsets.only(top: SizeConfig.wt * 0.13),
-          //     width: SizeConfig.wt * 0.8,
-          //     child: Center(
-          //       child: Column(
-          //         crossAxisAlignment: CrossAxisAlignment.center,
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: <Widget>[
-          //           // Center(
-          //           //   child: Padding(
-          //           //     padding: const EdgeInsets.only(top:15.0),
-          //           //     child: Text(
-          //           //       "OTP Verification",
-          //           //       style:
-          //           //           TextStyle(color: Theme.of(context).primaryColor, fontSize: 33,fontWeight: FontWeight.w600),
-          //           //     ),
-          //           //   ),
-          //           // ),
-          //           // SizedBox(height:SizeConfig.ht*0.1),
-          //           Padding(
-          //             padding: EdgeInsets.only(top: 50.0),
-          //             child: Column(
-          //                 crossAxisAlignment: CrossAxisAlignment.center,
-          //                 mainAxisAlignment: MainAxisAlignment.center,
-          //                 children: <Widget>[
-          //                   Text(
-          //                     "One time password(OTP) has been ",
-          //                     style: TextStyle(color: Colors.grey, fontSize: 20),
-          //                   ),
-          //                   Text(
-          //                     "sent to your mobile ",
-          //                     style: TextStyle(color: Colors.grey, fontSize: 20),
-          //                   ),
-          //                 ]),
-          //           ),
-          //            Padding(
-          //              padding: const EdgeInsets.all(8.0),
-          //              child: Center(
-          //                child:Text(
-          //                               "+91-${widget.PhoneNo}",//1 is for phone number
-
-          //                               style: TextStyle(
-          //                                   color: Theme.of(context).primaryColor,
-          //                                   fontSize: 25,
-          //                                   fontWeight: FontWeight.w400),
-          //                             ),
-          //              ),
-          //            ),
-          //           Center(
-          //             child: Text(
-          //               "Please enter the same here",
-          //               style: TextStyle(color: Colors.grey, fontSize: 20),
-          //             ),
-          //           ),
-
-          //           GestureDetector(
-          //             child: Container(
-          //               width: SizeConfig.wt * 0.35,
-          //               child:
-          // PinCodeTextField(
-          //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //                 length: 6,
-          //                 obsecureText: false,
-          //                 animationType: AnimationType.fade,
-          //                 pinTheme: PinTheme(
-          //                     shape: PinCodeFieldShape.underline,
-          //                     // borderRadius: BorderRadius.circular(5),
-          //                     fieldHeight: 50,
-          //                     fieldWidth: 35,
-          //                     activeFillColor: Colors.white,
-          //                     inactiveFillColor: Colors.white,
-          //                     selectedFillColor: Colors.white,
-          //                     inactiveColor: Colors.grey),
-          //                 animationDuration: Duration(milliseconds: 300),
-          //                 // backgroundColor: Colors.blue.shade50,
-          //                 enableActiveFill: true,
-          //                 errorAnimationController: errorController,
-          //                 controller: textEditingController,
-          //                 onCompleted: (v) {
-          //                   print("Completed");
-          //                 },
-          //                 onChanged: (value) {
-          //                   print(value);
-
-          //                   setState(() {
-          //                     currentText = value;
-          //                   });
-          //                 },
-          //                 beforeTextPaste: (text) {
-          //                   print("Allowing to paste $text");
-          //                   //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-          //                   //but you can show anything you want here, like your pop up saying wrong paste format or etc
-          //                   return true;
-          //                 },
-          //               ),
-          //             ),
-          //           ),
-          //           Padding(
-          //             padding: EdgeInsets.only(top: SizeConfig.ht * 0.045),
-          //             child: RaisedButton(
-          //                 padding: EdgeInsets.only(
-          //                     top: SizeConfig.ht * 0.01,
-          //                     bottom: SizeConfig.ht * 0.01,
-          //                     left: SizeConfig.wt * 0.08,
-          //                     right: SizeConfig.wt * 0.08),
-          //                 color: Theme.of(context).primaryColor,
-          //                 onPressed: () {
-          //                   print("curent text $currentText");
-          //                   SmsValidator(currentText);
-          //                 },
-          //                 shape: RoundedRectangleBorder(
-          //                   borderRadius: new BorderRadius.circular(50.0),
-          //                 ),
-          //                 child: _isLoading
-          //                     ? Center(
-          //                         child: CircularProgressIndicator(
-          //                         backgroundColor: Colors.blue,
-          //                       ))
-          //                     : Text("VERIFY OTP",
-          //                         style: TextStyle(
-          //                             color: Colors.white, fontSize: 22))),
-          //           ),
-
-          // Center(
-          //     child: Padding(
-          //   padding: EdgeInsets.only(
-          //       top: SizeConfig.ht * 0.018, bottom: SizeConfig.ht * 0.018),
-          //   child: FlatButton(
-          //     onPressed: () {
-          //       print("Resend OTP");
-          //     },
-          //     child: Text(
-          //       "Resend OTP",
-          //       style: TextStyle(
-          //           color: Theme.of(context).primaryColor,
-          //           fontSize: 22),
-          //     ),
-          //   ),
-          // )),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   )),
-          // ),
         ));
   }
 }

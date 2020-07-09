@@ -44,143 +44,15 @@ class _PhoneState extends State<Phone> {
       setState(() {
         isLoading = true;
       });
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Otp(PhoneNo: value,)));
-      // verifyPhone();
-      //return null;
-    }
-  }
-
-  Future<void> verifyPhone() async {
-    var firebaseAuth = await FirebaseAuth.instance;
-
-    final PhoneCodeSent codeSent =
-        (String verificationId, [int forceResendingToken]) async {
-      this.actualCode = verificationId;
-      // smsCodeDialog(context).then((value) {
-      //   print("signed in");
-      // });
-
-      setState(() {
-        print('Code sent to $phoneNo');
-        callSnackBar("Code sent to $phoneNo");
-        status = "\nEnter the code sent to " + phoneNo;
-      });
-    };
-    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
-        (String verificationId) {
-      this.actualCode = verificationId;
-      print("timeout");
-      callSnackBar("Auto retrieval failed");
-      phn.clear();
-      setState(() {
-        isLoading = false;
-      });
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => Otp(PhoneNo: phoneNo),
-              settings: RouteSettings(arguments: actualCode)));
-
-      setState(() {
-        status = "\nAuto retrieval time out";
-      });
-    };
-
-    final PhoneVerificationFailed verificationFailed =
-        (AuthException authException) {
-      setState(() {
-        isLoading = false;
-      });
-      setState(() {
-        status = '${authException.message}';
-        callSnackBar("Please enter a valid phone number");
-        print("Error message: " + status);
-        setState(() {
-          isLoading = false;
-        });
-        if (authException.message.contains('not authorized'))
-          status = 'Something has gone wrong, please try later';
-        else if (authException.message.contains('Network'))
-          status = 'Please check your internet connection and try again';
-        else
-          status = 'Something has gone wrong, please try later';
-      });
-    };
-    final PhoneVerificationCompleted verificationCompleted =
-        (AuthCredential auth) {
-      setState(() {
-        status = 'Auto retrieving verification code';
-      });
-      callSnackBar("Auto retrieving verification code");
-
-      _authCredential = auth;
-      print("auth");
-
-      firebaseAuth
-          .signInWithCredential(_authCredential)
-          .then((AuthResult value) async {
-        if (value.additionalUserInfo.isNewUser) {
-          print(value.user.uid);
-          print("firest uset");
-          setState(() {
-            isLoading = false;
-          });
-          return Navigator.pushNamed(context, '/subs');
-        }
-        setState(() {
-          status = 'Authentication successful';
-        });
-        final Firestore _firestore = Firestore.instance;
-
-        try {
-          FirebaseUser user = await FirebaseAuth.instance.currentUser();
-          print(user.toString());
-
-          if (user != null) {
-            DocumentSnapshot _docSnap =
-                await _firestore.collection("users").document(user.uid).get();
-
-            await new Future.delayed(const Duration(milliseconds: 5000));
-            if (_docSnap.data['subscription']) {
-              setState(() {
-                isLoading = false;
-              });
-
-              Navigator.pushNamedAndRemoveUntil(
-                  context, "/paperback", (_) => false);
-            } else {
-              setState(() {
-                isLoading = false;
-              });
-              g.isGLogin = false;
-              Navigator.pushNamed(context, "/subs");
-            }
-          } else {
-            // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
-            // goToLoginPage();
-            await new Future.delayed(const Duration(milliseconds: 5000));
-            setState(() {
-              isLoading = false;
-            });
-            Navigator.pushNamedAndRemoveUntil(context, "/intro", (_) => false);
-          }
-        } catch (e) {
-          print(e);
-          setState(() {
-            isLoading = false;
-          });
-        }
-
-        // Navigator.pushNamed(context, '/subs');
-      });
-    };
-    firebaseAuth.verifyPhoneNumber(
-        phoneNumber: phoneNo,
-        timeout: Duration(seconds: 60),
-        verificationCompleted: verificationCompleted,
-        verificationFailed: verificationFailed,
-        codeSent: codeSent,
-        codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+              builder: (context) => Otp(
+                    PhoneNo: value,
+                  )));
+      // verifyPhone();
+      //return null;
+    }
   }
 
   @override
@@ -231,36 +103,40 @@ class _PhoneState extends State<Phone> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.15,
             ),
-            TextFormField(
-              autovalidate: true,
-              validator: (String txt) {
-                this.phoneNo = "+91" + txt;
-                if (txt.length >= 1) {
-                  Future.delayed(Duration.zero).then((_) {
-                    setState(() {
-                      btn_enable = true;
+            Padding(
+              padding: const EdgeInsets.only(right: 28.0),
+              child: TextFormField(
+                autovalidate: true,
+                validator: (String txt) {
+                  this.phoneNo = "+91" + txt;
+                  if (txt.length >= 1) {
+                    Future.delayed(Duration.zero).then((_) {
+                      setState(() {
+                        btn_enable = true;
+                      });
                     });
-                  });
-                } else {
-                  Future.delayed(Duration.zero).then((_) {
-                    setState(() {
-                      btn_enable = false;
+                  } else {
+                    Future.delayed(Duration.zero).then((_) {
+                      setState(() {
+                        btn_enable = false;
+                      });
                     });
-                  });
-                }
-              },
-              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
-              cursorWidth: 2.0,
-              cursorRadius: Radius.circular(10),
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                  prefix: Text(
-                '+91\t',
-                style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              )),
+                  }
+                },
+                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w600),
+                cursorWidth: 2.0,
+                cursorRadius: Radius.circular(10),
+                keyboardType: TextInputType.phone,
+                maxLength: 10,
+                decoration: InputDecoration(
+                    prefix: Text(
+                  '+91\t',
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                )),
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
