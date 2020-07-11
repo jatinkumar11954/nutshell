@@ -76,11 +76,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 5.0,
         title: Text(
           "Update/Edit User Details",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.orange[300],
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        backgroundColor: Colors.white,
         leading: new IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -191,7 +194,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         borderRadius: BorderRadius.circular(15.0)),
                     labelText: 'Enter your Email',
                   ),
-                  validator: validateClass,
+                  // validator: validateClass,
                   onSaved: (String value) {
                     _currentUser.email = value;
                   }),

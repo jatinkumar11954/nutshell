@@ -291,9 +291,6 @@
 //   //     'assets/book/soon.pdf'),
 // ];
 
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -338,8 +335,6 @@ class _PaperbacksState extends State<Paperbacks> {
                     ),
                     onTap: () {
                       print("this is pdf ");
-
-                     
                     }));
           },
         );
@@ -348,7 +343,8 @@ class _PaperbacksState extends State<Paperbacks> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: bottomBar(context, 0),
+      // bottomNavigationBar: bottomBar(context, 0),
+      bottomNavigationBar: PersistentNavBar(),
       body: Container(
         // body: _loading ? Center(child: CircularProgressIndicator(),):
         // PDFViewer(

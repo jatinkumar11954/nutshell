@@ -144,7 +144,8 @@ class _AccountState extends State<Account> {
           Navigator.pushNamed(context, "/paperback");
         },
         child: Scaffold(
-            bottomNavigationBar: bottomBar(context, 2),
+            // bottomNavigationBar: bottomBar(context, 2),
+            bottomNavigationBar: PersistentNavBar(),
             appBar: new AppBar(
               actions: <Widget>[
                 IconButton(
@@ -160,150 +161,154 @@ class _AccountState extends State<Account> {
                 ),
               ],
               // title: new Text("Account Details",style: TextStyle(color:Colors.black,fontSize: 30.0),),
-              backgroundColor: Colors.orange[2000],
+              backgroundColor: Colors.white,
               elevation: 5.0,
             ),
             body: isLoading
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView(
-                    children: <Widget>[
-                      ListTile(
-                        contentPadding: EdgeInsets.fromLTRB(0, 10.0, 0.0, 10.0),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: CircleAvatar(
-                                radius: 70,
-                                backgroundImage: NetworkImage(
-                                    _currentUser.photoUrl.toString()),
-                                backgroundColor: Color(0xff476cfb),
-                                child: ClipOval(
-                                    child: new SizedBox(
-                                        width: 180.0,
-                                        height: 180.0,
-                                        child: (_image != null)
-                                            ? Image.file(
-                                                _image,
-                                                fit: BoxFit.fill,
-                                              )
-                                            : null
-                                        // : Icon(Icons.account_circle,
-                                        //     size: 70))
-                                        )),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 60.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.add_a_photo,
-                                  size: 30.0,
+                : Container(
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          contentPadding:
+                              EdgeInsets.fromLTRB(0, 10.0, 0.0, 10.0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: CircleAvatar(
+                                  radius: 70,
+                                  backgroundImage: NetworkImage(
+                                      _currentUser.photoUrl.toString()),
+                                  backgroundColor: Color(0xff476cfb),
+                                  child: ClipOval(
+                                      child: new SizedBox(
+                                          width: 180.0,
+                                          height: 180.0,
+                                          child: (_image != null)
+                                              ? Image.file(
+                                                  _image,
+                                                  fit: BoxFit.fill,
+                                                )
+                                              : null
+                                          // : Icon(Icons.account_circle,
+                                          //     size: 70))
+                                          )),
                                 ),
-                                onPressed: () {
-                                  getImage();
-                                },
                               ),
-                            ),
-                            Wrap(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 15.0),
-                                  child: Text(
-                                    _currentUser.fname.toString() + " ",
-                                    textAlign: TextAlign.end,
+                              Padding(
+                                padding: EdgeInsets.only(top: 60.0),
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.add_a_photo,
+                                    size: 30.0,
+                                  ),
+                                  onPressed: () {
+                                    getImage();
+                                  },
+                                ),
+                              ),
+                              Wrap(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    child: Text(
+                                      _currentUser.fname.toString() + " ",
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  Text(
+                                    _currentUser.group.toString(),
                                     style: TextStyle(
-                                        color: Colors.black,
                                         fontSize: 20.0,
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.w500),
                                   ),
-                                ),
-                                Text(
-                                  _currentUser.group.toString(),
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: RaisedButton(
+                            color: Colors.black,
+                            onPressed: () {
+                              uploadPic(context);
+                            },
+                            elevation: 4.0,
+                            splashColor: Colors.blueGrey,
+                            child: Text(
+                              'Save',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16.0),
                             ),
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: RaisedButton(
-                          color: Colors.black,
-                          onPressed: () {
-                            uploadPic(context);
-                          },
-                          elevation: 4.0,
-                          splashColor: Colors.blueGrey,
-                          child: Text(
-                            'Save',
-                            style: TextStyle(color: Colors.white, fontSize: 16.0),
                           ),
                         ),
-                      ),
-                      Divider(
-                        height: 45,
-                        thickness: 2.0,
-                        color: Colors.orange,
-                      ),
-                      Container(
-                        padding: new EdgeInsets.all(5.0),
-                      ),
-                      SizedBox(
-                          child: Column(children: <Widget>[
-                        ListTile(
-                          title: new Text('About Us'),
-                          leading: new Icon(Icons.chat_bubble_outline),
-                          onTap: () {
-                            Navigator.pushNamed(context, "/about");
-                          },
+                        Divider(
+                          height: 45,
+                          thickness: 2.0,
+                          color: Colors.orange,
                         ),
-                        ListTile(
-                          title: new Text('Pricing Plan'),
-                          leading: new Icon(Icons.account_balance_wallet),
-                          onTap: () {
-                            Navigator.pushNamed(context, "/pricing");
-                          },
+                        Container(
+                          padding: new EdgeInsets.all(5.0),
                         ),
-                        ListTile(
-                          title: new Text('Contact Us'),
-                          leading: new Icon(Icons.call),
-                          onTap: () {
-                            Navigator.pushNamed(context, "/contact");
-                          },
-                        ),
-                        ListTile(
-                          title: new Text('Help'),
-                          leading: new Icon(Icons.assignment),
-                          subtitle: Text("Privacy, Refund, TnC, About Us"),
-                          onTap: () {
-                            Navigator.pushNamed(context, "/help");
-                          },
-                        ),
-                        ListTile(
-                          title: new Text(
-                            'Logout',
-                            style: TextStyle(fontSize: 20.0
-                                // color:Colors.deepOrange
-                                ),
+                        SizedBox(
+                            child: Column(children: <Widget>[
+                          // ListTile(
+                          //   title: new Text('About Us'),
+                          //   leading: new Icon(Icons.chat_bubble_outline),
+                          //   onTap: () {
+                          //     Navigator.pushNamed(context, "/about");
+                          //   },
+                          // ),
+                          ListTile(
+                            title: new Text('Pricing Plan'),
+                            leading: new Icon(Icons.account_balance_wallet),
+                            onTap: () {
+                              Navigator.pushNamed(context, "/pricing");
+                            },
                           ),
-                          leading: new Icon(
-                            Icons.settings_power,
-                            //  color: Colors.deepOrange,
+                          ListTile(
+                            title: new Text('Contact Us'),
+                            leading: new Icon(Icons.call),
+                            onTap: () {
+                              Navigator.pushNamed(context, "/contact");
+                            },
                           ),
-                          onTap: () {
-                            showAlertDialog(context);
-                          },
-                        ),
-                      ])),
-                    ],
+                          ListTile(
+                            title: new Text('Help'),
+                            leading: new Icon(Icons.assignment),
+                            subtitle: Text("Privacy, Refund, TnC, About Us"),
+                            onTap: () {
+                              Navigator.pushNamed(context, "/help");
+                            },
+                          ),
+                          ListTile(
+                            title: new Text(
+                              'Logout',
+                              style: TextStyle(fontSize: 20.0
+                                  // color:Colors.deepOrange
+                                  ),
+                            ),
+                            leading: new Icon(
+                              Icons.settings_power,
+                              //  color: Colors.deepOrange,
+                            ),
+                            onTap: () {
+                              showAlertDialog(context);
+                            },
+                          ),
+                        ])),
+                      ],
+                    ),
                   )));
   }
 }
