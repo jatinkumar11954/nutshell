@@ -34,6 +34,12 @@ class _PhoneState extends State<Phone> {
   var _authCredential;
   bool btn_enable = false;
 
+  circle() {
+    CircularProgressIndicator(
+      backgroundColor: Colors.white10,
+    );
+  }
+
   String phoneValidator(String value) {
     if (value.length < 13 || value.length == null) {
       print("validation failed");
@@ -45,6 +51,7 @@ class _PhoneState extends State<Phone> {
         isLoading = true;
       });
       verifyPhone();
+
       //return null;
     }
   }
@@ -61,8 +68,10 @@ class _PhoneState extends State<Phone> {
 
       setState(() {
         print('Code sent to $phoneNo');
+
         callSnackBar("Code sent to $phoneNo");
         status = "\nEnter the code sent to " + phoneNo;
+        isLoading = false;
       });
     };
     final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
@@ -146,7 +155,7 @@ class _PhoneState extends State<Phone> {
               });
 
               Navigator.pushNamedAndRemoveUntil(
-                  context, "/paperback", (_) => false);
+                  context, "/bottombar", (_) => false);
             } else {
               setState(() {
                 isLoading = false;
@@ -232,6 +241,7 @@ class _PhoneState extends State<Phone> {
                 height: MediaQuery.of(context).size.height * 0.15,
               ),
               TextFormField(
+                maxLength: 10,
                 autovalidate: true,
                 validator: (String txt) {
                   this.phoneNo = "+91" + txt;
@@ -254,13 +264,15 @@ class _PhoneState extends State<Phone> {
                 cursorRadius: Radius.circular(10),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
+                    counterText: '',
+                    hintText: 'Phone Number',
                     prefix: Text(
-                  '+91\t',
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey),
-                )),
+                      '+91\t',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[400]),
+                    )),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
@@ -274,6 +286,10 @@ class _PhoneState extends State<Phone> {
                   onPressed: btn_enable == true
                       ? () {
                           phoneValidator(phoneNo);
+                          // CircularProgressIndicator(
+                          //   backgroundColor: Colors.white10,
+                          //   strokeWidth: 10.0,
+                          // );
                         }
                       : null,
                   child: Text(

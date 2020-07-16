@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
         if (_docSnap.data['subscription']) {
           Navigator.pushNamedAndRemoveUntil(
-              context, "/paperback", (_) => false);
+              context, "/bottombar", (_) => false);
         } else {
           Navigator.pushNamed(context, "/subs");
         }
@@ -91,7 +91,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       if (_authResult.additionalUserInfo.isNewUser) {
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
       } else {
-        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/bottombar", (_) => false);
       }
       //Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new IntroScreen()),(_)=> false);
     } catch (e) {

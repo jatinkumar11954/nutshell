@@ -89,12 +89,12 @@ Future<String> signInWithGoogle(BuildContext context) async {
 
       if (_docSnap.data['subscription']) {
         print("Already subscribed");
-              global.isGLogin = true;
+        global.isGLogin = true;
 
-        Navigator.pushNamedAndRemoveUntil(context, "/paperback", (_) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/bottombar", (_) => false);
       } else {
         print("going for subscription");
-              global.isGLogin = true;
+        global.isGLogin = true;
 
         Navigator.pushNamed(context, "/subs");
       }

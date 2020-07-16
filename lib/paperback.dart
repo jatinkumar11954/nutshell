@@ -344,7 +344,9 @@ class _PaperbacksState extends State<Paperbacks> {
     return Scaffold(
       backgroundColor: Colors.white,
       // bottomNavigationBar: bottomBar(context, 0),
-      bottomNavigationBar: PersistentNavBar(),
+      // bottomNavigationBar: BottomBar(),
+
+      // bottomNavigationBar: PersistentNavBar(),
       body: Container(
         // body: _loading ? Center(child: CircularProgressIndicator(),):
         // PDFViewer(

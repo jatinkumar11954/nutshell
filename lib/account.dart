@@ -10,6 +10,7 @@ import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/google.dart';
 import 'package:nutshell/users.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'currentUser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -141,12 +142,29 @@ class _AccountState extends State<Account> {
     // print("jp"+_currentUser.photoUrl.toString());
     return WillPopScope(
         onWillPop: () {
-          Navigator.pushNamed(context, "/paperback");
+          Navigator.pushNamed(context, "/bottombar");
         },
         child: Scaffold(
             // bottomNavigationBar: bottomBar(context, 2),
-            bottomNavigationBar: PersistentNavBar(),
+            // bottomNavigationBar: BottomBar(),
+
+            // bottomNavigationBar: PersistentNavBar(),
             appBar: new AppBar(
+              leading: new IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 30.0,
+                  color: Colors.black,
+                ),
+                tooltip: 'back',
+                onPressed: () {
+                  Navigator.pushNamed(context, "/bottombar");
+                },
+              ),
+              title: Text(
+                'Account',
+                style: TextStyle(color: Colors.black, fontSize: 30.0),
+              ),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(

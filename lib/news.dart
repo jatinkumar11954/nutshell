@@ -46,7 +46,7 @@ class _NewsState extends State<News> {
   Widget build(BuildContext context) {
     return Scaffold(
       // bottomNavigationBar: bottomBar(context, 1),
-      bottomNavigationBar: PersistentNavBar(),
+      // bottomNavigationBar: BottomBar(),
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
