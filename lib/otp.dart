@@ -260,7 +260,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
     }).then((user) async {
       if (user.additionalUserInfo.isNewUser) {
         print(user.user.uid);
-        print("firest uset");
+        // print("firest uset");
         OurDatabase().createUser();
 
         return Navigator.pushNamed(context, '/subs');
