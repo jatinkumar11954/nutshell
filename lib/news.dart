@@ -45,7 +45,8 @@ class _NewsState extends State<News> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomBar(context, 1),
+      // bottomNavigationBar: bottomBar(context, 1),
+      // bottomNavigationBar: BottomBar(),
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -92,7 +93,8 @@ class _NewsState extends State<News> {
                     height: 100,
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0, bottom: 0.0),
+                      padding: const EdgeInsets.only(
+                          top: 20.0, left: 10.0, right: 10.0, bottom: 0.0),
                       child: new Text(
                         title,
                         style: TextStyle(
@@ -105,7 +107,6 @@ class _NewsState extends State<News> {
                     ),
                   ),
                 ]),
-            
             Stack(
               alignment: Alignment.bottomCenter,
               children: [

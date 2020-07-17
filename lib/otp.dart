@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'database.dart';
 import 'global.dart' as g;
 import 'package:flutter/gestures.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,11 +57,11 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
   String smsCode;
   String verificationId;
   AuthCredential _authCredential;
-  bool btn_enable = false;
   Future<void> verifyPhone() async {
     setState(() {
       _pinEnable = false;
       _continueEnble = false;
+      _isLoading = true;
       _resendEnble = false;
     });
     var firebaseAuth = await FirebaseAuth.instance;
@@ -74,6 +74,12 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       // });
 
       setState(() {
+        _isLoading = false;
+        _pinEnable = true;
+        this.actualCode = verificationId;
+
+        textEditingController = TextEditingController();
+
         print('Code sent to ${widget.PhoneNo}');
         callSnackBar("Code sent to ${widget.PhoneNo}");
         // status = "\nEnter the code sent to " + {widget.PhoneNo};
@@ -85,12 +91,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       print("timeout");
       callSnackBar("Auto retrieval failed");
       // phn.clear();
-      setState(() {
-        _isLoading = false;
-        _pinEnable = true;
 
-        textEditingController = TextEditingController();
-      });
       // Navigator.push(
       //     context,
       //     MaterialPageRoute(
@@ -104,28 +105,30 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
 
     final PhoneVerificationFailed verificationFailed =
         (AuthException authException) {
-      setState(() {
-        _isLoading = false;
-      });
+      // setState(() {
+      //   _isLoading = false;
+      // });
       setState(() {
         status = '${authException.message}';
         callSnackBar("Please enter a valid phone number");
-          Fluttertoast.showToast(
-            timeInSecForIosWeb: 3,
-      msg: "Please enter a valid phone number",
-    );
+        Fluttertoast.showToast(
+          timeInSecForIosWeb: 3,
+          msg: "Please enter a valid phone number",
+        );
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Phone()));
 
-
         print("Error message: " + status);
-        setState(() {
-          _isLoading = false;
-        });
+        // setState(() {
+        //   _isLoading = false;
+        // });
         if (authException.message.contains('not authorized'))
           status = 'Something has gone wrong, please try later';
         else if (authException.message.contains('Network'))
-          status = 'Please check your internet connection and try again';
+          Fluttertoast.showToast(
+            timeInSecForIosWeb: 3,
+            msg: "Please check your internet connection and try again",
+          );
         else
           status = 'Something has gone wrong, please try later';
       });
@@ -146,9 +149,11 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
         if (value.additionalUserInfo.isNewUser) {
           print(value.user.uid);
           print("firest uset");
-          setState(() {
-            _isLoading = false;
-          });
+          // setState(() {
+          //   _isLoading = false;
+          // });
+          OurDatabase().createUser();
+
           return Navigator.pushNamed(context, '/subs');
         }
         setState(() {
@@ -166,16 +171,16 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
 
             await new Future.delayed(const Duration(milliseconds: 5000));
             if (_docSnap.data['subscription']) {
-              setState(() {
-                _isLoading = false;
-              });
+              // setState(() {
+              //   _isLoading = false;
+              // });
 
               Navigator.pushNamedAndRemoveUntil(
-                  context, "/paperback", (_) => false);
+                  context, "/bottombar", (_) => false);
             } else {
-              setState(() {
-                _isLoading = false;
-              });
+              // setState(() {
+              //   _isLoading = false;
+              // });
               g.isGLogin = false;
               Navigator.pushNamed(context, "/subs");
             }
@@ -190,9 +195,9 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
           }
         } catch (e) {
           print(e);
-          setState(() {
-            _isLoading = false;
-          });
+          // setState(() {
+          //   _isLoading = false;
+          // });
         }
 
         // Navigator.pushNamed(context, '/subs');
@@ -230,6 +235,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
   Future<void> PhoneS(String smsCode) async {
     setState(() {
       _isLoading = true;
+      _resendEnble = false;
     });
     callSnackBar("Validating otp");
 
@@ -242,7 +248,9 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
     firebaseAuth.signInWithCredential(_authCredential).catchError((error) {
       setState(() {
         _resendEnble = true;
-
+        textEditingController.clear();
+        _pinEnable = true;
+        _continueEnble = false;
         status = 'Something has gone wrong, please try later';
       });
       setState(() {
@@ -253,9 +261,12 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       if (user.additionalUserInfo.isNewUser) {
         print(user.user.uid);
         print("firest uset");
+        OurDatabase().createUser();
+
         return Navigator.pushNamed(context, '/subs');
       }
       setState(() {
+        _isLoading = false;
         status = 'Authentication successful';
       });
       final Firestore _firestore = Firestore.instance;
@@ -263,7 +274,9 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
       try {
         FirebaseUser user = await FirebaseAuth.instance.currentUser();
         print(user.toString());
-
+        setState(() {
+          _isLoading = false;
+        });
         if (user != null) {
           DocumentSnapshot _docSnap =
               await _firestore.collection("users").document(user.uid).get();
@@ -360,118 +373,124 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Phone()));
           },
-          child: Container(
-            padding: EdgeInsets.only(
-                left: 20.0, top: 20.0, right: 10.0, bottom: 15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                Text(
-                  'Please wait while we \nauto verify the otp.',
-                  style: TextStyle(
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.redAccent[700]),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        '0:30',
-                        style: TextStyle(
-                            fontSize: 23,
-                            color: _resendEnble ? Colors.black : Colors.grey),
-                      ),
-                      FlatButton(
-                        onPressed: () => _resendEnble ? verifyPhone() : null,
-                        child: Text(
-                          'Resend otp',
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(
+                  left: 20.0, top: 20.0, right: 10.0, bottom: 15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  Text(
+                    'Please wait while we \nauto verify the otp.',
+                    style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.redAccent[700]),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          '0:30',
                           style: TextStyle(
                               fontSize: 23,
                               color: _resendEnble ? Colors.black : Colors.grey),
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                PinCodeTextField(
-                  enabled: _pinEnable,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-                  length: 6, autoValidate: true,
-                  obsecureText: false, enableActiveFill: true,
-                  animationType: AnimationType.fade,
-                  pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(10),
-                      fieldHeight: 60,
-                      fieldWidth: 45,
-                      activeFillColor: Colors.grey[300],
-                      inactiveFillColor: Colors.grey[300],
-                      selectedFillColor: Colors.white,
-                      inactiveColor: Colors.grey),
-                  animationDuration: Duration(milliseconds: 300),
-                  // backgroundColor: Colors.blue.shade50,
-                  errorAnimationController: errorController,
-                  controller: textEditingController,
-                  onCompleted: (v) {
-                    print("Completed");
-                  },
-                  validator: (v) {
-                    if (v.length == 6) {
-                      _continueEnble = true;
-                    } else {
-                      _continueEnble = false;
-                    }
-                  },
-                  onChanged: (value) {
-                    print(value);
-
-                    setState(() {
-                      currentText = value;
-                    });
-                  },
-                  beforeTextPaste: (text) {
-                    print("Allowing to paste $text");
-                    //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                    //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                    return true;
-                  },
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: RaisedButton(
-                    color: _continueEnble ? Colors.redAccent[700] : Colors.grey,
-                    onPressed: () =>
-                        _continueEnble ? SmsValidator(currentText) : null,
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                        FlatButton(
+                          onPressed: () => _resendEnble ? verifyPhone() : null,
+                          child: Text(
+                            'Resend otp',
+                            style: TextStyle(
+                                fontSize: 23,
+                                color:
+                                    _resendEnble ? Colors.black : Colors.grey),
+                          ),
+                        )
+                      ],
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0)),
                   ),
-                ),
-              ],
+                  PinCodeTextField(
+                    enabled: _pinEnable,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                    length: 6, autoValidate: true,
+                    obsecureText: false, enableActiveFill: true,
+                    animationType: AnimationType.fade,
+                    pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(10),
+                        fieldHeight: 60,
+                        fieldWidth: 45,
+                        activeFillColor: Colors.grey[300],
+                        inactiveFillColor: Colors.grey[300],
+                        selectedFillColor: Colors.white,
+                        inactiveColor: Colors.grey),
+                    animationDuration: Duration(milliseconds: 300),
+                    // backgroundColor: Colors.blue.shade50,
+                    errorAnimationController: errorController,
+                    controller: textEditingController,
+                    onCompleted: (v) {
+                      print("Completed");
+                    },
+                    validator: (v) {
+                      if (v.length == 6) {
+                        _continueEnble = true;
+                      } else {
+                        _continueEnble = false;
+                      }
+                    },
+                    onChanged: (value) {
+                      print(value);
+
+                      setState(() {
+                        currentText = value;
+                      });
+                    },
+                    beforeTextPaste: (text) {
+                      print("Allowing to paste $text");
+                      //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                      //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                      return true;
+                    },
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: RaisedButton(
+                      color:
+                          _continueEnble ? Colors.redAccent[700] : Colors.grey,
+                      onPressed: () =>
+                          _continueEnble ? SmsValidator(currentText) : null,
+                      child: _isLoading
+                          ? CircularProgressIndicator()
+                          : Text(
+                              'Continue',
+                              style: TextStyle(
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0)),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutshell/AccountModule.dart/help.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/details.dart';
 import 'package:nutshell/dummy.dart';
 import 'package:nutshell/paperback.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         '/editprofile': (BuildContext context) => EditProfileScreen(),
         '/aboutUs': (BuildContext context) => AboutUs(),
         '/orderConfirm': (BuildContext context) => OrderConfirmation(),
+        '/bottombar': (BuildContext context) => BottomBar()
         //'/': (BuildContext context) => Details(),
       },
       title: 'Nutshell',

@@ -53,6 +53,7 @@ dependencies:
   flutter_svg:
   path_provider:
   image_picker:
+  persistent_bottom_nav_bar:
 
 dev_dependencies:
   flutter_test:

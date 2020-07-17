@@ -43,13 +43,10 @@ class _SubscriptionState extends State<Subscription> {
   var threeval = false;
 
   static const List<String> svgNames = <String>[
-     "assets/images/7Days.svg",
-        "assets/images/2Months.svg",
-            "assets/images/6Months.svg",
+    "assets/images/7Days.svg",
+    "assets/images/2Months.svg",
+    "assets/images/6Months.svg",
     "assets/images/1Year.svg",
- 
-
-   
   ];
   @override
   Widget build(BuildContext context) {
@@ -95,7 +92,7 @@ class _SubscriptionState extends State<Subscription> {
                     aspectRatio: 8 / 25,
                     autoPlay: false,
                     enableInfiniteScroll: false,
-                    
+
                     // height: 2000,
                     // width: MediaQuery.of(context).size.height * 0.90,
                   ),
@@ -122,7 +119,8 @@ class _SubscriptionState extends State<Subscription> {
                                     child: Positioned(
                                       left: MediaQuery.of(context).size.width *
                                           0.32,
-                                      top:  MediaQuery.of(context).size.height * 0.05,
+                                      top: MediaQuery.of(context).size.height *
+                                          0.05,
                                       child: Icon(
                                         Icons.check_circle,
                                         color: Color.fromRGBO(191, 30, 46, 1),
@@ -245,7 +243,7 @@ void openCheckout(BuildContext context) async {
     print("account page");
     razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/paperback');
+    Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -312,7 +310,7 @@ void openCheckoutthree(BuildContext context) async {
     print("account page");
     razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/paperback');
+    Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -376,7 +374,7 @@ void openCheckoutyear(BuildContext context) async {
     print("account page");
     razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/paperback');
+    Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -440,7 +438,7 @@ void openCheckoutweek(BuildContext context) async {
     print("account page");
     razorpay.clear();
 
-    Navigator.pushReplacementNamed(context, '/paperback');
+    Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -478,7 +476,7 @@ void openCheckoutweek(BuildContext context) async {
 }
 
 //  navigator(BuildContext context){
-//     Navigator.pushNamedAndRemoveUntil(context, '/paperbackScreen', (route) => false);
+//     Navigator.pushNamedAndRemoveUntil(context, '/bottombarScreen', (route) => false);
 //     }
 
 void _handlePaymentError(PaymentFailureResponse response) {

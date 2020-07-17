@@ -195,7 +195,7 @@ showAlertDialog(BuildContext context) {
       //  OurDatabase().freesubscription(user.uid);
       // OurDatabase().createUser(_currentUser);
       CallForFreeUpdation();
-      Navigator.pushNamed(context,"/paperback" );
+      Navigator.popAndPushNamed(context,"/bottombar" );
       
       // Navigator.pop(context);
       // Navigator.of(context).pushNamedAndRemoveUntil('/paperback', (_) => false);

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:nutshell/orderConfirmation.dart';
 import 'package:nutshell/users.dart';
@@ -73,14 +75,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Update/Edit User Details",
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.orange[300],
+        elevation: 5.0,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        backgroundColor: Colors.white,
         leading: new IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -117,28 +119,30 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child:
             // Text("\n"),
             Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            Text(
-              'Update \nDetails',
-              style: TextStyle(
-                  fontSize: 55.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.redAccent[700]),
-            ),
+            // Text(
+            //   'Update \nDetails',
+            //   style: TextStyle(
+            //       fontSize: 75.0,
+            //       fontWeight: FontWeight.bold,
+            //       color: Colors.redAccent[700]),
+            // ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: TextFormField(
+                  autofocus: false,
                   controller: _fnamecontroller,
                   // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      labelText: 'Enter your First Name',
+                      // labelText: _currentUser.fname.toString(),
                       hintText: _currentUser.fname.toString()),
                   validator: validateName,
                   onSaved: (String value) {
@@ -146,23 +150,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   }),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.85,
-              child: TextFormField(
-                  controller: _lnamecontroller,
-                  // autovalidate: true,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0)),
-                      labelText: 'Enter your Last Name',
-                      hintText: _currentUser.lname.toString()),
-                  validator: validateName,
-                  onSaved: (String value) {
-                    _currentUser.lname = value;
-                  }),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // SizedBox(
+            //   width: MediaQuery.of(context).size.width * 0.85,
+            //   child: TextFormField(
+            //       controller: _lnamecontroller,
+            //       // autovalidate: true,
+            //       keyboardType: TextInputType.text,
+            //       decoration: InputDecoration(
+            //           border: OutlineInputBorder(
+            //               borderRadius: BorderRadius.circular(15.0)),
+            //           labelText: 'Enter your Last Name',
+            //           hintText: _currentUser.lname.toString()),
+            //       validator: validateName,
+            //       onSaved: (String value) {
+            //         _currentUser.lname = value;
+            //       }),
+            // ),
+            // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: TextFormField(
@@ -170,28 +174,28 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      labelText: 'Enter your Institution',
+                      // labelText: _currentUser.school.toString(),
                       hintText: _currentUser.school.toString()),
                   validator: validateSchool,
                   onSaved: (String value) {
                     _currentUser.school = value;
                   }),
             ),
+
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: TextFormField(
-                  // controller: _classcontroller,
-                  // autovalidate: true,
-                  // keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
-                    labelText: 'Enter your Email',
-                  ),
-                  validator: validateClass,
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                      // labelText: _currentUser.email.toString(),
+                      hintText: _currentUser.email.toString()),
+                  // validator: validateClass,
                   onSaved: (String value) {
                     _currentUser.email = value;
                   }),
@@ -205,9 +209,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   autovalidate: true,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    counterText: "",
+                    hintText: _currentUser.phone.toString(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    labelText: 'Enter your Phone Number',
+                    // labelText: _currentUser.phone.toString(),
                   ),
                   validator: (String txt) {
                     if (txt.length == 10) {
@@ -298,6 +305,17 @@ String validateClass(String value) {
     return "Class is Required";
   } else if (!regExp.hasMatch(value)) {
     return "Class must be between 1-12";
+  }
+  return null;
+}
+
+String validatePhone(String value) {
+  String pattern = '([0-9])';
+  RegExp regExp = new RegExp(pattern);
+  if (value.length == 0) {
+    return "Phone Number Required";
+  } else if (!regExp.hasMatch(value)) {
+    return "Enter Phone Number";
   }
   return null;
 }
