@@ -9,5 +9,7 @@ String pincode;
 String photoUrl;
 String group;
 String uid;
-bool isGLogin=false;
+bool isGLogin = false;
+var timeCreated; 
+
 // String group;

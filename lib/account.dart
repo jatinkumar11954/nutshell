@@ -1,21 +1,21 @@
-import 'dart:convert';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/database.dart';
-import 'package:nutshell/global.dart';
+import 'package:nutshell/global.dart' as global;
 import 'package:nutshell/google.dart';
 import 'package:nutshell/login.dart';
 import 'package:nutshell/users.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'currentUser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:photo_view/photo_view.dart';
+import 'google.dart';
+import 'database.dart';
 
 class Account extends StatefulWidget {
   Account({Key key}) : super(key: key);
@@ -66,11 +66,19 @@ class _AccountState extends State<Account> {
     final StorageUploadTask uploadTask =
         postImageRef.child(timeKey.toString() + ".png").putFile(_image);
     var PostUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    postUrl = PostUrl.toString();
+
+    String postUrl = PostUrl.toString();
     print("Post Url =" + postUrl);
     saveToDatabase(postUrl);
-    // }
+    // var user = await FirebaseAuth.instance.currentUser();
+    await Firestore.instance
+        .collection('users')
+        .document(_currentUser.uid)
+        .updateData({'photoUrl': postUrl});
+
     setState(() {
+      _currentUser.photoUrl = postUrl;
+
       print("Profile Picture uploaded");
       Scaffold.of(context)
           .showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
@@ -101,6 +109,8 @@ class _AccountState extends State<Account> {
   Users _currentUser = Users();
 
   Users get getCurrentUser => _currentUser;
+  // Users get getUrl => _currentUser;
+
   bool isLoading = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -141,12 +151,43 @@ class _AccountState extends State<Account> {
 
   @override
   Widget build(BuildContext context) {
+    Alert(BuildContext context) {
+      return showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (BuildContext context) {
+            return new AlertDialog(
+              // elevation: 200.0,
+              backgroundColor: Colors.transparent,
+              titlePadding: EdgeInsets.all(20.0),
+
+              actions: <Widget>[
+                Container(
+                  height: (MediaQuery.of(context).size.height - 50) * 0.8,
+                  width: (MediaQuery.of(context).size.height) * 0.8,
+                  // MediaQuery.of(context).size.width *0.8,
+                  child: PhotoView(
+                      imageProvider: NetworkImage(_currentUser.photoUrl),
+                      // tightMode: true,
+                      maxScale: 2.2,
+                      filterQuality: FilterQuality.high,
+                      minScale: 0.5,
+                      backgroundDecoration: BoxDecoration(
+                        color: Colors.transparent,
+                      )),
+                )
+              ],
+            );
+          });
+    }
+
     // print("jp"+_currentUser.photoUrl.toString());
     return WillPopScope(
         onWillPop: () {
           Navigator.pushNamed(context, "/bottombar");
         },
         child: Scaffold(
+
             // bottomNavigationBar: bottomBar(context, 2),
             // bottomNavigationBar: BottomBar(),
 
@@ -199,25 +240,30 @@ class _AccountState extends State<Account> {
                             children: <Widget>[
                               Align(
                                 alignment: Alignment.topLeft,
-                                child: CircleAvatar(
-                                  radius: 70,
-                                  backgroundImage: NetworkImage(
-                                      _currentUser.photoUrl.toString()),
-                                  backgroundColor: Color(0xff476cfb),
-                                  child: ClipOval(
-                                      child: new SizedBox(
-                                          width: 180.0,
-                                          height: 180.0,
-                                          child: (_image != null)
-                                              ? Image.file(
-                                                  _image,
-                                                  fit: BoxFit.fill,
-                                                )
-                                              : null
-                                          // : Icon(Icons.account_circle,
-                                          //     size: 70))
-                                          )),
-                                ),
+                                child: _currentUser.photoUrl == null
+                                    ? Icon(Icons.account_circle, size: 70.0)
+                                    : GestureDetector(
+                                        onTap: () => Alert(context),
+                                        child: CircleAvatar(
+                                          radius: 70,
+                                          backgroundImage: NetworkImage(
+                                              _currentUser.photoUrl.toString()),
+                                          backgroundColor: Color(0xff476cfb),
+                                          child: ClipOval(
+                                              child: new SizedBox(
+                                                  width: 180.0,
+                                                  height: 180.0,
+                                                  child: (_image != null)
+                                                      ? Image.file(
+                                                          _image,
+                                                          fit: BoxFit.fill,
+                                                        )
+                                                      : null
+                                                  // : Icon(Icons.account_circle,
+                                                  //     size: 70))
+                                                  )),
+                                        ),
+                                      ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 60.0),
@@ -345,7 +391,8 @@ showAlertDialog(BuildContext context) {
     child: Text("Yes"),
     onPressed: () {
       signOutGoogle();
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>LoginScreen()), (_) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (ctx) => LoginScreen()), (_) => false);
     },
   );
 

@@ -10,7 +10,6 @@ import 'package:nutshell/paperback.dart';
 import 'package:nutshell/navigate.dart';
 import 'package:nutshell/phone.dart';
 import 'package:nutshell/subscription.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'constants.dart';
@@ -19,7 +18,6 @@ class IntroScreen extends StatefulWidget {
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
-
 
 // List<Slide> slides = new List();
 
@@ -39,7 +37,6 @@ class IntroScreen extends StatefulWidget {
 //         //     "New, innovative approach to general knowledge for school students",
 //         // pathImage: "assets/images/p1.png",
 
-       
 //         backgroundColor: Colors.greenAccent,
 //       ),
 //     );
@@ -81,48 +78,36 @@ class _IntroScreenState extends State<IntroScreen> {
     //     // backgroundColor: Colors.blueAccent,
     //  )
     //  );
-      slides.add(
+    slides.add(
       new Slide(
         // widgetTitle: Center(child: Text( "New, innovative approach to general knowledge for school students",)),
-        centerWidget: 
-        Center(
-          child: SvgPicture.asset("assets/images/INTRO1.svg",
-          height:350,
-          width: 400,
-          fit:BoxFit.contain)),
+        centerWidget: Center(
+            child: SvgPicture.asset("assets/images/INTRO1.svg",
+                height: 350, width: 400, fit: BoxFit.contain)),
         backgroundColor: Color.fromRGBO(191, 30, 46, 1),
       ),
     );
     slides.add(
       new Slide(
         // widgetTitle: Center(child: Text( "New, innovative approach to general knowledge for school students",)),
-        centerWidget: 
-        Center(
-          child: SvgPicture.asset("assets/images/INTRO2.svg",
-          height:350,
-          width: 400,
-          fit:BoxFit.contain)),
-        backgroundColor:Color.fromRGBO(191, 30, 46, 1),
+        centerWidget: Center(
+            child: SvgPicture.asset("assets/images/INTRO2.svg",
+                height: 350, width: 400, fit: BoxFit.contain)),
+        backgroundColor: Color.fromRGBO(191, 30, 46, 1),
       ),
     );
     slides.add(
       new Slide(
         // widgetTitle: Center(child: Text( "New, innovative approach to general knowledge for school students",)),
-        centerWidget: 
-        Center(
-          child: SvgPicture.asset("assets/images/INTRO3.svg",
-          height:350,
-          width: 400,
-          fit:BoxFit.contain)),
+        centerWidget: Center(
+            child: SvgPicture.asset("assets/images/INTRO3.svg",
+                height: 350, width: 400, fit: BoxFit.contain)),
         backgroundColor: Color.fromRGBO(191, 30, 46, 1),
       ),
     );
-    
-    
   }
 
   void onDonePress() {
-    
     // Navigator.push(
     //     context, MaterialPageRoute(builder: (context) => Subscription()));
     Navigator.push(
@@ -151,31 +136,31 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-          SizedBox(
-              height: MediaQuery.of(context).size.height * 0.07,
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: RaisedButton(
-                color: Colors.white,
-                onPressed: () {
-                   signInWithGoogle(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Image.asset('assets/images/google.png'),
-                    Text(
-                      ' Login with Google',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ],
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.07,
+          width: MediaQuery.of(context).size.width * 0.95,
+          child: RaisedButton(
+            color: Colors.white,
+            onPressed: () {
+              signInWithGoogle(context);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Image.asset('assets/images/google.png'),
+                Text(
+                  ' Login with Google',
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
-              ),
+              ],
             ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0)),
+          ),
+        ),
       ],
     );
   }
@@ -205,39 +190,36 @@ class _LoginScreenState extends State<LoginScreen> {
     // );
     return Center(
       child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.07,
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: RaisedButton(
-                color: Colors.white,
-                onPressed: () {
-                  print("clicked 1");
-                  Navigator.of(context).push(
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) => new Phone()
-                            )
-                            );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Icon(
-                      Icons.phone,
-                      size: 35.0,
-                      color: Colors.blue,
-                    ),
-                    Text(
-                      'Login with Phone',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
+        height: MediaQuery.of(context).size.height * 0.07,
+        width: MediaQuery.of(context).size.width * 0.95,
+        child: RaisedButton(
+          color: Colors.white,
+          onPressed: () {
+            print("clicked 1");
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new Phone()));
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Icon(
+                Icons.phone,
+                size: 35.0,
+                color: Colors.blue,
               ),
-            ),
+              Text(
+                'Login with Phone',
+                style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+            ],
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+        ),
+      ),
     );
   }
 
@@ -271,8 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    
-                     SizedBox(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     Text('Hello \nThere.',
@@ -283,16 +264,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.15,
                     ),
-                    _buildPhone(() => 
-                    Navigator.of(context).push(
+                    _buildPhone(() => Navigator.of(context).push(
                         new MaterialPageRoute(
-                            builder: (BuildContext context) => new Phone()
-                            )
-                            )
-                            ),
-                   SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
+                            builder: (BuildContext context) => new Phone()))),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                    ),
                     // Center(
                     //   child: Text(
                     //     "OR",
@@ -310,5 +287,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 }

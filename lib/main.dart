@@ -9,7 +9,6 @@ import 'package:nutshell/paperback.dart';
 import 'package:nutshell/splashscreen.dart';
 import 'package:flutter/services.dart';
 import 'package:nutshell/subscription.dart';
-// import 'AccountModule.dart/about.dart';
 import 'AccountModule.dart/contactUs.dart';
 import 'AccountModule.dart/pricing.dart';
 import 'AccountModule.dart/privacy.dart';
@@ -78,7 +77,7 @@ class MyApp extends StatelessWidget {
       // Details()
       // IntroScreen()
       // Paperbacks(),
-      //  Splash() ,
+      // LoginScreen(),
     );
   }
 }

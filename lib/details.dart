@@ -578,7 +578,7 @@ class _PinCodeState extends State<PinCode> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: TextFormField(
-                                // autovalidate: true,
+                                autovalidate: true,
                                 validator: (String txt) {
                                   if (txt.length >= 8) {
                                     Future.delayed(Duration.zero).then((_) {

@@ -10,12 +10,11 @@ class OurDatabase {
     // print("current user pincode ${user.fname}");
     // print("Current Pincode is ${user.pinCode}");
     String retVal = "error";
-FirebaseUser uid = await FirebaseAuth.instance.currentUser();
+    FirebaseUser uid = await FirebaseAuth.instance.currentUser();
     // print("firebase user uid ${uid.uid}" );
 
-
     try {
-      await _firestore.collection("users").document(uid.uid). setData({
+      await _firestore.collection("users").document(uid.uid).setData({
         // 'OrderID': user.sID,
         'first Name': global.name,
         // 'Last Name': user.lname,
@@ -24,7 +23,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         'DOB': global.dob,
         // 'class': user.grade,
         // 'city': user.city,
-        'subscription':false,
+        'subscription': false,
         'phone': global.phone,
         'group': global.group,
         'accountCreated': Timestamp.now(),
@@ -47,7 +46,8 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
     try {
       print("called for data");
       // print(uid);
-      DocumentSnapshot _docSnapshot = await _firestore.collection("users").document(uid).get();
+      DocumentSnapshot _docSnapshot =
+          await _firestore.collection("users").document(uid).get();
       print("waiting jp");
       print(retVal.fname = _docSnapshot.data["first Name"]);
       retVal.uid = uid;
@@ -61,11 +61,11 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
       retVal.phone = _docSnapshot.data["phone"];
       retVal.group = _docSnapshot.data["group"];
       retVal.accountCreated = _docSnapshot.data["accountCreated"];
-      retVal.photoUrl= _docSnapshot.data["photoUrl"];
-      retVal.subPlan= _docSnapshot.data["subPlan"];
-      retVal.pinCode= _docSnapshot.data["pinCode"];
-     print(retVal.subPlan);
-    
+      retVal.photoUrl = _docSnapshot.data["photoUrl"];
+      retVal.subPlan = _docSnapshot.data["subPlan"];
+      retVal.pinCode = _docSnapshot.data["pinCode"];
+      global.timeCreated = _docSnapshot.data["pinCode"];
+      print(retVal.subPlan);
     } catch (e) {
       print("in catch");
       print(e);
@@ -74,9 +74,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
     return retVal;
   }
 
-
 //by JP
-
 
 // Future<String> updateDetails(Users user) async {
 //     String retVal = "error";
@@ -103,8 +101,6 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
 //     return retVal;
 //   }
 
-
-
   Future<String> freesubscription(String uid) async {
     String retVal = "error";
 
@@ -115,7 +111,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         // 'group': user.group,
         'accountCreated': Timestamp.now(),
       });
-       print("Uploaded subscribed Info successfully in Firebase");
+      print("Uploaded subscribed Info successfully in Firebase");
       retVal = "success";
     } catch (e) {
       print(e);
@@ -125,11 +121,13 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
   }
 
   void updateDetails(Users currentUser) async {
-
     // String retVal = "error";
     print("called for updating info");
     try {
-      await _firestore.collection("users").document(currentUser.uid).updateData({
+      await _firestore
+          .collection("users")
+          .document(currentUser.uid)
+          .updateData({
         // 'OrderID': user.sID,
         'first Name': currentUser.fname,
         'Last Name': currentUser.lname,
@@ -141,7 +139,7 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
         // 'group': currentUser.group,
         // 'accountCreated': Timestamp.now(),
       });
-       print("Updated Info successfully in Firebase");
+      print("Updated Info successfully in Firebase");
       // retVal = "success";
     } catch (e) {
       print(e);
@@ -149,8 +147,4 @@ FirebaseUser uid = await FirebaseAuth.instance.currentUser();
 
     // return retVal;
   }
-
-  }
-
-
-
+}

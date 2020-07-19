@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nutshell/account.dart';
 import 'package:nutshell/database.dart';
+import 'package:nutshell/global.dart' as global;
 import 'package:nutshell/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'global.dart' as global;
-import 'navigate.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();

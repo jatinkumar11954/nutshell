@@ -23,13 +23,17 @@
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
+.flutter-plugins*
+.flutter-plugins-dependencies*
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 /build/
-
+/build/*
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies~75a12cbeee2de2f114adde5b0810d8396e495013
 # Web related
 lib/generated_plugin_registrant.dart
 
