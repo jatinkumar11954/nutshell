@@ -5,25 +5,26 @@ import 'package:nutshell/paperback.dart';
 import 'package:provider/provider.dart';
 
 import 'cover.dart';
-import '../model/details.dart';
+import '../model/userdetails.dart';
 
 class Topic extends StatelessWidget {
   DocumentSnapshot topic;
   @override
   Widget build(BuildContext context) {
+    // Future.delayed(Duration(milliseconds: 800));
     topic = Provider.of<UserDetails>(context).doc;
     // d = Provider.of<UserDetails>(context).docSnap;
     //  final varia= topic.data["Topic"].toList();
-    List<MapEntry<String, dynamic>> topicL =
+    List<MapEntry<String, dynamic>> topicList =
         topic.data["Topic"].entries.toList();
 //  req=   ob.entries.toList();
 //     print(req[0].key);
-    topicL.sort((a, b) => int.parse(a.key.split("??")[0])
+    topicList.sort((a, b) => int.parse(a.key.split("??")[0])
         .compareTo(int.parse(b.key.split("??")[0])));
     // print(topicL);
-    List<dynamic> topicList = topic.data["Topic"].keys.toList();
-    topicList.sort((a, b) =>
-        int.parse(a.split("??")[0]).compareTo(int.parse(b.split("??")[0])));
+    // List<dynamic> topicList = topic.data["Topic"].keys.toList();
+    // topicList.sort((a, b) =>
+    //     int.parse(a.split("??")[0]).compareTo(int.parse(b.split("??")[0])));
     // print(topicList);
     return new Scaffold(
       backgroundColor: Colors.white,
@@ -53,9 +54,12 @@ class Topic extends StatelessWidget {
                       return Center(
                         child: GestureDetector(
                           onTap: () {
-                            print("navigating");
+                            // print(topicList[i].value);
                             Provider.of<UserDetails>(context, listen: false)
-                                .topicTap(i);
+                                .sortedList(topicList);
+                            print(topicList[i].value);
+                            Provider.of<UserDetails>(context, listen: false)
+                                .getCover(topicList[i].value);
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 // print(grpName);
@@ -77,14 +81,9 @@ class Topic extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: GridTile(
-                                      // child:
-                                      //  Hero(
-                                      //   tag: i,
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            // "http://via.placeholder.com/350x200",
-
-                                            topicList[i].split('??')[2],
+                                            topicList[i].key.split('??')[2],
                                         fit: BoxFit.fill,
                                         placeholder: (context, url) => Center(
                                             child: CircularProgressIndicator()),
@@ -105,7 +104,7 @@ class Topic extends StatelessWidget {
                                       //         .toList()[i]
                                       //         .split('??')[0] +
                                       //     "\n" +
-                                      topicList[i].split('??')[1],
+                                      topicList[i].key.split('??')[1],
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,

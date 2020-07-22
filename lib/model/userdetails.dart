@@ -7,6 +7,21 @@ class UserDetails extends ChangeNotifier {
   int get noOfPaper => _noOfPaper;
   int _topicIndex;
   QuerySnapshot _q;
+  List<MapEntry<String, dynamic>> _topicList;
+    List<MapEntry<String, dynamic>> get topicL=>_topicList;
+    void sortedList(  List<MapEntry<String, dynamic>> list){
+      _topicList=list;
+      notifyListeners();
+
+    }
+
+  List<dynamic>  _coverList;
+ List<dynamic>  get coverList => _coverList;
+  void getCover(List<dynamic> list) {
+    _coverList = list;
+    notifyListeners();
+  }
+
   // String _newsGrpName;
   // String get newsGrpName => _newsGrpName;
 

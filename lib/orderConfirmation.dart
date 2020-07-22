@@ -1,4 +1,4 @@
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,7 @@ import 'package:nutshell/AccountModule.dart/help.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/details.dart';
 import 'package:nutshell/dummy.dart';
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
 import 'package:nutshell/paperback.dart';

@@ -7,7 +7,7 @@ import 'package:nutshell/database.dart';
 import 'package:nutshell/global.dart' as global;
 import 'package:nutshell/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 
 import 'package:provider/provider.dart';
 

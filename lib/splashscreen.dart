@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
 import 'package:nutshell/phone.dart';

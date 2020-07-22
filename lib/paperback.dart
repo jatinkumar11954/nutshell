@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 import 'package:provider/provider.dart';
 
 class Paperbacks extends StatefulWidget {

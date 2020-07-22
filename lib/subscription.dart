@@ -10,7 +10,7 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'details.dart';
 import 'currentUser.dart';
-import 'package:nutshell/model/details.dart';
+import 'package:nutshell/model/userdetails.dart';
 import 'account.dart';
 import 'orderConfirmation.dart';
 import 'global.dart' as global;
