@@ -32,18 +32,10 @@ String postUrl;
 String cardUrl;
 String _category;
 String _group;
+bool uploadPic = false;
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 class _AccountState extends State<Account> {
-  Future getImage() async {
-    var image = await picker.getImage(source: ImageSource.gallery);
-
-    setState(() {
-      _image = File(image.path);
-      print('Image Path $_image');
-    });
-  }
-
   bool validateAndSave() {
     final form = formKey.currentState;
 
@@ -55,9 +47,7 @@ class _AccountState extends State<Account> {
     }
   }
 
-  Future uploadPic(BuildContext context) async {
-    String fileName = _image.path;
-
+  Future uploadPic() async {
     final StorageReference postImageRef =
         FirebaseStorage.instance.ref().child("profile");
 
@@ -80,6 +70,7 @@ class _AccountState extends State<Account> {
       _currentUser.photoUrl = postUrl;
 
       print("Profile Picture uploaded");
+      print('xy');
       Scaffold.of(context)
           .showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
     });
@@ -106,10 +97,20 @@ class _AccountState extends State<Account> {
     ref.child("profile").push().set(data);
   }
 
+  getImage() async {
+    var image = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = File(image.path);
+
+      print('Image Path $_image');
+    });
+    uploadPic();
+  }
+
   Users _currentUser = Users();
 
   Users get getCurrentUser => _currentUser;
-  // Users get getUrl => _currentUser;
 
   bool isLoading = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -167,7 +168,8 @@ class _AccountState extends State<Account> {
                   width: (MediaQuery.of(context).size.height) * 0.8,
                   // MediaQuery.of(context).size.width *0.8,
                   child: PhotoView(
-                      imageProvider: NetworkImage(_currentUser.photoUrl),
+                      imageProvider:
+                          NetworkImage(_currentUser.photoUrl.toString()),
                       // tightMode: true,
                       maxScale: 2.2,
                       filterQuality: FilterQuality.high,
@@ -241,58 +243,63 @@ class _AccountState extends State<Account> {
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: _currentUser.photoUrl == null
-                                    ? Icon(Icons.account_circle, size: 70.0)
+                                    ? Icon(Icons.account_circle, size: 120.0)
                                     : GestureDetector(
                                         onTap: () => Alert(context),
-                                        child: CircleAvatar(
-                                          radius: 70,
-                                          backgroundImage: NetworkImage(
-                                              _currentUser.photoUrl.toString()),
-                                          backgroundColor: Color(0xff476cfb),
-                                          child: ClipOval(
-                                              child: new SizedBox(
-                                                  width: 180.0,
-                                                  height: 180.0,
-                                                  child: (_image != null)
-                                                      ? Image.file(
-                                                          _image,
-                                                          fit: BoxFit.fill,
-                                                        )
-                                                      : null
-                                                  // : Icon(Icons.account_circle,
-                                                  //     size: 70))
-                                                  )),
-                                        ),
+                                        child: isLoading == true
+                                            ? CircularProgressIndicator(
+                                                backgroundColor: Colors.white,
+                                              )
+                                            : CircleAvatar(
+                                                radius: 70,
+                                                backgroundImage: NetworkImage(
+                                                    _currentUser.photoUrl
+                                                        .toString()),
+
+                                                // backgroundColor: Color(0xff476cfb),
+                                                // child: ClipOval(
+                                                //     child: new SizedBox(
+                                                //         width: 180.0,
+                                                //         height: 180.0,
+                                                //         child: (_image != null)
+                                                //             ? Image.file(
+                                                //                 _image,
+                                                //                 fit: BoxFit.fill,
+                                                //               )
+                                                //             : null
+                                                //         // : Icon(Icons.account_circle,
+                                                //         //     size: 70))
+                                                //         )),
+                                              ),
                                       ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 60.0),
                                 child: IconButton(
-                                  icon: Icon(
-                                    Icons.add_a_photo,
-                                    size: 30.0,
-                                  ),
-                                  onPressed: () {
-                                    getImage();
-                                  },
-                                ),
-                              ),
-                              Wrap(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 15.0),
-                                    child: Text(
-                                      _currentUser.fname.toString() + " ",
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20.0,
-                                          fontFamily: 'Montserrat',
-                                          fontWeight: FontWeight.w500),
+                                    icon: Icon(
+                                      Icons.add_a_photo,
+                                      size: 30.0,
                                     ),
-                                  ),
+                                    onPressed: () => getImage()),
+                              ),
+                              Column(
+                                children: <Widget>[
                                   Text(
-                                    _currentUser.group.toString(),
+                                    _currentUser.fname.toString() + " ",
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20.0,
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
+                                  Text(
+                                    "Group:\t\t" +
+                                        _currentUser.group.toString(),
                                     style: TextStyle(
                                         fontSize: 20.0,
                                         fontFamily: 'Montserrat',
@@ -303,21 +310,60 @@ class _AccountState extends State<Account> {
                             ],
                           ),
                         ),
-                        Center(
-                          child: RaisedButton(
-                            color: Colors.black,
-                            onPressed: () {
-                              uploadPic(context);
-                            },
-                            elevation: 4.0,
-                            splashColor: Colors.blueGrey,
-                            child: Text(
-                              'Save',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 16.0),
-                            ),
-                          ),
-                        ),
+                        // Wrap(
+                        //   children: <Widget>[
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(top: 15.0),
+                        //       child: Text(
+                        //         _currentUser.fname.toString() + " ",
+                        //         textAlign: TextAlign.end,
+                        //         style: TextStyle(
+                        //             color: Colors.black,
+                        //             fontSize: 20.0,
+                        //             fontFamily: 'Montserrat',
+                        //             fontWeight: FontWeight.w500),
+                        //       ),
+                        //     ),
+                        //     Text(
+                        //       _currentUser.group.toString(),
+                        //       style: TextStyle(
+                        //           fontSize: 20.0,
+                        //           fontFamily: 'Montserrat',
+                        //           fontWeight: FontWeight.w500),
+                        //     ),
+                        //   ],
+                        // ),
+                        // ),
+                        // Center(
+                        //   child: RaisedButton(
+                        //     color: Colors.black,
+                        //     onPressed: () {
+                        //       uploadPic(context);
+                        //     },
+                        //     elevation: 4.0,
+                        //     splashColor: Colors.blueGrey,
+                        //     child: Text(
+                        //       'Save',
+                        //       style: TextStyle(
+                        //           color: Colors.white, fontSize: 16.0),
+                        //     ),
+                        //   ),
+                        // ),
+                        // Center(
+                        //   child: RaisedButton(
+                        //     color: Colors.black,
+                        //     onPressed: () {
+                        //       uploadPic();
+                        //     },
+                        //     elevation: 4.0,
+                        //     splashColor: Colors.blueGrey,
+                        //     child: Text(
+                        //       'Save',
+                        //       style: TextStyle(
+                        //           color: Colors.white, fontSize: 16.0),
+                        //     ),
+                        //   ),
+                        // ),
                         Divider(
                           height: 45,
                           thickness: 2.0,

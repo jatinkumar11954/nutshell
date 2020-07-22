@@ -1,301 +1,13 @@
-// // import 'package:flutter/material.dart';
-// // import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
-
-// // class Paperbacks extends StatefulWidget {
-// //   @override
-// //   _PaperbacksState createState() => _PaperbacksState();
-// // }
-
-// // class _PaperbacksState extends State<Paperbacks> {
-// //   PDFDocument _doc;
-// //   bool _loading=false;
-// //   @override
-// //   void initState() {
-// //     super.initState();
-// //     // _initPDF();
-// //   }
-
-// //   _initPDF() async {
-// //     Book book;
-// //     setState(() {
-// //       _loading = true;
-// //     });
-// //     final doc = await PDFDocument.fromAsset(book.pdf);
-// //     setState(() {
-// //       _doc = doc;
-// //       _loading = false;
-// //     });
-// //   }
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     createTile(Book book) => Hero(
-// //           tag: book.title,
-// //           child: GestureDetector(
-// //             onTap: () {
-// //               showDialog(
-// //                 barrierDismissible: false,
-// //                 context: context,
-// //                 child:
-// //                 Scaffold(
-// //                 body:
-// //                 _loading
-// //                     ? Center(
-// //                         child: CircularProgressIndicator(),
-// //                       )
-// //                     : PDFViewer(
-// //                         document: _doc,
-// //                       ),
-// //               ),);
-// //               // return Container(
-// //               //   color: Colors.amber,
-// //               // );
-// //             },
-// //             child: Center(
-// //               child: Container(
-// //                 decoration: BoxDecoration(
-// //                     boxShadow: [
-// //                       BoxShadow(color: Colors.black26, blurRadius: 10.0)
-// //                     ],
-// //                     image: DecorationImage(
-// //                       image: AssetImage(book.image),
-// //                       fit: BoxFit.fill,
-// //                     )),
-// //                 // elevation: 15.0,
-// //                 // shadowColor: Colors.yellow.shade900,
-
-// //                 // child: Image(
-// //                 //   image: AssetImage(book.image),
-// //                 //   fit: BoxFit.fill,
-// //                 // ),
-// //               ),
-// //             ),
-// //           ),
-// //         );
-
-// //     ///create book grid tiles
-// //     final grid = CustomScrollView(
-// //       primary: false,
-// //       slivers: <Widget>[
-// //         SliverPadding(
-// //           padding: EdgeInsets.all(16.0),
-// //           sliver: SliverGrid.count(
-// //             childAspectRatio: 2 / 3,
-// //             crossAxisCount: 2,
-// //             mainAxisSpacing: 20.0,
-// //             crossAxisSpacing: 20.0,
-// //             children: books.map((book) => createTile(book)).toList(),
-// //           ),
-// //         )
-// //       ],
-// //     );
-// //     return Container(
-// //       // body: _loading ? Center(child: CircularProgressIndicator(),):
-// //       // PDFViewer(
-// //       //   document: _doc,
-
-// //       // ),
-// //       child: Padding(
-// //         padding: const EdgeInsets.all(10.0),
-// //         child: grid,
-// //       ),
-// //     );
-// //   }
-// // }
-
-// // class Book {
-// //   String title, image, pdf;
-
-// //   Book(this.title, this.image, this.pdf);
-// // }
-
-// // final List<Book> books = [
-// //   Book('Nutshell November-December 2019', 'assets/book/nov.png',
-// //       'assets/book/nov.pdf'),
-// //   Book('Nutshell January-February 2020', 'assets/book/jan.png',
-// //       'assets/book/jan.pdf'),
-// //   // Book('Coming Soon', 'assets/images/book/soon.png',
-// //   //     'assets/book/soon.pdf'),
-// // ];
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
-// import 'package:carousel_slider/carousel_slider.dart';
-
-// class Paperbacks extends StatefulWidget {
-//   @override
-//   _PaperbacksState createState() => _PaperbacksState();
-// }
-
-// class _PaperbacksState extends State<Paperbacks> {
-//   PDFDocument _doc;
-//   bool _loading=false;
-//   @override
-//   void initState() {
-//     super.initState();
-//     // _initPDF();
-//   }
-
-//   _initPDF() async {
-//     Book book;
-//     setState(() {
-//       _loading = true;
-//     });
-//     final doc = await PDFDocument.fromAsset(book.pdf);
-//     setState(() {
-//       _doc = doc;
-//       _loading = false;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     createTile(Book book) => Hero(
-//           tag: book.title,
-//           child: GestureDetector(
-//             onTap: () {
-//               showDialog(
-//                 barrierDismissible: false,
-//                 context: context,
-//                 child:
-//                 Scaffold(
-//                 body:
-//                 _loading
-//                     ? Center(
-//                         child: CircularProgressIndicator(),
-//                       )
-//                     : PDFViewer(
-//                         document: _doc,
-//                       ),
-//               ),);
-//               // return Container(
-//               //   color: Colors.amber,
-//               // );
-//             },
-//             child: Center(
-//               child: Container(
-//                 decoration: BoxDecoration(
-//                     boxShadow: [
-//                       BoxShadow(color: Colors.black26, blurRadius: 10.0)
-//                     ],
-//                     image: DecorationImage(
-//                       image: AssetImage(book.image),
-//                       fit: BoxFit.fill,
-//                     )),
-//                 // elevation: 15.0,
-//                 // shadowColor: Colors.yellow.shade900,
-
-//                 // child: Image(
-//                 //   image: AssetImage(book.image),
-//                 //   fit: BoxFit.fill,
-//                 // ),
-//               ),
-//             ),
-//           ),
-//         );
-
-//     ///create book grid tiles
-//     final widget=CarouselSlider(
-//       options:CarouselOptions(enlargeCenterPage: true,
-//     autoPlay: true,
-//     pauseAutoPlayOnTouch: true,
-//     autoPlayInterval:  Duration(seconds:2),
-//     autoPlayAnimationDuration: Duration(seconds:2),
-//     height: MediaQuery.of(context).size.height / 2,) ,
-
-//     items:books.map((book) {
-//       return Builder(
-//         builder: (BuildContext context) {
-//           return Container(
-//               width: MediaQuery.of(context).size.width,
-//               margin: EdgeInsets.symmetric(horizontal: 10.0),
-//               decoration:
-//                   BoxDecoration(color: Colors.grey[300]),
-//               child: GestureDetector(
-//                   child:Image.asset(book.image,
-//                       fit: BoxFit.fill,
-
-//                   // Image.network(
-//                   //   book.image,
-//                   //   fit: BoxFit.fill,
-//                   //   // loadingBuilder: (BuildContext context, Widget child,
-//                     //     ImageChunkEvent loadingProgress) {
-//                     //   if (loadingProgress == null)
-//                     //         return child;
-//                     //       return CircularProgressIndicator();
-//                     // },
-//                     // height:200,
-//                   ),
-//                   onTap: () {
-//                     showDialog(
-//                 barrierDismissible: false,
-//                 context: context,
-//                 child:
-//                 Scaffold(
-//                 body:
-//                 _loading
-//                     ? Center(
-//                         child: CircularProgressIndicator(),
-//                       )
-//                     : PDFViewer(
-//                         document: _doc,
-//                       ),
-//               ),);
-//                   }));
-//         },
-//       );
-//     }).toList(),
-//   );
-//     final grid = CustomScrollView(
-//       primary: false,
-//       slivers: <Widget>[
-//         SliverPadding(
-//           padding: EdgeInsets.all(16.0),
-//           sliver: SliverGrid.count(
-
-//             childAspectRatio: 2 / 3,
-//             crossAxisCount: 2,
-//             mainAxisSpacing: 20.0,
-//             crossAxisSpacing: 20.0,
-//             children: books.map((book) => createTile(book)).toList(),
-//           ),
-//         )
-//       ],
-//     );
-//     return Container(
-//       // body: _loading ? Center(child: CircularProgressIndicator(),):
-//       // PDFViewer(
-//       //   document: _doc,
-
-//       // ),
-//       child: Padding(
-//         padding: const EdgeInsets.all(10.0),
-//         child: widget,
-//       ),
-//     );
-//   }
-// }
-
-// class Book {
-//   String title, image, pdf;
-
-//   Book(this.title, this.image, this.pdf);
-// }
-
-// final List<Book> books = [
-//   Book('Nutshell November-December 2019', 'assets/book/nov.png',
-//       'assets/book/nov.pdf'),
-//   Book('Nutshell January-February 2020', 'assets/book/jan.png',
-//       'assets/book/jan.pdf'),
-//   // Book('Coming Soon', 'assets/images/book/soon.png',
-//   //     'assets/book/soon.pdf'),
-// ];
-
+import './paperBack/topic.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nutshell/model/details.dart';
+import 'package:provider/provider.dart';
 
 class Paperbacks extends StatefulWidget {
   @override
@@ -304,15 +16,33 @@ class Paperbacks extends StatefulWidget {
 
 class _PaperbacksState extends State<Paperbacks> {
   @override
-  void initState() {
-    super.initState();
-    // _initPDF();
-  }
+  // void initState() {
+  //   super.initState();
+  //   // getPaperBack();
+  // }
 
-  List<String> books = ["assets/images/INTRO1.svg"];
+  // getPaperBack() {}
+  // Future<List<DocumentSnapshot>> getName() async {
+  //   final db = Firestore.instance;
+  //   QuerySnapshot qs;
+  //   qs = await Firestore.instance.collection("$grpName").getDocuments();
+  //   print("doc");
+  //   List<DocumentSnapshot> d = qs.documents;
 
+  //   return d;
+  // }
+
+  // List<String> books = ["assets/images/INTRO1.svg"];
+  int count;
+  List<DocumentSnapshot> paper = List<DocumentSnapshot>();
   @override
   Widget build(BuildContext context) {
+    count = Provider.of<UserDetails>(context).noOfPaper;
+
+    // paper = Provider.of<UserDetails>(context).qs.documents.sublist(0, 1);
+    paper.addAll(Provider.of<UserDetails>(context).qs.documents.sublist(0,count));
+    // print(count);
+
     ///create book grid tiles
     final widget = CarouselSlider(
       options: CarouselOptions(
@@ -321,7 +51,7 @@ class _PaperbacksState extends State<Paperbacks> {
         pauseAutoPlayOnTouch: true,
         height: MediaQuery.of(context).size.height / 2,
       ),
-      items: books.map((book) {
+      items: paper.map((back) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
@@ -329,11 +59,15 @@ class _PaperbacksState extends State<Paperbacks> {
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 decoration: BoxDecoration(color: Colors.grey[300]),
                 child: GestureDetector(
-                    child: SvgPicture.asset(
-                      book,
-                      fit: BoxFit.fill,
-                    ),
+                    child: CachedNetworkImage(imageUrl: back.data["img"]),
                     onTap: () {
+                      Provider.of<UserDetails>(context, listen: false)
+                          .onPaperTap(back);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Topic(),
+                          ));
                       print("this is pdf ");
                     }));
           },

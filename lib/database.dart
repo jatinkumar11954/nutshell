@@ -64,8 +64,11 @@ class OurDatabase {
       retVal.photoUrl = _docSnapshot.data["photoUrl"];
       retVal.subPlan = _docSnapshot.data["subPlan"];
       retVal.pinCode = _docSnapshot.data["pinCode"];
-      global.timeCreated = _docSnapshot.data["pinCode"];
+      global.timeCreated = _docSnapshot.data["accountCreated"];
       print(retVal.subPlan);
+      print("jp");
+      print(global.timeCreated.day.toString());
+      // print("hunter");
     } catch (e) {
       print("in catch");
       print(e);

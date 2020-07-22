@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nutshell/model/details.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:nutshell/login.dart';
 import 'package:nutshell/phone.dart';
@@ -9,6 +10,7 @@ import 'dart:async';
 
 import 'package:nutshell/subscription.dart';
 import 'package:nutshell/users.dart';
+import 'package:provider/provider.dart';
 
 import 'database.dart';
 
@@ -26,7 +28,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     super.initState();
 
     _mainLogoAnimationController = new AnimationController(
-        duration: new Duration(milliseconds: 1900), vsync: this);
+        duration: new Duration(milliseconds: 1400), vsync: this);
     _mainLogoAnimation = new CurvedAnimation(
         parent: _mainLogoAnimationController, curve: Curves.easeIn);
     _mainLogoAnimation.addListener(() => (this.setState(() {})));
@@ -34,11 +36,17 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     existingUser();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _mainLogoAnimationController.dispose();
+  }
+
   Future existingUser() async {
     final Firestore _firestore = Firestore.instance;
 
     try {
-      await new Future.delayed(const Duration(milliseconds: 1500));
+      await new Future.delayed(const Duration(milliseconds: 1300));
 
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       print(user.toString());
@@ -48,13 +56,29 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
             await _firestore.collection("users").document(user.uid).get();
 
         if (_docSnap.data['subscription']) {
+          print(_docSnap.data['subPlan']);
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(_docSnap.data['subPlan']);
+          print(_docSnap.data['group']);
+
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(_docSnap.data['group']);
+          QuerySnapshot qs = await Firestore.instance
+              .collection("Group"+_docSnap.data['group'])
+              .orderBy("name")
+              .getDocuments();
+          // List<DocumentSnapshot> d = qs.documents;
+          // print(d[0].data["name"]);
+          print("doc");
+          Provider.of<UserDetails>(context, listen: false).setQuery(qs);
           Navigator.pushNamedAndRemoveUntil(
               context, "/bottombar", (_) => false);
+          print("object");
         } else {
           Navigator.pushNamed(context, "/subs");
         }
       } else {
-        await new Future.delayed(const Duration(milliseconds: 1000));
+        // await new Future.delayed(const Duration(milliseconds: 1000));
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
 
 // Navigator.of(context).push(

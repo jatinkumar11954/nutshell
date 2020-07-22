@@ -7,6 +7,9 @@ import 'package:nutshell/database.dart';
 import 'package:nutshell/global.dart' as global;
 import 'package:nutshell/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nutshell/model/details.dart';
+
+import 'package:provider/provider.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -76,12 +79,12 @@ Future<String> signInWithGoogle(BuildContext context) async {
       print("current user id");
       print(user.uid);
 
-      final Firestore fireStore = Firestore.instance;
+      // final Firestore fireStore = Firestore.instance;
 
-      await fireStore.collection("users").document(user.uid).updateData({
-        "photoUrl": _authResult.user.photoUrl.toString()
-        // "subscription": true
-      });
+      // await fireStore.collection("users").document(user.uid).updateData({
+      //   "photoUrl": _authResult.user.photoUrl.toString()
+      //   // "subscription": true
+      // });
 
       print("existing user");
       DocumentSnapshot _docSnap =
@@ -90,6 +93,18 @@ Future<String> signInWithGoogle(BuildContext context) async {
       if (_docSnap.data['subscription']) {
         print("Already subscribed");
         global.isGLogin = true;
+        //changes
+        Provider.of<UserDetails>(context, listen: false)
+            .setnoOfPaper(_docSnap.data['subPlan']);
+
+        Provider.of<UserDetails>(context, listen: false)
+            .setnoOfPaper("Group" + _docSnap.data['group']);
+        QuerySnapshot qs = await Firestore.instance
+            .collection("Group" + _docSnap.data['group'])
+            .orderBy("name")
+            .getDocuments();
+        print("doc");
+        Provider.of<UserDetails>(context, listen: false).setQuery(qs);
 
         Navigator.pushNamedAndRemoveUntil(context, "/bottombar", (_) => false);
       } else {

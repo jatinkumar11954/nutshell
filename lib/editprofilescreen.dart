@@ -119,10 +119,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child:
             // Text("\n"),
             Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             // Text(
             //   'Update \nDetails',
             //   style: TextStyle(
@@ -139,17 +139,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      // floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      // labelText: _currentUser.fname.toString(),
+                      labelText: 'Full Name',
                       hintText: _currentUser.fname.toString()),
                   validator: validateName,
                   onSaved: (String value) {
                     _currentUser.fname = value;
                   }),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             // SizedBox(
             //   width: MediaQuery.of(context).size.width * 0.85,
             //   child: TextFormField(
@@ -174,10 +174,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   // autovalidate: true,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      // floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      // labelText: _currentUser.school.toString(),
+                      labelText: 'Collage',
                       hintText: _currentUser.school.toString()),
                   validator: validateSchool,
                   onSaved: (String value) {
@@ -185,22 +185,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   }),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: TextFormField(
                   decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      // floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0)),
-                      // labelText: _currentUser.email.toString(),
+                      labelText: 'Email',
                       hintText: _currentUser.email.toString()),
                   // validator: validateClass,
                   onSaved: (String value) {
                     _currentUser.email = value;
                   }),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: TextFormField(
@@ -209,12 +209,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   autovalidate: true,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    // floatingLabelBehavior: FloatingLabelBehavior.always,
                     counterText: "",
                     hintText: _currentUser.phone.toString(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    // labelText: _currentUser.phone.toString(),
+                    labelText: 'Phone No',
                   ),
                   validator: (String txt) {
                     if (txt.length == 10) {
@@ -231,7 +231,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     _currentUser.phone = value;
                   }),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: RaisedButton(

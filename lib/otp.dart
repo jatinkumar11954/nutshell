@@ -1,3 +1,6 @@
+import 'package:nutshell/model/details.dart';
+
+import 'package:provider/provider.dart';
 import 'dart:async';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'database.dart';
@@ -174,6 +177,17 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
               // setState(() {
               //   _isLoading = false;
               // });
+              Provider.of<UserDetails>(context, listen: false)
+                  .setnoOfPaper(_docSnap.data['subPlan']);
+
+              Provider.of<UserDetails>(context, listen: false)
+                  .setnoOfPaper("Group" + _docSnap.data['group']);
+              QuerySnapshot qs = await Firestore.instance
+                  .collection("Group" + _docSnap.data['group'])
+                  .orderBy("name")
+                  .getDocuments();
+              print("doc");
+              Provider.of<UserDetails>(context, listen: false).setQuery(qs);
 
               Navigator.pushNamedAndRemoveUntil(
                   context, "/bottombar", (_) => false);

@@ -10,6 +10,6 @@ String photoUrl;
 String group;
 String uid;
 bool isGLogin = false;
-var timeCreated; 
+DateTime timeCreated;
 
 // String group;

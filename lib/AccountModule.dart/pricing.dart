@@ -13,7 +13,7 @@ class Pricing extends StatefulWidget {
 
 class _PricingState extends State<Pricing> {
   Users _currentUser = Users();
-  var today = global.timeCreated == null ? DateTime.now() : global.timeCreated;
+  var today;
   var expiryDate;
   Users get getCurrentUser => _currentUser;
   bool isLoading = false;
@@ -32,6 +32,8 @@ class _PricingState extends State<Pricing> {
       if (_firebaseUser != null) {
         // print(_firebaseUser.uid);
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
+        today =
+            global.timeCreated == null ? DateTime.now() : global.timeCreated;
         if (_currentUser != null) {
           retVal = "success";
           print("in if " + _currentUser.subPlan + " jui");

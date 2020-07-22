@@ -8,9 +8,9 @@ import 'package:nutshell/users.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import 'currentUser.dart';
 import 'details.dart';
+import 'currentUser.dart';
+import 'package:nutshell/model/details.dart';
 import 'account.dart';
 import 'orderConfirmation.dart';
 import 'global.dart' as global;
@@ -242,7 +242,17 @@ void openCheckout(BuildContext context) async {
 
     print("account page");
     razorpay.clear();
+   Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.subPlan);
 
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.group);
+          QuerySnapshot qs = await Firestore.instance
+              .collection("Group"+global.group)
+              .orderBy("name")
+              .getDocuments();
+          print("doc");
+          Provider.of<UserDetails>(context, listen: false).setQuery(qs);//changes
     Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
@@ -309,7 +319,17 @@ void openCheckoutthree(BuildContext context) async {
 
     print("account page");
     razorpay.clear();
+  Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.subPlan);
 
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.group);
+          QuerySnapshot qs = await Firestore.instance
+              .collection("Group"+global.group)
+              .orderBy("name")
+              .getDocuments();
+          print("doc");
+          Provider.of<UserDetails>(context, listen: false).setQuery(qs);
     Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
@@ -373,7 +393,17 @@ void openCheckoutyear(BuildContext context) async {
 
     print("account page");
     razorpay.clear();
+  Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.subPlan);
 
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.group);
+          QuerySnapshot qs = await Firestore.instance
+              .collection("Group"+global.group)
+              .orderBy("name")
+              .getDocuments();
+          print("doc");
+          Provider.of<UserDetails>(context, listen: false).setQuery(qs);
     Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
@@ -437,7 +467,17 @@ void openCheckoutweek(BuildContext context) async {
 
     print("account page");
     razorpay.clear();
+  Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.subPlan);
 
+          Provider.of<UserDetails>(context, listen: false)
+              .setnoOfPaper(global.group);
+          QuerySnapshot qs = await Firestore.instance
+              .collection("Group"+global.group)
+              .orderBy("name")
+              .getDocuments();
+          print("doc");
+          Provider.of<UserDetails>(context, listen: false).setQuery(qs);
     Navigator.pushReplacementNamed(context, '/bottombar');
   }
 
