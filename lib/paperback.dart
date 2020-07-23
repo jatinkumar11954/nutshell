@@ -50,7 +50,7 @@ class _PaperbacksState extends State<Paperbacks> {
         enlargeCenterPage: false,
         autoPlay: false,
         pauseAutoPlayOnTouch: true,
-        height: MediaQuery.of(context).size.height / 2,
+        height: MediaQuery.of(context).size.height *0.6,
       ),
       items: paper.map((back) {
         return Builder(
@@ -76,7 +76,10 @@ class _PaperbacksState extends State<Paperbacks> {
                                 builder: (context) => Topic(),
                               ));
                         })),
-                        Text(back.data["title"])
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(back.data["title"],style:TextStyle(fontSize: 20)),
+                        )
               ],
             );
           },
@@ -98,7 +101,7 @@ class _PaperbacksState extends State<Paperbacks> {
         // ),
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.fromLTRB(10.0,50,10,10),
             child: widget,
           ),
         ),

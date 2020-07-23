@@ -14,20 +14,36 @@ class Topic extends StatelessWidget {
   Widget build(BuildContext context) {
     // Future.delayed(Duration(milliseconds: 800));
     topic = Provider.of<UserDetails>(context).doc;
-    // d = Provider.of<UserDetails>(context).docSnap;
-    //  final varia= topic.data["Topic"].toList();
     List<MapEntry<String, dynamic>> topicList =
-        topic.data["Topic"].entries.toList();
-//  req=   ob.entries.toList();
-//     print(req[0].key);
+        topic.data["Topic"].entries.toList();//converting to entries so that cover and topic can be sorted
+
     topicList.sort((a, b) => int.parse(a.key.split("??")[0])
         .compareTo(int.parse(b.key.split("??")[0])));
-    // print(topicL);
     // List<dynamic> topicList = topic.data["Topic"].keys.toList();
     // topicList.sort((a, b) =>
     //     int.parse(a.split("??")[0]).compareTo(int.parse(b.split("??")[0])));
     // print(topicList);
     return new Scaffold(
+      appBar: AppBar(
+        excludeHeaderSemantics: true,
+        titleSpacing: 0,
+        centerTitle: true,
+leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.black, onPressed: ()=> Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              // print(grpName);
+              return BottomBar();
+            },
+          ))),        backgroundColor: Colors.amberAccent,elevation: 0,
+      title: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top:10.0),
+            child: Text("PaperBack- "+Provider.of<UserDetails>(context).doc.data["title"],style: TextStyle(color: Colors.black),),
+          ),
+                  
+
+        ],
+      ),),
       backgroundColor: Colors.white,
       body: WillPopScope(
         onWillPop: () {
@@ -42,9 +58,24 @@ class Topic extends StatelessWidget {
           margin: EdgeInsets.fromLTRB(25, 25, 25, 0),
           child: Column(
             children: <Widget>[
+Center(child: Padding(
+  padding: const EdgeInsets.only(bottom:18.0),
+  child:   Text("Topics",style: TextStyle(color: Colors.black,fontSize: 25)),
+),),
               Consumer<UserDetails>(builder: (context, obj, _) {
                 return Expanded(
-                  child: GridView.builder(
+                  child:topicList.length==0?Center(child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Comming"
+                      ,style: TextStyle(fontFamily: "Montserrat",
+                      fontSize: 25),
+                      
+                      ), Text("Soon"
+                      ,style: TextStyle(fontFamily: "Montserrat",
+                      fontSize: 25),)
+                    ],),): GridView.builder(
                     // reverse: true,
                     scrollDirection: Axis.vertical,
                     // shrinkWrap: true,

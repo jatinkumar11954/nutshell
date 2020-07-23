@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nutshell/model/userdetails.dart';
 import 'package:nutshell/paperback.dart';
@@ -46,39 +47,43 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     final Firestore _firestore = Firestore.instance;
 
     try {
-      await new Future.delayed(const Duration(milliseconds: 1300));
-
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       print(user.toString());
 
       if (user != null) {
-        DocumentSnapshot _docSnap =
-            await _firestore.collection("users").document(user.uid).get();
+        try {
+          DocumentSnapshot _docSnap =
+              await _firestore.collection("users").document(user.uid).get();
 
-        if (_docSnap.data['subscription']) {
-          print(_docSnap.data['subPlan']);
-          Provider.of<UserDetails>(context, listen: false)
-              .setnoOfPaper(_docSnap.data['subPlan']);
-          print(_docSnap.data['group']);
+          if (_docSnap.data['subscription']) {
+            print(_docSnap.data['subPlan']);
+            Provider.of<UserDetails>(context, listen: false)
+                .setnoOfPaper(_docSnap.data['subPlan']);
+            print(_docSnap.data['group']);
 
-          Provider.of<UserDetails>(context, listen: false)
-              .setnoOfPaper(_docSnap.data['group']);
-          QuerySnapshot qs = await Firestore.instance
-              .collection("Group"+_docSnap.data['group'])
-              .orderBy("name")
-              .getDocuments();
-          // List<DocumentSnapshot> d = qs.documents;
-          // print(d[0].data["name"]);
-          print("doc");
-          Provider.of<UserDetails>(context, listen: false).setQuery(qs);
-          Navigator.pushNamedAndRemoveUntil(
-              context, "/bottombar", (_) => false);
-          print("object");
-        } else {
-          Navigator.pushNamed(context, "/subs");
+            Provider.of<UserDetails>(context, listen: false)
+                .setnoOfPaper(_docSnap.data['group']);
+            QuerySnapshot qs = await Firestore.instance
+                .collection("Group" + _docSnap.data['group'])
+                .orderBy("name")
+                .getDocuments();
+            // List<DocumentSnapshot> d = qs.documents;
+            // print(d[0].data["name"]);
+            print("doc");
+            Provider.of<UserDetails>(context, listen: false).setQuery(qs);
+            Navigator.pushNamedAndRemoveUntil(
+                context, "/bottombar", (_) => false);
+            print("object");
+          } else {
+            Navigator.pushNamed(context, "/subs");
+          }
+        }  catch (_) {
+          Fluttertoast.showToast(msg: "Please Check Your Internet Connection");
         }
       } else {
         // await new Future.delayed(const Duration(milliseconds: 1000));
+        await new Future.delayed(const Duration(milliseconds: 1300));
+
         Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
 
 // Navigator.of(context).push(

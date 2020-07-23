@@ -172,7 +172,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
             DocumentSnapshot _docSnap =
                 await _firestore.collection("users").document(user.uid).get();
 
-            await new Future.delayed(const Duration(milliseconds: 5000));
+            // await new Future.delayed(const Duration(milliseconds: 5000));
             if (_docSnap.data['subscription']) {
               // setState(() {
               //   _isLoading = false;
@@ -201,7 +201,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
           } else {
             // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
             // goToLoginPage();
-            await new Future.delayed(const Duration(milliseconds: 5000));
+            // await new Future.delayed(const Duration(milliseconds: 5000));
             setState(() {
               _isLoading = false;
             });
@@ -295,7 +295,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
           DocumentSnapshot _docSnap =
               await _firestore.collection("users").document(user.uid).get();
 
-          await new Future.delayed(const Duration(milliseconds: 5000));
+          // await new Future.delayed(const Duration(milliseconds: 5000));
           if (_docSnap.data['subscription']) {
             setState(() {
               _isLoading = false;
@@ -311,7 +311,7 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
         } else {
           // Navigator.pushNamedAndRemoveUntil(context, '/intro', (_) => false);
           // goToLoginPage();
-          await new Future.delayed(const Duration(milliseconds: 5000));
+          // await new Future.delayed(const Duration(milliseconds: 5000));
           setState(() {
             _isLoading = false;
           });
@@ -457,6 +457,10 @@ class _OtpState extends State<Otp> with TickerProviderStateMixin {
                     },
                     validator: (v) {
                       if (v.length == 6) {
+                        _isLoading = true;
+                        Future.delayed(Duration(seconds: 5));
+                        _isLoading = false;
+
                         _continueEnble = true;
                       } else {
                         _continueEnble = false;
