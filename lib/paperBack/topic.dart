@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/paperback.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +34,7 @@ class Topic extends StatelessWidget {
           Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) {
               // print(grpName);
-              return Paperbacks();
+              return BottomBar();
             },
           ));
         },
@@ -48,18 +49,15 @@ class Topic extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     // shrinkWrap: true,
                     itemCount: topicList.length,
-                    itemBuilder: (context, i) {
-                      print("inside grid");
-                      // print(d.data["Topic"].keys.toList()[i].split('??')[i]);
-                      return Center(
+                    itemBuilder: (context, i) {    return Center(
                         child: GestureDetector(
                           onTap: () {
                             // print(topicList[i].value);
                             Provider.of<UserDetails>(context, listen: false)
                                 .sortedList(topicList);
-                            print(topicList[i].value);
+                            // print(topicList[i].value[0]);
                             Provider.of<UserDetails>(context, listen: false)
-                                .getCover(topicList[i].value);
+                                .topicTap(i);
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 // print(grpName);

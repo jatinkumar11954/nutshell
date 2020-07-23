@@ -129,9 +129,6 @@ class _AccountState extends State<Account> {
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
         if (_currentUser != null) {
           retVal = "success";
-          print("in if ");
-          print(_currentUser.phone);
-          print(_currentUser.subPlan);
           setState(() {
             isLoading = false;
           });

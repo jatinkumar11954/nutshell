@@ -40,7 +40,8 @@ class _PaperbacksState extends State<Paperbacks> {
     count = Provider.of<UserDetails>(context).noOfPaper;
 
     // paper = Provider.of<UserDetails>(context).qs.documents.sublist(0, 1);
-    paper.addAll(Provider.of<UserDetails>(context).qs.documents.sublist(0,count));
+    paper.addAll(
+        Provider.of<UserDetails>(context).qs.documents.sublist(0, count));
     // print(count);
 
     ///create book grid tiles
@@ -54,22 +55,30 @@ class _PaperbacksState extends State<Paperbacks> {
       items: paper.map((back) {
         return Builder(
           builder: (BuildContext context) {
-            return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 10.0),
-                decoration: BoxDecoration(color: Colors.grey[300]),
-                child: GestureDetector(
-                    child: CachedNetworkImage(imageUrl: back.data["img"]),
-                    onTap: () {
-                      Provider.of<UserDetails>(context, listen: false)
-                          .onPaperTap(back);
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Topic(),
-                          ));
-                      print("this is pdf ");
-                    }));
+            return Column(
+              children: <Widget>[
+                Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(color: Colors.grey[300]),
+                    child: GestureDetector(
+                        child: CachedNetworkImage(
+                          imageUrl: back.data["img"],
+                          placeholder: (context, url) =>
+                              Center(child: CircularProgressIndicator()),
+                        ),
+                        onTap: () {
+                          Provider.of<UserDetails>(context, listen: false)
+                              .onPaperTap(back);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Topic(),
+                              ));
+                        })),
+                        Text(back.data["title"])
+              ],
+            );
           },
         );
       }).toList(),
