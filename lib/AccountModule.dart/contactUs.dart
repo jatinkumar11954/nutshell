@@ -26,7 +26,7 @@
 //                       tooltip: 'back',
 //                       onPressed: () {
 //                         Navigator.pushNamed(context,"/account");
-                    
+
 //           },
 //         ),
 //         ),
@@ -46,11 +46,6 @@
 //   }
 // }
 
-
-
-
-
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -60,45 +55,48 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class ContactUs extends StatelessWidget {
-
- 
-
   // VersionCheckBloc versionCheckBloc;
 
   @override
   Widget build(BuildContext context) {
     // versionCheckBloc = versionCheckBloc ?? VersionCheckBlocProvider.of(context);
 
-    return Scaffold(
-        bottomNavigationBar: bottomBar(context, 2),
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pop(context);
+      },
+      child: Scaffold(
+        // bottomNavigationBar: bottomBar(context, 2),
         appBar: AppBar(
-          title: Text("Contact US",style: TextStyle(color: Colors.black),),
-          backgroundColor:Colors.orange[300],
+          title: Text(
+            "Contact US",
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.orange[300],
           leading: new IconButton(
-          icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                        color: Colors.black,
-                      ),
-                      tooltip: 'back',
-                      onPressed: () {
-                        Navigator.pushNamed(context,"/account");
-                    
-          },
+            icon: Icon(
+              Icons.arrow_back,
+              size: 30.0,
+              color: Colors.black,
+            ),
+            tooltip: 'back',
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        ),
-        body:WillPopScope(
-          onWillPop: (){
+        body: WillPopScope(
+          onWillPop: () {
             Navigator.pushNamed(context, '/account');
           },
-        child:ListView(
-          children: <Widget>[
-            _buildBody(context),
-            // Text("\n\n\n No TermsAndConditionss till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
-          ],
+          child: ListView(
+            children: <Widget>[
+              _buildBody(context),
+              // Text("\n\n\n No TermsAndConditionss till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
+            ],
+          ),
         ),
-        ),
-     
+      ),
     );
   }
 
@@ -112,18 +110,14 @@ class ContactUs extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
-            child: Image.asset('assets/images/logo.png', fit: BoxFit.fitHeight, width: MediaQuery.of(context).size.width * 0.95, height: 100),
+            child: Image.asset('assets/images/logo.png',
+                fit: BoxFit.fitHeight,
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: 100),
           ),
-          // Text("Nutshell",
-          //   style: TextStyle(
-          //     color: Colors.green,
-          //     fontWeight: FontWeight.w500,
-          //     fontSize: 20
-          //   ),
-          // ),
-          Padding(padding:EdgeInsets.all(10.0)),
-          Text("If you have any questions or feedback, please reach out to us:",
-            
+          Padding(padding: EdgeInsets.all(10.0)),
+          Text(
+            "If you have any questions or feedback, please reach out to us:",
           ),
           Text("\n"),
           Container(
@@ -134,36 +128,48 @@ class ContactUs extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.width * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.width * 0.3,
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     // mainAxisAlignment: MainAxisAlignment.start,
                     child: Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text("ADDRESS", style: TextStyle(color: Colors.green, fontSize: 12),),
-                      SizedBox(height: 75,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: Text(" \nQuizzora & Co., 2nd Floor, Basera Apartment, Hill Cart, Road, 13/6 B.M. Saran, Mahananda Para, Near Bata Lane,Siliguri - 734001", style: TextStyle(color: Colors.black, fontSize: 16),)
-                      ),
-                      // Text(" ", style: TextStyle(color: Colors.black, fontSize: 16),),
-                      // Text(" ", style: TextStyle(color: Colors.black, fontSize: 16),),
-                      // Text(" Siliguri - 734001", style: TextStyle(color: Colors.green, fontSize: 16),)
-                    ],
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "ADDRESS",
+                          style: TextStyle(color: Colors.green, fontSize: 12),
+                        ),
+                        SizedBox(
+                            height: 75,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Text(
+                              " \nQuizzora & Co., 2nd Floor, Basera Apartment, Hill Cart, Road, 13/6 B.M. Saran, Mahananda Para, Near Bata Lane,Siliguri - 734001",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 16),
+                            )),
+                        // Text(" ", style: TextStyle(color: Colors.black, fontSize: 16),),
+                        // Text(" ", style: TextStyle(color: Colors.black, fontSize: 16),),
+                        // Text(" Siliguri - 734001", style: TextStyle(color: Colors.green, fontSize: 16),)
+                      ],
+                    ),
                   ),
                 ),
-                ),
                 InkWell(
-                  onTap: () {
-                    _launchMaps("26.713500", "88.424280");
-                  },
-                  child: Row(children: <Widget>[
-                    Icon(Icons.directions, color: Colors.green,),
-                    Text("      ")
-                  ],)
-                  // 
-                )
+                    onTap: () {
+                      _launchMaps("26.713500", "88.424280");
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.directions,
+                          color: Colors.green,
+                        ),
+                        Text("      ")
+                      ],
+                    )
+                    //
+                    )
               ],
             ),
           ),
@@ -173,7 +179,8 @@ class ContactUs extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("     PHONE", style: TextStyle(color: Colors.green,fontSize: 12)),
+                Text("     PHONE",
+                    style: TextStyle(color: Colors.green, fontSize: 12)),
               ],
             ),
           ),
@@ -182,65 +189,74 @@ class ContactUs extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("    8617587964", style: TextStyle(color: Colors.black, fontSize: 16)),
+                Text("    8617587964",
+                    style: TextStyle(color: Colors.black, fontSize: 16)),
                 InkWell(
-                  onTap: () {
-                    _LaunchPhone("8617587964");
-                  },
-                  child: 
-                  Row(children: <Widget>[Icon(Icons.phone, color: Colors.green,),
-                
-                    Text("      ")
-                  ],
-                  )
-                  )
+                    onTap: () {
+                      _LaunchPhone("8617587964");
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.phone,
+                          color: Colors.green,
+                        ),
+                        Text("      ")
+                      ],
+                    ))
               ],
             ),
           ),
-           Container(
+          Container(
             margin: EdgeInsets.symmetric(vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("    9647837544", style: TextStyle(color: Colors.black, fontSize: 16)),
+                Text("    9647837544",
+                    style: TextStyle(color: Colors.black, fontSize: 16)),
                 InkWell(
-                  onTap: () {
-                    _LaunchPhone("9647837544");
-                  },
-                  child: Row(children: <Widget>[Icon(Icons.phone, color: Colors.green,),
-                
-                    Text("      ")
-                  ],
-                  )
-                )
+                    onTap: () {
+                      _LaunchPhone("9647837544");
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.phone,
+                          color: Colors.green,
+                        ),
+                        Text("      ")
+                      ],
+                    ))
               ],
             ),
           ),
           Divider(),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text("    EMAIL", style: TextStyle(color: Colors.green, fontSize: 12)),
-              ],
-            )
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("    info@mynutshell.in", style: TextStyle(color: Colors.black, fontSize: 16)),
-              InkWell(
+              margin: EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("    EMAIL",
+                      style: TextStyle(color: Colors.green, fontSize: 12)),
+                ],
+              )),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text("    info@mynutshell.in",
+                style: TextStyle(color: Colors.black, fontSize: 16)),
+            InkWell(
                 onTap: () {
                   _launchEmail("info@mynutshell.in");
                 },
-                child: 
-                Row(children: <Widget>[Icon(Icons.email, color: Colors.green,),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.email,
+                      color: Colors.green,
+                    ),
                     Text("      ")
                   ],
-                  )              )
-            ]
-          )
+                ))
+          ])
         ],
       ),
     );
@@ -257,7 +273,7 @@ class ContactUs extends StatelessWidget {
     }
   }
 
-  _launchEmail(String email) async{ 
+  _launchEmail(String email) async {
     String mailUrl = "mailto:${email}";
     if (await canLaunch(mailUrl)) {
       await launch(mailUrl);
@@ -278,5 +294,4 @@ class ContactUs extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-
 }

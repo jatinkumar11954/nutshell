@@ -77,135 +77,145 @@ class _PricingState extends State<Pricing> {
       expiryDate = today.add(new Duration(days: 365));
     }
     // TODO: implement build
-    return Scaffold(
-      bottomNavigationBar: bottomBar(context, 2),
-      appBar: AppBar(
-        title: Text(
-          "Pricing",
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        leading: new IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            size: 30.0,
-            color: Colors.black,
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pop(context);
+        // push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => BottomBar(),
+        //     ));
+      },
+      child: Scaffold(
+        // bottomNavigationBar: bottomBar(context, 2),
+        appBar: AppBar(
+          title: Text(
+            "Pricing",
+            style: TextStyle(color: Colors.black),
           ),
-          tooltip: 'back',
-          onPressed: () {
-            Navigator.pushNamed(context, "/account");
-          },
-        ),
-      ),
-      body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : WillPopScope(
-              onWillPop: () {
-                Navigator.pushNamed(context, '/account');
-              },
-              child: Container(
-                padding: EdgeInsets.only(left: 25.0, top: 25.0, right: 25.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                    ),
-                    Text(
-                      "Your current \nplan",
-                      style: TextStyle(
-                          fontSize: 75.0,
-                          color: Colors.redAccent[700],
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Text(
-                          "Your Subsciption type is :",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          Plan,
-                          style: TextStyle(
-                              fontSize: 25.0, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Text(
-                          "Valid till :",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          expiryDate.toString(),
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.w700),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 3.0,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width * 0.90,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                        color: Colors.redAccent[700],
-                        onPressed: () {
-                          Navigator.pushNamed(context, "/subs");
-                        },
-                        child: Text(
-                          'Extend plan',
-                          style: TextStyle(
-                              fontSize: 35.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    )
-                    // Text("Will be added")
-                    // _currentUser.subPlan.toString() == 'f'
-                    //     ? Text(
-                    //         "Price: ₹0\nPlan:FREE includes:\nDuration: 7 days\n No. of paperbacks:2\nIssues:2")
-                    //     : _currentUser.subPlan.toString() == 'b'
-                    //         ? Text(
-                    //             "Price: ₹69\nPlan:Basic includes:\nDuration: 2 months\n No. of paperbacks:1\nIssues:1")
-                    //         : _currentUser.subPlan.toString() == 's'
-                    //             ? Text(
-                    //                 "Price: ₹56 per issue\nPlan:Standard includes:\nDuration: 6 months\n No. of paperbacks:3\n")
-                    //             : _currentUser.subPlan.toString() == 'p'
-                    //                 ? Text(
-                    //                     "Price: ₹50 per issue\nPlan:Standard includes:\nDuration: 12 months\n No. of paperbacks:6\n")
-                    //                 : Text("Error"),
-                  ],
-                ),
-
-                // Text("\n\n\n No Pricings till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
-              ),
+          backgroundColor: Colors.white,
+          leading: new IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              size: 30.0,
+              color: Colors.black,
             ),
+            tooltip: 'back',
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        body: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : WillPopScope(
+                onWillPop: () {
+                  Navigator.pushNamed(context, '/account');
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 25.0, top: 25.0, right: 25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Text(
+                        "Your current \nplan",
+                        style: TextStyle(
+                            fontSize: 75.0,
+                            color: Colors.redAccent[700],
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            "Your Subsciption type is :",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            Plan,
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            "Valid till :",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            expiryDate.toString(),
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Divider(
+                        color: Colors.black,
+                        thickness: 3.0,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.07,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                        width: MediaQuery.of(context).size.width * 0.90,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                          color: Colors.redAccent[700],
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/extendplan");
+                          },
+                          child: Text(
+                            'Extend plan',
+                            style: TextStyle(
+                                fontSize: 35.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      )
+                      // Text("Will be added")
+                      // _currentUser.subPlan.toString() == 'f'
+                      //     ? Text(
+                      //         "Price: ₹0\nPlan:FREE includes:\nDuration: 7 days\n No. of paperbacks:2\nIssues:2")
+                      //     : _currentUser.subPlan.toString() == 'b'
+                      //         ? Text(
+                      //             "Price: ₹69\nPlan:Basic includes:\nDuration: 2 months\n No. of paperbacks:1\nIssues:1")
+                      //         : _currentUser.subPlan.toString() == 's'
+                      //             ? Text(
+                      //                 "Price: ₹56 per issue\nPlan:Standard includes:\nDuration: 6 months\n No. of paperbacks:3\n")
+                      //             : _currentUser.subPlan.toString() == 'p'
+                      //                 ? Text(
+                      //                     "Price: ₹50 per issue\nPlan:Standard includes:\nDuration: 12 months\n No. of paperbacks:6\n")
+                      //                 : Text("Error"),
+                    ],
+                  ),
+
+                  // Text("\n\n\n No Pricings till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
+                ),
+              ),
+      ),
     );
   }
 }

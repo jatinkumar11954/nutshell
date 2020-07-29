@@ -44,35 +44,40 @@ class _NewsState extends State<News> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // bottomNavigationBar: bottomBar(context, 1),
-      // bottomNavigationBar: BottomBar(),
-      body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: Colors.white,
-          child: postsList.length == 0
-              ? Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Center(child: new CircularProgressIndicator()),
-                )
-              : SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: new PageView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: postsList.length,
-                      itemBuilder: (_, index) {
-                        return postsUi(
-                          postsList[index].postImage,
-                          postsList[index].title,
-                          postsList[index].date,
-                          postsList[index].time,
-                          postsList[index].description,
-                          postsList[index].category,
-                        );
-                      }),
-                )),
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushNamed(context, '/bottombar');
+      },
+      child: Scaffold(
+        // bottomNavigationBar: bottomBar(context, 1),
+        // bottomNavigationBar: BottomBar(),
+        body: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: Colors.white,
+            child: postsList.length == 0
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Center(child: new CircularProgressIndicator()),
+                  )
+                : SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: new PageView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: postsList.length,
+                        itemBuilder: (_, index) {
+                          return postsUi(
+                            postsList[index].postImage,
+                            postsList[index].title,
+                            postsList[index].date,
+                            postsList[index].time,
+                            postsList[index].description,
+                            postsList[index].category,
+                          );
+                        }),
+                  )),
+      ),
     );
   }
 

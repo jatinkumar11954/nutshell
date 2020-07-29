@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nutshell/AccountModule.dart/extendorder.dart';
+import 'package:nutshell/AccountModule.dart/extendplan.dart';
 import 'package:nutshell/AccountModule.dart/help.dart';
 import 'package:nutshell/bottomNav.dart';
 import 'package:nutshell/details.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => UserDetails(),
-          child: MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           '/paperback': (BuildContext context) => Paperbacks(),
@@ -72,6 +74,8 @@ class MyApp extends StatelessWidget {
           '/termsandconditions': (BuildContext context) => TermsAndConditions(),
           '/editprofile': (BuildContext context) => EditProfileScreen(),
           '/aboutUs': (BuildContext context) => AboutUs(),
+          '/extendplan': (BuildContext context) => Extend(),
+          '/extendorder': (BuildContext context) => ExtendOrder()
           //'/': (BuildContext context) => Details(),
         },
         title: 'Nutshell',

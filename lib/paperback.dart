@@ -50,39 +50,47 @@ class _PaperbacksState extends State<Paperbacks> {
         enlargeCenterPage: false,
         autoPlay: false,
         pauseAutoPlayOnTouch: true,
-        height: MediaQuery.of(context).size.height *0.6,
+        height: MediaQuery.of(context).size.height * 0.6,
       ),
       items: paper.map((back) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Column(
-              children: <Widget>[
-                Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 10.0),
-                    decoration: BoxDecoration(color: Colors.grey[300]),
-                    child: GestureDetector(
-                        child: CachedNetworkImage(
-                          imageUrl: back.data["img"],
-                          placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
-                        ),
-                        onTap: () {
-                          Provider.of<UserDetails>(context, listen: false)
-                              .onPaperTap(back);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Topic(),
-                              ));
-                        })),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(back.data["title"],style:TextStyle(fontSize: 20)),
-                        )
-              ],
-            );
+        return WillPopScope(
+          onWillPop: () {
+            Navigator.pushNamed(context, '/bottombar');
           },
+          child: Builder(
+            builder: (BuildContext context) {
+              return Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 10.0),
+                        decoration: BoxDecoration(color: Colors.grey[300]),
+                        child: GestureDetector(
+                            child: CachedNetworkImage(
+                              imageUrl: back.data["img"],
+                              placeholder: (context, url) =>
+                                  Center(child: CircularProgressIndicator()),
+                            ),
+                            onTap: () {
+                              Provider.of<UserDetails>(context, listen: false)
+                                  .onPaperTap(back);
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Topic(),
+                                  ));
+                            })),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(back.data["title"],
+                        style: TextStyle(fontSize: 20)),
+                  )
+                ],
+              );
+            },
+          ),
         );
       }).toList(),
     );
@@ -101,7 +109,7 @@ class _PaperbacksState extends State<Paperbacks> {
         // ),
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10.0,50,10,10),
+            padding: const EdgeInsets.fromLTRB(10.0, 50, 10, 10),
             child: widget,
           ),
         ),
