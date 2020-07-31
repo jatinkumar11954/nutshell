@@ -65,6 +65,8 @@ class OurDatabase {
       retVal.subPlan = _docSnapshot.data["subPlan"];
       retVal.pinCode = _docSnapshot.data["pinCode"];
       global.timeCreated = _docSnapshot.data["accountCreated"];
+      // retVal.timeCreated = _docSnapshot.data["accountCreated"];
+
       print(retVal.subPlan);
       print("jp");
       print(global.timeCreated.day.toString());

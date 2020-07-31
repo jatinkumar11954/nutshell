@@ -18,27 +18,21 @@ import 'account.dart';
 //         switch (index) {
 //           case 0:
 //             {
-//               Navigator.push(
-//                   context,
-//                   MaterialPageRoute(
-//                       maintainState: true, builder: (context) => Paperbacks()));
+//               Navigator.pushNamed(context, '/bottombar');
+
 //               break;
 //             }
 //           case 1:
 //             {
-//               Navigator.push(
-//                   context,
-//                   MaterialPageRoute(
-//                       maintainState: true, builder: (context) => News()));
+//               Navigator.pushNamed(context, '/bottombar');
+
 //               break;
 //             }
 
 //           case 2:
 //             {
-//               Navigator.push(
-//                   context,
-//                   MaterialPageRoute(
-//                       maintainState: true, builder: (context) => Account()));
+//               //  Navigator.pushNamed(context,'/bottombar');
+
 //               break;
 //             }
 //         }
@@ -85,7 +79,7 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _selectedItem = 0;
   static List<Widget> _navScreens = <Widget>[Paperbacks(), News(), Account()];
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
       _selectedItem = index;
     });
@@ -131,7 +125,7 @@ class _BottomBarState extends State<BottomBar> {
         ],
         currentIndex: _selectedItem,
         selectedItemColor: Colors.purple,
-        onTap: _onItemTapped,
+        onTap: onItemTapped,
       ),
     );
   }

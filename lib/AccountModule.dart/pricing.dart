@@ -32,6 +32,7 @@ class _PricingState extends State<Pricing> {
       if (_firebaseUser != null) {
         // print(_firebaseUser.uid);
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
+        // print("ff" + _currentUser.timeCreated);
         today =
             global.timeCreated == null ? DateTime.now() : global.timeCreated;
         if (_currentUser != null) {
@@ -102,7 +103,7 @@ class _PricingState extends State<Pricing> {
             ),
             tooltip: 'back',
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.popAndPushNamed(context, '/account');
             },
           ),
         ),
@@ -194,6 +195,14 @@ class _PricingState extends State<Pricing> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
+                      ),
+                      RaisedButton(
+                        onPressed: () {
+                          print(_currentUser.uid);
+                          print(_currentUser.phone);
+                          print(_currentUser.email);
+                        },
+                        child: Text('dbd'),
                       )
                       // Text("Will be added")
                       // _currentUser.subPlan.toString() == 'f'

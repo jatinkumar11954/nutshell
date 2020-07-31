@@ -1,15 +1,32 @@
+// import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nutshell/currentUser.dart';
+import 'package:nutshell/users.dart';
+import '../database.dart';
 import 'extendplan.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nutshell/global.dart' as global;
 
-class ExtendOrder extends StatelessWidget {
+class ExtendOrder extends StatefulWidget {
+  @override
+  _ExtendOrderState createState() => _ExtendOrderState();
+}
+
+class _ExtendOrderState extends State<ExtendOrder> {
+  bool isLoading = false;
+  var today;
+  Users _currentUser = Users();
+  Users get getCurrentUser => _currentUser;
+
   FirebaseAuth auth = FirebaseAuth.instance;
+
   void inputData() async {
     final FirebaseUser user = await auth.currentUser();
+
     final uid = user.uid;
     // here you write the codes to input the data into firestore
   }
@@ -18,7 +35,7 @@ class ExtendOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Navigator.pushNamed(context, '/extendplan');
+        Navigator.popAndPushNamed(context, '/pricing');
       },
       child: Scaffold(
           backgroundColor: Colors.white,
@@ -192,22 +209,19 @@ class ExtendOrder extends StatelessWidget {
                           child: Text("Proceed to checkout"),
                           color: Colors.green,
                           textColor: Colors.white,
-                        )) // MaterialButton(onPressed: null)
+                        )),
+                    RaisedButton(
+                      onPressed: () {
+                        print(_currentUser.uid);
+                        print(_currentUser.phone);
+                        print(_currentUser.email);
+                      },
+                    ) // MaterialButton(onPressed: null)
                   ],
                 )),
           ])),
     );
   }
-  // _show(){
-  //   switch (selection1) {
-  //     case  payone == 1 : {
-  //       Text("data");
-  //     }
-
-  //     break;
-  //   default:
-  // }
-// }
 }
 
 showAlertDialog(BuildContext context) {

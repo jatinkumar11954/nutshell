@@ -14,6 +14,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:photo_view/photo_view.dart';
+import 'bottomNav.dart';
 import 'google.dart';
 import 'database.dart';
 
@@ -127,6 +128,7 @@ class _AccountState extends State<Account> {
       if (_firebaseUser != null) {
         // print(_firebaseUser.uid);
         _currentUser = await OurDatabase().getUserInfo(_firebaseUser.uid);
+
         if (_currentUser != null) {
           retVal = "success";
           setState(() {
@@ -138,6 +140,8 @@ class _AccountState extends State<Account> {
       print(e);
     }
     return retVal;
+    print(global.phone);
+    print(global.email);
   }
 
   @override
@@ -186,7 +190,6 @@ class _AccountState extends State<Account> {
           Navigator.pushNamed(context, "/bottombar");
         },
         child: Scaffold(
-
             // bottomNavigationBar: bottomBar(context, 2),
             // bottomNavigationBar: BottomBar(),
 

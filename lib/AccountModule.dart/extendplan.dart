@@ -4,11 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutshell/AccountModule.dart/extendorder.dart';
+import 'package:nutshell/AccountModule.dart/pricing.dart';
 import 'package:nutshell/database.dart';
 import 'package:nutshell/users.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+// import 'dart:js_util';
+import 'pricing.dart';
 
 import '../details.dart';
 import 'package:nutshell/currentUser.dart';
@@ -41,9 +44,10 @@ class _ExtendState extends State<Extend> {
   var oneval = false;
   var twoval = false;
   bool isVisible = false;
+  bool isLoading = false;
   int svgIndex;
   var threeval = false;
-
+  FirebaseAuth _auth = FirebaseAuth.instance;
   static const List<String> svgNames = <String>[
     // "assets/images/7Days.svg",
     "assets/images/2Months.svg",
@@ -180,7 +184,14 @@ class _ExtendState extends State<Extend> {
                       ),
                     ),
                   ),
+
                   // ),
+                ),
+                Text(_currentUser.phone),
+                RaisedButton(
+                  onPressed: () {
+                    print(_currentUser.uid);
+                  },
                 )
               ],
             )
@@ -248,9 +259,11 @@ void openCheckout(BuildContext context) async {
     );
   }
 
+  print('dbbds');
   print("Just came to opencheckout function");
-  print(_currentUser.uid);
-
+  print(global.uid.toString());
+  print(_currentUser.phone.toString());
+  // print(global.email);
   var onemonth = {
     'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
@@ -258,7 +271,10 @@ void openCheckout(BuildContext context) async {
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'One month Nutshell Extended',
-    'prefill': {'contact': '+91' + global.phone, 'email': global.email}
+    'prefill': {
+      'contact': '+91' + _currentUser.phone,
+      'email': _currentUser.email
+    }
   };
 
   try {
@@ -275,7 +291,9 @@ void openCheckout(BuildContext context) async {
 }
 
 void openCheckoutthree(BuildContext context) async {
+  print('hiii');
   _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    print('hiiie');
     // String selectedPlan=global.subPlan;
     Fluttertoast.showToast(
       msg: "SUCCESS: " + response.paymentId,
@@ -323,7 +341,10 @@ void openCheckoutthree(BuildContext context) async {
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Extended',
-    'prefill': {'contact': '+91' + global.phone, 'email': global.email}
+    'prefill': {
+      'contact': '+91' + _currentUser.phone,
+      'email': _currentUser.email
+    }
   };
   try {
     print("Trying to go to razorpay");
@@ -387,7 +408,10 @@ void openCheckoutyear(BuildContext context) async {
     'name': 'Nutshell',
     //'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Extended',
-    'prefill': {'contact': '+91' + global.phone, 'email': global.email}
+    'prefill': {
+      'contact': '+91' + _currentUser.phone,
+      'email': _currentUser.email
+    }
   };
   try {
     print("Trying to go to razorpay");
@@ -444,7 +468,7 @@ void openCheckoutweek(BuildContext context) async {
   }
 
   print("Just came to checkout functionfds");
-  print(global.phone);
+  print(global.phone + 'vh');
   var oneweek = {
     'key': 'rzp_live_A94dLEeQb2Cj5s',
     'currency': "INR",
@@ -452,7 +476,10 @@ void openCheckoutweek(BuildContext context) async {
     'name': 'Nutshell',
     // 'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Nutshell Extended',
-    'prefill': {'contact': '+91' + global.phone, 'email': global.email}
+    'prefill': {
+      'contact': '+91' + _currentUser.phone,
+      'email': _currentUser.email
+    }
   };
 // print("Just before going to razorpay try");
   try {
